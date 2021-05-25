@@ -1,6 +1,6 @@
 <?php
 /**
- * TemplateType
+ * TemplateScope
  *
  * PHP version 7.2
  *
@@ -31,21 +31,21 @@ namespace ElasticEmail\Model;
 use \ElasticEmail\ObjectSerializer;
 
 /**
- * TemplateType Class Doc Comment
+ * TemplateScope Class Doc Comment
  *
  * @category Class
+ * @description Visibility of a template
  * @package  ElasticEmail
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TemplateType
+class TemplateScope
 {
     /**
      * Possible values of this enum
      */
-    const RAW_HTML = 'RawHTML';
-    const DRAG_DROP_EDITOR = 'DragDropEditor';
-    const LANDING_PAGE_EDITOR = 'LandingPageEditor';
+    const PERSONAL = 'Personal';
+    const _GLOBAL = 'Global';
     
     /**
      * Gets allowable values of the enum
@@ -54,9 +54,8 @@ class TemplateType
     public static function getAllowableEnumValues()
     {
         return [
-            self::RAW_HTML,
-            self::DRAG_DROP_EDITOR,
-            self::LANDING_PAGE_EDITOR,
+            self::PERSONAL,
+            self::_GLOBAL,
         ];
     }
 }

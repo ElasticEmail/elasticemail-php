@@ -227,7 +227,7 @@ $apiInstance = new ElasticEmail\Api\TemplatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scope_type = array(new \ElasticEmail\Model\\ElasticEmail\Model\TemplateScopeType()); // \ElasticEmail\Model\TemplateScopeType[] | Return templates with specified scope only
+$scope_type = array(new \ElasticEmail\Model\\ElasticEmail\Model\TemplateScope()); // \ElasticEmail\Model\TemplateScope[] | Return templates with specified scope only
 $template_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\TemplateType()); // \ElasticEmail\Model\TemplateType[] | Return templates with specified type only
 $limit = 100; // int | Maximum number of returned items.
 $offset = 20; // int | How many items should be returned ahead.
@@ -244,7 +244,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope_type** | [**\ElasticEmail\Model\TemplateScopeType[]**](../Model/\ElasticEmail\Model\TemplateScopeType.md)| Return templates with specified scope only |
+ **scope_type** | [**\ElasticEmail\Model\TemplateScope[]**](../Model/\ElasticEmail\Model\TemplateScope.md)| Return templates with specified scope only |
  **template_types** | [**\ElasticEmail\Model\TemplateType[]**](../Model/\ElasticEmail\Model\TemplateType.md)| Return templates with specified type only | [optional]
  **limit** | **int**| Maximum number of returned items. | [optional]
  **offset** | **int**| How many items should be returned ahead. | [optional]
