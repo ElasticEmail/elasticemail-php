@@ -10,8 +10,9 @@ Method | HTTP request | Description
 [**verificationsFilesByIdDelete()**](VerificationsApi.md#verificationsFilesByIdDelete) | **DELETE** /verifications/files/{id} | Delete File Verification Result
 [**verificationsFilesByIdResultDownloadGet()**](VerificationsApi.md#verificationsFilesByIdResultDownloadGet) | **GET** /verifications/files/{id}/result/download | Download File Verification Result
 [**verificationsFilesByIdResultGet()**](VerificationsApi.md#verificationsFilesByIdResultGet) | **GET** /verifications/files/{id}/result | Get Detailed File Verification Result
-[**verificationsFilesPost()**](VerificationsApi.md#verificationsFilesPost) | **POST** /verifications/files | Verify From File
-[**verificationsFilesResultGet()**](VerificationsApi.md#verificationsFilesResultGet) | **GET** /verifications/files/result | Get Simple Files Verification Results
+[**verificationsFilesByIdVerificationPost()**](VerificationsApi.md#verificationsFilesByIdVerificationPost) | **POST** /verifications/files/{id}/verification | Start verification
+[**verificationsFilesPost()**](VerificationsApi.md#verificationsFilesPost) | **POST** /verifications/files | Upload File with Emails
+[**verificationsFilesResultGet()**](VerificationsApi.md#verificationsFilesResultGet) | **GET** /verifications/files/result | Get Files Verification Results
 [**verificationsGet()**](VerificationsApi.md#verificationsGet) | **GET** /verifications | Get Emails Verification Results
 
 
@@ -389,15 +390,76 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `verificationsFilesByIdVerificationPost()`
+
+```php
+verificationsFilesByIdVerificationPost($id)
+```
+
+Start verification
+
+Start a verification of the previously uploaded file with emails. Required Access Level: VerifyEmails
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+
+
+$apiInstance = new ElasticEmail\Api\VerificationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | File ID to start verification
+
+try {
+    $apiInstance->verificationsFilesByIdVerificationPost($id);
+} catch (Exception $e) {
+    echo 'Exception when calling VerificationsApi->verificationsFilesByIdVerificationPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| File ID to start verification |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `verificationsFilesPost()`
 
 ```php
 verificationsFilesPost($file): \ElasticEmail\Model\VerificationFileResult
 ```
 
-Verify From File
+Upload File with Emails
 
-Uploads a CSV file with list of emails to verify. An 'email' column is required. Required Access Level: VerifyEmails
+Uploads a CSV file with list of emails that can then be triggered for verification. An 'email' column is required. Required Access Level: VerifyEmails
 
 ### Example
 
@@ -457,7 +519,7 @@ Name | Type | Description  | Notes
 verificationsFilesResultGet(): \ElasticEmail\Model\VerificationFileResult[]
 ```
 
-Get Simple Files Verification Results
+Get Files Verification Results
 
 Returns a list of uploaded files, their statuses and results. Required Access Level: ViewEmailVerifications
 

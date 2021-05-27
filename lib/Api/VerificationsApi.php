@@ -1684,9 +1684,233 @@ class VerificationsApi
     }
 
     /**
+     * Operation verificationsFilesByIdVerificationPost
+     *
+     * Start verification
+     *
+     * @param  string $id File ID to start verification (required)
+     *
+     * @throws \ElasticEmail\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function verificationsFilesByIdVerificationPost($id)
+    {
+        $this->verificationsFilesByIdVerificationPostWithHttpInfo($id);
+    }
+
+    /**
+     * Operation verificationsFilesByIdVerificationPostWithHttpInfo
+     *
+     * Start verification
+     *
+     * @param  string $id File ID to start verification (required)
+     *
+     * @throws \ElasticEmail\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function verificationsFilesByIdVerificationPostWithHttpInfo($id)
+    {
+        $request = $this->verificationsFilesByIdVerificationPostRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation verificationsFilesByIdVerificationPostAsync
+     *
+     * Start verification
+     *
+     * @param  string $id File ID to start verification (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verificationsFilesByIdVerificationPostAsync($id)
+    {
+        return $this->verificationsFilesByIdVerificationPostAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation verificationsFilesByIdVerificationPostAsyncWithHttpInfo
+     *
+     * Start verification
+     *
+     * @param  string $id File ID to start verification (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function verificationsFilesByIdVerificationPostAsyncWithHttpInfo($id)
+    {
+        $returnType = '';
+        $request = $this->verificationsFilesByIdVerificationPostRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'verificationsFilesByIdVerificationPost'
+     *
+     * @param  string $id File ID to start verification (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function verificationsFilesByIdVerificationPostRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling verificationsFilesByIdVerificationPost'
+            );
+        }
+
+        $resourcePath = '/verifications/files/{id}/verification';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-ElasticEmail-ApiKey');
+        if ($apiKey !== null) {
+            $headers['X-ElasticEmail-ApiKey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation verificationsFilesPost
      *
-     * Verify From File
+     * Upload File with Emails
      *
      * @param  \SplFileObject $file file (optional)
      *
@@ -1703,7 +1927,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesPostWithHttpInfo
      *
-     * Verify From File
+     * Upload File with Emails
      *
      * @param  \SplFileObject $file (optional)
      *
@@ -1791,7 +2015,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesPostAsync
      *
-     * Verify From File
+     * Upload File with Emails
      *
      * @param  \SplFileObject $file (optional)
      *
@@ -1811,7 +2035,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesPostAsyncWithHttpInfo
      *
-     * Verify From File
+     * Upload File with Emails
      *
      * @param  \SplFileObject $file (optional)
      *
@@ -1956,7 +2180,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesResultGet
      *
-     * Get Simple Files Verification Results
+     * Get Files Verification Results
      *
      *
      * @throws \ElasticEmail\ApiException on non-2xx response
@@ -1972,7 +2196,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesResultGetWithHttpInfo
      *
-     * Get Simple Files Verification Results
+     * Get Files Verification Results
      *
      *
      * @throws \ElasticEmail\ApiException on non-2xx response
@@ -2059,7 +2283,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesResultGetAsync
      *
-     * Get Simple Files Verification Results
+     * Get Files Verification Results
      *
      *
      * @throws \InvalidArgumentException
@@ -2078,7 +2302,7 @@ class VerificationsApi
     /**
      * Operation verificationsFilesResultGetAsyncWithHttpInfo
      *
-     * Get Simple Files Verification Results
+     * Get Files Verification Results
      *
      *
      * @throws \InvalidArgumentException

@@ -234,7 +234,7 @@ class MessageAttachment implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets binary_content
      *
-     * @param string|null $binary_content binary_content
+     * @param string|null $binary_content File's content as byte array (or a Base64 string)
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class MessageAttachment implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string|null $name Filename
+     * @param string|null $name Display name of the file
      *
      * @return self
      */
@@ -282,7 +282,7 @@ class MessageAttachment implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets content_type
      *
-     * @param string|null $content_type content_type
+     * @param string|null $content_type MIME content type
      *
      * @return self
      */
