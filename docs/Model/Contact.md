@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **status** | [**ContactStatus**](ContactStatus.md) | Status of the given resource | [optional]
 **first_name** | **string** | First name. | [optional]
 **last_name** | **string** | Last name. | [optional]
-**custom_fields** | **map[string,string]** | A key-value collection of custom contact fields which can be used in the system. | [optional]
+**custom_fields** | **array<string,string>** | A key-value collection of custom contact fields which can be used in the system. | [optional]
 **consent** | [**\ElasticEmail\Model\ConsentData**](ConsentData.md) |  | [optional]
 **source** | [**ContactSource**](ContactSource.md) | From where was this contact added | [optional]
 **date_added** | [**\DateTime**](\DateTime.md) | Date of creation in YYYY-MM-DDThh:ii:ss format | [optional]

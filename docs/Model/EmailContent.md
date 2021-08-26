@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | [**\ElasticEmail\Model\BodyPart[]**](BodyPart.md) | List of e-mail body parts, with user-provided MIME types (text/html, text/plain etc) | [optional]
-**merge** | **map[string,string]** | A key-value collection of custom merge fields, shared between recipients. Should be used in e-mail body like so: {firstname}, {lastname} etc. | [optional]
+**merge** | **array<string,string>** | A key-value collection of custom merge fields, shared between recipients. Should be used in e-mail body like so: {firstname}, {lastname} etc. | [optional]
 **attachments** | [**\ElasticEmail\Model\MessageAttachment[]**](MessageAttachment.md) | Attachments provided by sending binary data | [optional]
-**headers** | **map[string,string]** | A key-value collection of custom e-mail headers. | [optional]
+**headers** | **array<string,string>** | A key-value collection of custom e-mail headers. | [optional]
 **postback** | **string** | Postback header. | [optional]
 **envelope_from** | **string** | E-mail with an optional name to be used as the envelope from address (e.g.: John Doe &lt;email@domain.com&gt;) | [optional]
 **from** | **string** | Your e-mail with an optional name (e.g.: John Doe &lt;email@domain.com&gt;) | [optional]
