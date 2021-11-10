@@ -75,7 +75,7 @@ void (empty response body)
 ## `templatesByNameGet()`
 
 ```php
-templatesByNameGet($name): Template
+templatesByNameGet($name): \ElasticEmail\Model\Template
 ```
 
 Load Template
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Template**](../Model/Template.md)
+[**\ElasticEmail\Model\Template**](../Model/Template.md)
 
 ### Authorization
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 ## `templatesPost()`
 
 ```php
-templatesPost($template_payload): Template
+templatesPost($template_payload): \ElasticEmail\Model\Template
 ```
 
 Add Template
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Template**](../Model/Template.md)
+[**\ElasticEmail\Model\Template**](../Model/Template.md)
 
 ### Authorization
 

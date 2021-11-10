@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **subject** | **string** | Default subject of email. | [optional]
 **template_name** | **string** | Name of template. | [optional]
 **attach_files** | **string[]** | Names of previously uploaded files that should be sent as downloadable attachments | [optional]
-**utm** | [**Utm**](Utm.md) | Utm marketing data to be attached to every link in this e-mail. | [optional]
+**utm** | [**\ElasticEmail\Model\Utm**](Utm.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

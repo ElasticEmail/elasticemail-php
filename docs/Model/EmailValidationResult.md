@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **disposable** | **bool** | Does the email have a temporary domain | [optional]
 **role** | **bool** | Is an email a role email (e.g. info@, noreply@ etc.) | [optional]
 **reason** | **string** | All detected issues | [optional]
-**date_added** | [**\DateTime**](\DateTime.md) | Date of creation in YYYY-MM-DDThh:ii:ss format | [optional]
+**date_added** | **\DateTime** | Date of creation in YYYY-MM-DDThh:ii:ss format | [optional]
 **result** | [**\ElasticEmail\Model\EmailValidationStatus**](EmailValidationStatus.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
