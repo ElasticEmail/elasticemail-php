@@ -421,10 +421,10 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_format = new \ElasticEmail\Model\\ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
 $rule = Status%20=%20Engaged; // string | Query used for filtering.
-$emails = mail@contact.com,mail1@contact.com,mail2@contact.com; // string[] | Comma delimited list of contact emails
-$compression_format = new \ElasticEmail\Model\\ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
+$emails = ["mail@contact.com,mail1@contact.com,mail2@contact.com"]; // string[] | Comma delimited list of contact emails
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {

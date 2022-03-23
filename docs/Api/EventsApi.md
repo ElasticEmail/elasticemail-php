@@ -45,7 +45,7 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
 $transactionid = TransactionID; // string | ID number of transaction
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\\ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
 $limit = 100; // int | Maximum number of returned items.
 $offset = 20; // int | How many items should be returned ahead.
 
@@ -115,11 +115,11 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
     $config
 );
 $name = Channel01; // string | Name of selected channel.
-$event_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
+$event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$file_format = new \ElasticEmail\Model\\ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
-$compression_format = new \ElasticEmail\Model\\ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {
@@ -189,10 +189,10 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
     $config
 );
 $name = Channel01; // string | Name of selected channel.
-$event_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
+$event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\\ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
 $limit = 56; // int | How many items to load. Maximum for this request is 1000 items
 $offset = 20; // int | How many items should be returned ahead.
 
@@ -386,11 +386,11 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$event_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
+$event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$file_format = new \ElasticEmail\Model\\ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
-$compression_format = new \ElasticEmail\Model\\ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {
@@ -458,10 +458,10 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$event_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
+$event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\\ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
 $limit = 56; // int | How many items to load. Maximum for this request is 1000 items
 $offset = 20; // int | How many items should be returned ahead.
 

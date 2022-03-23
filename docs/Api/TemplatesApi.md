@@ -227,8 +227,8 @@ $apiInstance = new ElasticEmail\Api\TemplatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$scope_type = array(new \ElasticEmail\Model\\ElasticEmail\Model\TemplateScope()); // \ElasticEmail\Model\TemplateScope[] | Return templates with specified scope only
-$template_types = array(new \ElasticEmail\Model\\ElasticEmail\Model\TemplateType()); // \ElasticEmail\Model\TemplateType[] | Return templates with specified type only
+$scope_type = array(new \ElasticEmail\Model\TemplateScope()); // \ElasticEmail\Model\TemplateScope[] | Return templates with specified scope only
+$template_types = array(new \ElasticEmail\Model\TemplateType()); // \ElasticEmail\Model\TemplateType[] | Return templates with specified type only
 $limit = 100; // int | Maximum number of returned items.
 $offset = 20; // int | How many items should be returned ahead.
 
