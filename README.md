@@ -86,7 +86,7 @@ Function ||
 ------------ | ------------- 
 [addCampaign](examples/functions/addCampaign.php) | [readme](examples/functions/addCampaign.md)
 [addBulkContacts](examples/functions/addBulkContacts.php) | [readme](examples/functions/addBulkContacts.md)
-[addSingleContacts](examples/functions/addSingleContacts.php) | [readme](examples/functions/addSingleContacts.md)
+[addSingleContact](examples/functions/addSingleContact.php) | [readme](examples/functions/addSingleContact.md)
 [addList](examples/functions/addList.php) | [readme](examples/functions/addList.md)
 [addTemplate](examples/functions/addTemplate.php) | [readme](examples/functions/addTemplate.md)
 [deleteCampaign](examples/functions/deleteCampaign.php) | [readme](examples/functions/deleteCampaign.md)
