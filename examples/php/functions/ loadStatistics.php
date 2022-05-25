@@ -1,7 +1,7 @@
 <?php
 /*
 * API Docs
-* https://elasticemail.com/developers/api-documentation/rest-api#operation/contactsPost
+* https://elasticemail.com/developers/api-documentation/rest-api#operation/statisticsGet
 *
 * Snippets
 * https://github.com/ElasticEmail/elasticemail-php
@@ -15,27 +15,19 @@ $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-El
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
-
-$apiInstance = new ElasticEmail\Api\ContactsApi(
+$apiInstance = new ElasticEmail\Api\StatisticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 
-$contact_payload = [new \ElasticEmail\Model\ContactPayload(
-    [
-        "email" => "email@email.com",
-        "first_name" => "John",
-        "last_name" => "Doe",
-        "status" => 'Active'
-    ]
-    )]; // \ElasticEmail\Model\ContactPayload[]
-$listnames = "My Contacts 1"; // string[] | Names of lists to which the uploaded contacts should be added to
+$from = "2022-03-14T12:00:00+01:00"; // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
+$to = "2022-03-17T12:00:00+01:00"; // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
 
 try {
-    $response = $apiInstance->contactsPost($contact_payload, $listnames);
+    $response = $apiInstance->statisticsGet($from, $to);
     print('<pre>' . print_r( $response, true) . '</pre>');
 } catch (Exception $e) {
-    echo 'Exception when calling ContactsApi->contactsPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StatisticsApi->statisticsGet: ', $e->getMessage(), PHP_EOL;
 }

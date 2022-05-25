@@ -1,7 +1,7 @@
 <?php
 /*
 * API Docs
-* https://elasticemail.com/developers/api-documentation/rest-api#operation/contactsImportPost
+* https://elasticemail.com/developers/api-documentation/rest-api#operation/contactsPost
 *
 * Snippets
 * https://github.com/ElasticEmail/elasticemail-php
@@ -15,6 +15,7 @@ $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-El
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
+
 $apiInstance = new ElasticEmail\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -22,13 +23,34 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
     $config
 );
 
-$list_name = "My Contacts 1"; // string | Name of an existing list to add these contacts to
-$encoding_name = "UTF-8"; // string | In what encoding the file is uploaded
-$file = "my-contacts.csv"; // \SplFileObject
+$contact_payload = [new \ElasticEmail\Model\ContactPayload(
+    [
+        [
+        "email" => "email@email.com",
+        "first_name" => "John",
+        "last_name" => "Doe",
+        "status" => 'Active'
+        ],
+        [
+        "email" => "email2@email.com",
+        "first_name" => "John2",
+        "last_name" => "Doe",
+        "status" => 'Active'
+        ],
+        [
+        "email" => "email3@email.com",
+        "first_name" => "John3",
+        "last_name" => "Doe",
+        "status" => 'Active'
+        ],
+        [
+    ]
+    )]; // \ElasticEmail\Model\ContactPayload[]
+$listnames = "My Contacts 1"; // string[] | Names of lists to which the uploaded contacts should be added to
 
 try {
-    $response = $apiInstance->contactsImportPost($list_name, $encoding_name, $file);
+    $response = $apiInstance->contactsPost($contact_payload, $listnames);
     print('<pre>' . print_r( $response, true) . '</pre>');
 } catch (Exception $e) {
-    echo 'Exception when calling ContactsApi->contactsImportPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContactsApi->contactsPost: ', $e->getMessage(), PHP_EOL;
 }

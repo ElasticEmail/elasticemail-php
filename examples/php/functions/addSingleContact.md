@@ -1,4 +1,4 @@
-# Add Bulk Contacts
+# Add Single Contact
 
 This guide will walk you through the process of adding new contacts to your account using the PHP library. 
 
