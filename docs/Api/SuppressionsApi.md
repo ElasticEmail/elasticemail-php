@@ -26,7 +26,7 @@ suppressionsBouncesGet($search, $limit, $offset): \ElasticEmail\Model\Suppressio
 
 Get Bounce List
 
-Retrieve your list of bounced emails. Required Access Level: ViewContacts
+Retrieve your list of bounced emails. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -92,7 +92,7 @@ suppressionsBouncesImportPost($file)
 
 Add Bounces Async
 
-Add Bounced. Required Access Level: ModifyContacts
+Add Bounced. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 
@@ -153,7 +153,7 @@ suppressionsBouncesPost($request_body): \ElasticEmail\Model\Suppression[]
 
 Add Bounces
 
-Add Bounced. Required Access Level: ModifyContacts
+Add Bounced. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 
@@ -215,7 +215,7 @@ suppressionsByEmailDelete($email)
 
 Delete Suppression
 
-Delete Suppression. Required Access Level: ViewContacts
+Delete Suppression. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -276,7 +276,7 @@ suppressionsByEmailGet($email): \ElasticEmail\Model\Suppression
 
 Get Suppression
 
-Retrieve your suppression. Required Access Level: ViewContacts
+Retrieve your suppression. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -338,7 +338,7 @@ suppressionsComplaintsGet($search, $limit, $offset): \ElasticEmail\Model\Suppres
 
 Get Complaints List
 
-Retrieve your list of complaints. Required Access Level: ViewContacts
+Retrieve your list of complaints. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -404,7 +404,7 @@ suppressionsComplaintsImportPost($file)
 
 Add Complaints Async
 
-Add Complaints. Required Access Level: ModifyContacts
+Add Complaints. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 
@@ -465,7 +465,7 @@ suppressionsComplaintsPost($request_body): \ElasticEmail\Model\Suppression[]
 
 Add Complaints
 
-Add Complaints. Required Access Level: ModifyContacts
+Add Complaints. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 
@@ -527,7 +527,7 @@ suppressionsGet($limit, $offset): \ElasticEmail\Model\Suppression[]
 
 Get Suppressions
 
-Retrieve your suppressions. Required Access Level: ViewContacts
+Retrieve your suppressions. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -591,7 +591,7 @@ suppressionsUnsubscribesGet($search, $limit, $offset): \ElasticEmail\Model\Suppr
 
 Get Unsubscribes List
 
-Retrieve your list of unsubscribes. Required Access Level: ViewContacts
+Retrieve your list of unsubscribes. Required Access Level: ViewContacts, ViewSuppressions
 
 ### Example
 
@@ -657,7 +657,7 @@ suppressionsUnsubscribesImportPost($file)
 
 Add Unsubscribes Async
 
-Add Unsubscribes. Required Access Level: ModifyContacts
+Add Unsubscribes. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 
@@ -718,7 +718,7 @@ suppressionsUnsubscribesPost($request_body): \ElasticEmail\Model\Suppression[]
 
 Add Unsubscribes
 
-Add Unsubscribes. Required Access Level: ModifyContacts
+Add Unsubscribes. Required Access Level: ModifyContacts, ModifySuppressions
 
 ### Example
 

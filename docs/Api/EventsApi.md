@@ -45,7 +45,7 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
 $transactionid = TransactionID; // string | ID number of transaction
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // EventsOrderBy
 $limit = 100; // int | Maximum number of returned items.
 $offset = 20; // int | How many items should be returned ahead.
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
  **transactionid** | **string**| ID number of transaction |
  **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
  **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**\ElasticEmail\Model\EventsOrderBy**](../Model/.md)|  | [optional]
+ **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
  **limit** | **int**| Maximum number of returned items. | [optional]
  **offset** | **int**| How many items should be returned ahead. | [optional]
 
@@ -118,8 +118,8 @@ $name = Channel01; // string | Name of selected channel.
 $event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
-$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // ExportFileFormats | Format of the exported file
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {
@@ -138,8 +138,8 @@ Name | Type | Description  | Notes
  **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
  **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
  **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **file_format** | [**\ElasticEmail\Model\ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
- **compression_format** | [**\ElasticEmail\Model\CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
+ **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
+ **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
  **file_name** | **string**| Name of your file including extension. | [optional]
 
 ### Return type
@@ -192,7 +192,7 @@ $name = Channel01; // string | Name of selected channel.
 $event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // EventsOrderBy
 $limit = 56; // int | How many items to load. Maximum for this request is 1000 items
 $offset = 20; // int | How many items should be returned ahead.
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
  **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
  **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
  **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**\ElasticEmail\Model\EventsOrderBy**](../Model/.md)|  | [optional]
+ **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
  **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional]
  **offset** | **int**| How many items should be returned ahead. | [optional]
 
@@ -389,8 +389,8 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
 $event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
-$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // ExportFileFormats | Format of the exported file
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {
@@ -408,8 +408,8 @@ Name | Type | Description  | Notes
  **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
  **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
  **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **file_format** | [**\ElasticEmail\Model\ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
- **compression_format** | [**\ElasticEmail\Model\CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
+ **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
+ **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
  **file_name** | **string**| Name of your file including extension. | [optional]
 
 ### Return type
@@ -461,7 +461,7 @@ $apiInstance = new ElasticEmail\Api\EventsApi(
 $event_types = array(new \ElasticEmail\Model\EventType()); // \ElasticEmail\Model\EventType[] | Types of Events to return
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
-$order_by = new \ElasticEmail\Model\EventsOrderBy(); // \ElasticEmail\Model\EventsOrderBy
+$order_by = new \ElasticEmail\Model\EventsOrderBy(); // EventsOrderBy
 $limit = 56; // int | How many items to load. Maximum for this request is 1000 items
 $offset = 20; // int | How many items should be returned ahead.
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
  **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
  **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
  **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**\ElasticEmail\Model\EventsOrderBy**](../Model/.md)|  | [optional]
+ **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
  **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional]
  **offset** | **int**| How many items should be returned ahead. | [optional]
 
