@@ -1,14 +1,14 @@
 # ElasticEmail\FilesApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**filesByNameDelete()**](FilesApi.md#filesByNameDelete) | **DELETE** /files/{name} | Delete File
-[**filesByNameGet()**](FilesApi.md#filesByNameGet) | **GET** /files/{name} | Download File
-[**filesByNameInfoGet()**](FilesApi.md#filesByNameInfoGet) | **GET** /files/{name}/info | Load File Details
-[**filesGet()**](FilesApi.md#filesGet) | **GET** /files | List Files
-[**filesPost()**](FilesApi.md#filesPost) | **POST** /files | Upload File
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**filesByNameDelete()**](FilesApi.md#filesByNameDelete) | **DELETE** /files/{name} | Delete File |
+| [**filesByNameGet()**](FilesApi.md#filesByNameGet) | **GET** /files/{name} | Download File |
+| [**filesByNameInfoGet()**](FilesApi.md#filesByNameInfoGet) | **GET** /files/{name}/info | Load File Details |
+| [**filesGet()**](FilesApi.md#filesGet) | **GET** /files | List Files |
+| [**filesPost()**](FilesApi.md#filesPost) | **POST** /files | Upload File |
 
 
 ## `filesByNameDelete()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your file including extension. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your file including extension. | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your file including extension. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your file including extension. | |
 
 ### Return type
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/_*`
+- **Accept**: `application/*`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -175,9 +175,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your file including extension. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your file including extension. | |
 
 ### Return type
 
@@ -238,10 +238,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -302,10 +302,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file_payload** | [**\ElasticEmail\Model\FilePayload**](../Model/FilePayload.md)|  |
- **expires_after_days** | **int**| After how many days should the file be deleted. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_payload** | [**\ElasticEmail\Model\FilePayload**](../Model/FilePayload.md)|  | |
+| **expires_after_days** | **int**| After how many days should the file be deleted. | [optional] |
 
 ### Return type
 

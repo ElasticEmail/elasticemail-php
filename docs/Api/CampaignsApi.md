@@ -1,14 +1,14 @@
 # ElasticEmail\CampaignsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**campaignsByNameDelete()**](CampaignsApi.md#campaignsByNameDelete) | **DELETE** /campaigns/{name} | Delete Campaign
-[**campaignsByNameGet()**](CampaignsApi.md#campaignsByNameGet) | **GET** /campaigns/{name} | Load Campaign
-[**campaignsByNamePut()**](CampaignsApi.md#campaignsByNamePut) | **PUT** /campaigns/{name} | Update Campaign
-[**campaignsGet()**](CampaignsApi.md#campaignsGet) | **GET** /campaigns | Load Campaigns
-[**campaignsPost()**](CampaignsApi.md#campaignsPost) | **POST** /campaigns | Add Campaign
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**campaignsByNameDelete()**](CampaignsApi.md#campaignsByNameDelete) | **DELETE** /campaigns/{name} | Delete Campaign |
+| [**campaignsByNameGet()**](CampaignsApi.md#campaignsByNameGet) | **GET** /campaigns/{name} | Load Campaign |
+| [**campaignsByNamePut()**](CampaignsApi.md#campaignsByNamePut) | **PUT** /campaigns/{name} | Update Campaign |
+| [**campaignsGet()**](CampaignsApi.md#campaignsGet) | **GET** /campaigns | Load Campaigns |
+| [**campaignsPost()**](CampaignsApi.md#campaignsPost) | **POST** /campaigns | Add Campaign |
 
 
 ## `campaignsByNameDelete()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of Campaign to delete |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of Campaign to delete | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of Campaign to get |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of Campaign to get | |
 
 ### Return type
 
@@ -176,10 +176,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of Campaign to update |
- **campaign** | [**\ElasticEmail\Model\Campaign**](../Model/Campaign.md)| JSON representation of a campaign |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of Campaign to update | |
+| **campaign** | [**\ElasticEmail\Model\Campaign**](../Model/Campaign.md)| JSON representation of a campaign | |
 
 ### Return type
 
@@ -241,11 +241,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **string**| Text fragment used for searching in Campaign name (using the &#39;contains&#39; rule) | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
- **limit** | **int**| Maximum number of returned items. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **search** | **string**| Text fragment used for searching in Campaign name (using the &#39;contains&#39; rule) | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
 
 ### Return type
 
@@ -305,9 +305,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign** | [**\ElasticEmail\Model\Campaign**](../Model/Campaign.md)| JSON representation of a campaign |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign** | [**\ElasticEmail\Model\Campaign**](../Model/Campaign.md)| JSON representation of a campaign | |
 
 ### Return type
 

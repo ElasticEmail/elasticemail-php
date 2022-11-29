@@ -1,14 +1,14 @@
 # ElasticEmail\TemplatesApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**templatesByNameDelete()**](TemplatesApi.md#templatesByNameDelete) | **DELETE** /templates/{name} | Delete Template
-[**templatesByNameGet()**](TemplatesApi.md#templatesByNameGet) | **GET** /templates/{name} | Load Template
-[**templatesByNamePut()**](TemplatesApi.md#templatesByNamePut) | **PUT** /templates/{name} | Update Template
-[**templatesGet()**](TemplatesApi.md#templatesGet) | **GET** /templates | Load Templates
-[**templatesPost()**](TemplatesApi.md#templatesPost) | **POST** /templates | Add Template
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**templatesByNameDelete()**](TemplatesApi.md#templatesByNameDelete) | **DELETE** /templates/{name} | Delete Template |
+| [**templatesByNameGet()**](TemplatesApi.md#templatesByNameGet) | **GET** /templates/{name} | Load Template |
+| [**templatesByNamePut()**](TemplatesApi.md#templatesByNamePut) | **PUT** /templates/{name} | Update Template |
+| [**templatesGet()**](TemplatesApi.md#templatesGet) | **GET** /templates | Load Templates |
+| [**templatesPost()**](TemplatesApi.md#templatesPost) | **POST** /templates | Add Template |
 
 
 ## `templatesByNameDelete()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of template. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of template. | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of template. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of template. | |
 
 ### Return type
 
@@ -176,10 +176,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of template. |
- **template_payload** | [**\ElasticEmail\Model\TemplatePayload**](../Model/TemplatePayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of template. | |
+| **template_payload** | [**\ElasticEmail\Model\TemplatePayload**](../Model/TemplatePayload.md)|  | |
 
 ### Return type
 
@@ -242,12 +242,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope_type** | [**\ElasticEmail\Model\TemplateScope[]**](../Model/\ElasticEmail\Model\TemplateScope.md)| Return templates with specified scope only |
- **template_types** | [**\ElasticEmail\Model\TemplateType[]**](../Model/\ElasticEmail\Model\TemplateType.md)| Return templates with specified type only | [optional]
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **scope_type** | [**\ElasticEmail\Model\TemplateScope[]**](../Model/\ElasticEmail\Model\TemplateScope.md)| Return templates with specified scope only | |
+| **template_types** | [**\ElasticEmail\Model\TemplateType[]**](../Model/\ElasticEmail\Model\TemplateType.md)| Return templates with specified type only | [optional] |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -307,9 +307,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **template_payload** | [**\ElasticEmail\Model\TemplatePayload**](../Model/TemplatePayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **template_payload** | [**\ElasticEmail\Model\TemplatePayload**](../Model/TemplatePayload.md)|  | |
 
 ### Return type
 

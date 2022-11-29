@@ -1,16 +1,16 @@
 # ElasticEmail\EventsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**eventsByTransactionidGet()**](EventsApi.md#eventsByTransactionidGet) | **GET** /events/{transactionid} | Load Email Events
-[**eventsChannelsByNameExportPost()**](EventsApi.md#eventsChannelsByNameExportPost) | **POST** /events/channels/{name}/export | Export Channel Events
-[**eventsChannelsByNameGet()**](EventsApi.md#eventsChannelsByNameGet) | **GET** /events/channels/{name} | Load Channel Events
-[**eventsChannelsExportByIdStatusGet()**](EventsApi.md#eventsChannelsExportByIdStatusGet) | **GET** /events/channels/export/{id}/status | Check Channel Export Status
-[**eventsExportByIdStatusGet()**](EventsApi.md#eventsExportByIdStatusGet) | **GET** /events/export/{id}/status | Check Export Status
-[**eventsExportPost()**](EventsApi.md#eventsExportPost) | **POST** /events/export | Export Events
-[**eventsGet()**](EventsApi.md#eventsGet) | **GET** /events | Load Events
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**eventsByTransactionidGet()**](EventsApi.md#eventsByTransactionidGet) | **GET** /events/{transactionid} | Load Email Events |
+| [**eventsChannelsByNameExportPost()**](EventsApi.md#eventsChannelsByNameExportPost) | **POST** /events/channels/{name}/export | Export Channel Events |
+| [**eventsChannelsByNameGet()**](EventsApi.md#eventsChannelsByNameGet) | **GET** /events/channels/{name} | Load Channel Events |
+| [**eventsChannelsExportByIdStatusGet()**](EventsApi.md#eventsChannelsExportByIdStatusGet) | **GET** /events/channels/export/{id}/status | Check Channel Export Status |
+| [**eventsExportByIdStatusGet()**](EventsApi.md#eventsExportByIdStatusGet) | **GET** /events/export/{id}/status | Check Export Status |
+| [**eventsExportPost()**](EventsApi.md#eventsExportPost) | **POST** /events/export | Export Events |
+| [**eventsGet()**](EventsApi.md#eventsGet) | **GET** /events | Load Events |
 
 
 ## `eventsByTransactionidGet()`
@@ -59,14 +59,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionid** | **string**| ID number of transaction |
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **transactionid** | **string**| ID number of transaction | |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional] |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -132,15 +132,15 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of selected channel. |
- **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
- **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
- **file_name** | **string**| Name of your file including extension. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of selected channel. | |
+| **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional] |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional] |
+| **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional] |
+| **file_name** | **string**| Name of your file including extension. | [optional] |
 
 ### Return type
 
@@ -206,15 +206,15 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of selected channel. |
- **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
- **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of selected channel. | |
+| **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional] |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional] |
+| **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -274,9 +274,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the exported file |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID of the exported file | |
 
 ### Return type
 
@@ -336,9 +336,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the exported file |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID of the exported file | |
 
 ### Return type
 
@@ -403,14 +403,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
- **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
- **file_name** | **string**| Name of your file including extension. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional] |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional] |
+| **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional] |
+| **file_name** | **string**| Name of your file including extension. | [optional] |
 
 ### Return type
 
@@ -475,14 +475,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional]
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
- **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional]
- **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_types** | [**\ElasticEmail\Model\EventType[]**](../Model/\ElasticEmail\Model\EventType.md)| Types of Events to return | [optional] |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
+| **order_by** | [**EventsOrderBy**](../Model/.md)|  | [optional] |
+| **limit** | **int**| How many items to load. Maximum for this request is 1000 items | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 

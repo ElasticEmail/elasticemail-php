@@ -1,14 +1,14 @@
 # ElasticEmail\SegmentsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**segmentsByNameDelete()**](SegmentsApi.md#segmentsByNameDelete) | **DELETE** /segments/{name} | Delete Segment
-[**segmentsByNameGet()**](SegmentsApi.md#segmentsByNameGet) | **GET** /segments/{name} | Load Segment
-[**segmentsByNamePut()**](SegmentsApi.md#segmentsByNamePut) | **PUT** /segments/{name} | Update Segment
-[**segmentsGet()**](SegmentsApi.md#segmentsGet) | **GET** /segments | Load Segments
-[**segmentsPost()**](SegmentsApi.md#segmentsPost) | **POST** /segments | Add Segment
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**segmentsByNameDelete()**](SegmentsApi.md#segmentsByNameDelete) | **DELETE** /segments/{name} | Delete Segment |
+| [**segmentsByNameGet()**](SegmentsApi.md#segmentsByNameGet) | **GET** /segments/{name} | Load Segment |
+| [**segmentsByNamePut()**](SegmentsApi.md#segmentsByNamePut) | **PUT** /segments/{name} | Update Segment |
+| [**segmentsGet()**](SegmentsApi.md#segmentsGet) | **GET** /segments | Load Segments |
+| [**segmentsPost()**](SegmentsApi.md#segmentsPost) | **POST** /segments | Add Segment |
 
 
 ## `segmentsByNameDelete()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your segment. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your segment. | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the segment you want to load. Will load all contacts if the &#39;All Contacts&#39; name has been provided |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the segment you want to load. Will load all contacts if the &#39;All Contacts&#39; name has been provided | |
 
 ### Return type
 
@@ -176,10 +176,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your segment. |
- **segment_payload** | [**\ElasticEmail\Model\SegmentPayload**](../Model/SegmentPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your segment. | |
+| **segment_payload** | [**\ElasticEmail\Model\SegmentPayload**](../Model/SegmentPayload.md)|  | |
 
 ### Return type
 
@@ -240,10 +240,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -303,9 +303,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **segment_payload** | [**\ElasticEmail\Model\SegmentPayload**](../Model/SegmentPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **segment_payload** | [**\ElasticEmail\Model\SegmentPayload**](../Model/SegmentPayload.md)|  | |
 
 ### Return type
 

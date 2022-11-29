@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **last_activity** | **\DateTime** | Date of last activity on Account | [optional]
 **email_credits** | **int** | Amount of email credits | [optional]
 **total_emails_sent** | **int** | Amount of emails sent from this Account | [optional]
-**reputation** | **double** | Numeric reputation | [optional]
+**reputation** | **float** | Numeric reputation | [optional]
 **status** | [**\ElasticEmail\Model\AccountStatusEnum**](AccountStatusEnum.md) |  | [optional]
 **contacts_count** | **int** | How many contacts this SubAccount has stored | [optional]
 

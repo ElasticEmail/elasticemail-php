@@ -1,19 +1,19 @@
 # ElasticEmail\SecurityApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**securityApikeysByNameDelete()**](SecurityApi.md#securityApikeysByNameDelete) | **DELETE** /security/apikeys/{name} | Delete ApiKey
-[**securityApikeysByNameGet()**](SecurityApi.md#securityApikeysByNameGet) | **GET** /security/apikeys/{name} | Load ApiKey
-[**securityApikeysByNamePut()**](SecurityApi.md#securityApikeysByNamePut) | **PUT** /security/apikeys/{name} | Update ApiKey
-[**securityApikeysGet()**](SecurityApi.md#securityApikeysGet) | **GET** /security/apikeys | List ApiKeys
-[**securityApikeysPost()**](SecurityApi.md#securityApikeysPost) | **POST** /security/apikeys | Add ApiKey
-[**securitySmtpByNameDelete()**](SecurityApi.md#securitySmtpByNameDelete) | **DELETE** /security/smtp/{name} | Delete SMTP Credential
-[**securitySmtpByNameGet()**](SecurityApi.md#securitySmtpByNameGet) | **GET** /security/smtp/{name} | Load SMTP Credential
-[**securitySmtpByNamePut()**](SecurityApi.md#securitySmtpByNamePut) | **PUT** /security/smtp/{name} | Update SMTP Credential
-[**securitySmtpGet()**](SecurityApi.md#securitySmtpGet) | **GET** /security/smtp | List SMTP Credentials
-[**securitySmtpPost()**](SecurityApi.md#securitySmtpPost) | **POST** /security/smtp | Add SMTP Credential
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**securityApikeysByNameDelete()**](SecurityApi.md#securityApikeysByNameDelete) | **DELETE** /security/apikeys/{name} | Delete ApiKey |
+| [**securityApikeysByNameGet()**](SecurityApi.md#securityApikeysByNameGet) | **GET** /security/apikeys/{name} | Load ApiKey |
+| [**securityApikeysByNamePut()**](SecurityApi.md#securityApikeysByNamePut) | **PUT** /security/apikeys/{name} | Update ApiKey |
+| [**securityApikeysGet()**](SecurityApi.md#securityApikeysGet) | **GET** /security/apikeys | List ApiKeys |
+| [**securityApikeysPost()**](SecurityApi.md#securityApikeysPost) | **POST** /security/apikeys | Add ApiKey |
+| [**securitySmtpByNameDelete()**](SecurityApi.md#securitySmtpByNameDelete) | **DELETE** /security/smtp/{name} | Delete SMTP Credential |
+| [**securitySmtpByNameGet()**](SecurityApi.md#securitySmtpByNameGet) | **GET** /security/smtp/{name} | Load SMTP Credential |
+| [**securitySmtpByNamePut()**](SecurityApi.md#securitySmtpByNamePut) | **PUT** /security/smtp/{name} | Update SMTP Credential |
+| [**securitySmtpGet()**](SecurityApi.md#securitySmtpGet) | **GET** /security/smtp | List SMTP Credentials |
+| [**securitySmtpPost()**](SecurityApi.md#securitySmtpPost) | **POST** /security/smtp | Add SMTP Credential |
 
 
 ## `securityApikeysByNameDelete()`
@@ -57,10 +57,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the ApiKey |
- **subaccount** | **string**| Email of the subaccount of which ApiKey should be deleted | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the ApiKey | |
+| **subaccount** | **string**| Email of the subaccount of which ApiKey should be deleted | [optional] |
 
 ### Return type
 
@@ -121,10 +121,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the ApiKey |
- **subaccount** | **string**| Email of the subaccount of which ApiKey should be loaded | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the ApiKey | |
+| **subaccount** | **string**| Email of the subaccount of which ApiKey should be loaded | [optional] |
 
 ### Return type
 
@@ -185,10 +185,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the ApiKey |
- **api_key_payload** | [**\ElasticEmail\Model\ApiKeyPayload**](../Model/ApiKeyPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the ApiKey | |
+| **api_key_payload** | [**\ElasticEmail\Model\ApiKeyPayload**](../Model/ApiKeyPayload.md)|  | |
 
 ### Return type
 
@@ -248,9 +248,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccount** | **string**| Email of the subaccount of which ApiKeys should be loaded | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subaccount** | **string**| Email of the subaccount of which ApiKeys should be loaded | [optional] |
 
 ### Return type
 
@@ -310,9 +310,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **api_key_payload** | [**\ElasticEmail\Model\ApiKeyPayload**](../Model/ApiKeyPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **api_key_payload** | [**\ElasticEmail\Model\ApiKeyPayload**](../Model/ApiKeyPayload.md)|  | |
 
 ### Return type
 
@@ -372,10 +372,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the SMTP Credential |
- **subaccount** | **string**| Email of the subaccount of which credential should be deleted | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the SMTP Credential | |
+| **subaccount** | **string**| Email of the subaccount of which credential should be deleted | [optional] |
 
 ### Return type
 
@@ -436,10 +436,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the SMTP Credential |
- **subaccount** | **string**| Email of the subaccount of which credential should be loaded | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the SMTP Credential | |
+| **subaccount** | **string**| Email of the subaccount of which credential should be loaded | [optional] |
 
 ### Return type
 
@@ -500,10 +500,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of the SMTP Credential |
- **smtp_credentials_payload** | [**\ElasticEmail\Model\SmtpCredentialsPayload**](../Model/SmtpCredentialsPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of the SMTP Credential | |
+| **smtp_credentials_payload** | [**\ElasticEmail\Model\SmtpCredentialsPayload**](../Model/SmtpCredentialsPayload.md)|  | |
 
 ### Return type
 
@@ -563,9 +563,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccount** | **string**| Email of the subaccount of which credentials should be listed | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subaccount** | **string**| Email of the subaccount of which credentials should be listed | [optional] |
 
 ### Return type
 
@@ -625,9 +625,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **smtp_credentials_payload** | [**\ElasticEmail\Model\SmtpCredentialsPayload**](../Model/SmtpCredentialsPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **smtp_credentials_payload** | [**\ElasticEmail\Model\SmtpCredentialsPayload**](../Model/SmtpCredentialsPayload.md)|  | |
 
 ### Return type
 

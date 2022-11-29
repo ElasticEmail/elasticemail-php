@@ -1,19 +1,18 @@
 # ElasticEmail\ContactsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**contactsByEmailDelete()**](ContactsApi.md#contactsByEmailDelete) | **DELETE** /contacts/{email} | Delete Contact
-[**contactsByEmailGet()**](ContactsApi.md#contactsByEmailGet) | **GET** /contacts/{email} | Load Contact
-[**contactsByEmailHistoryGet()**](ContactsApi.md#contactsByEmailHistoryGet) | **GET** /contacts/{email}/history | Load History
-[**contactsByEmailPut()**](ContactsApi.md#contactsByEmailPut) | **PUT** /contacts/{email} | Update Contact
-[**contactsDeletePost()**](ContactsApi.md#contactsDeletePost) | **POST** /contacts/delete | Delete Contacts Bulk
-[**contactsExportByIdStatusGet()**](ContactsApi.md#contactsExportByIdStatusGet) | **GET** /contacts/export/{id}/status | Check Export Status
-[**contactsExportPost()**](ContactsApi.md#contactsExportPost) | **POST** /contacts/export | Export Contacts
-[**contactsGet()**](ContactsApi.md#contactsGet) | **GET** /contacts | Load Contacts
-[**contactsImportPost()**](ContactsApi.md#contactsImportPost) | **POST** /contacts/import | Upload Contacts
-[**contactsPost()**](ContactsApi.md#contactsPost) | **POST** /contacts | Add Contact
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**contactsByEmailDelete()**](ContactsApi.md#contactsByEmailDelete) | **DELETE** /contacts/{email} | Delete Contact |
+| [**contactsByEmailGet()**](ContactsApi.md#contactsByEmailGet) | **GET** /contacts/{email} | Load Contact |
+| [**contactsByEmailPut()**](ContactsApi.md#contactsByEmailPut) | **PUT** /contacts/{email} | Update Contact |
+| [**contactsDeletePost()**](ContactsApi.md#contactsDeletePost) | **POST** /contacts/delete | Delete Contacts Bulk |
+| [**contactsExportByIdStatusGet()**](ContactsApi.md#contactsExportByIdStatusGet) | **GET** /contacts/export/{id}/status | Check Export Status |
+| [**contactsExportPost()**](ContactsApi.md#contactsExportPost) | **POST** /contacts/export | Export Contacts |
+| [**contactsGet()**](ContactsApi.md#contactsGet) | **GET** /contacts | Load Contacts |
+| [**contactsImportPost()**](ContactsApi.md#contactsImportPost) | **POST** /contacts/import | Upload Contacts |
+| [**contactsPost()**](ContactsApi.md#contactsPost) | **POST** /contacts | Add Contact |
 
 
 ## `contactsByEmailDelete()`
@@ -56,9 +55,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Proper email address. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Proper email address. | |
 
 ### Return type
 
@@ -118,79 +117,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Proper email address. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Proper email address. | |
 
 ### Return type
 
 [**\ElasticEmail\Model\Contact**](../Model/Contact.md)
-
-### Authorization
-
-[apikey](../../README.md#apikey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `contactsByEmailHistoryGet()`
-
-```php
-contactsByEmailHistoryGet($email, $limit, $offset): \ElasticEmail\Model\ContactHistory[]
-```
-
-Load History
-
-Returns detailed history of specified Contact. Required Access Level: ViewContacts
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: apikey
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
-
-
-$apiInstance = new ElasticEmail\Api\ContactsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$email = mail@example.com; // string | Proper email address.
-$limit = 100; // int | Maximum number of returned items.
-$offset = 20; // int | How many items should be returned ahead.
-
-try {
-    $result = $apiInstance->contactsByEmailHistoryGet($email, $limit, $offset);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContactsApi->contactsByEmailHistoryGet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Proper email address. |
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
-
-### Return type
-
-[**\ElasticEmail\Model\ContactHistory[]**](../Model/ContactHistory.md)
 
 ### Authorization
 
@@ -247,10 +180,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Proper email address. |
- **contact_update_payload** | [**\ElasticEmail\Model\ContactUpdatePayload**](../Model/ContactUpdatePayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Proper email address. | |
+| **contact_update_payload** | [**\ElasticEmail\Model\ContactUpdatePayload**](../Model/ContactUpdatePayload.md)|  | |
 
 ### Return type
 
@@ -309,9 +242,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. | |
 
 ### Return type
 
@@ -371,9 +304,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the exported file |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID of the exported file | |
 
 ### Return type
 
@@ -437,13 +370,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional]
- **rule** | **string**| Query used for filtering. | [optional]
- **emails** | [**string[]**](../Model/string.md)| Comma delimited list of contact emails | [optional]
- **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional]
- **file_name** | **string**| Name of your file including extension. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional] |
+| **rule** | **string**| Query used for filtering. | [optional] |
+| **emails** | [**string[]**](../Model/string.md)| Comma delimited list of contact emails | [optional] |
+| **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional] |
+| **file_name** | **string**| Name of your file including extension. | [optional] |
 
 ### Return type
 
@@ -504,10 +437,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -529,7 +462,7 @@ Name | Type | Description  | Notes
 ## `contactsImportPost()`
 
 ```php
-contactsImportPost($list_name, $encoding_name, $file)
+contactsImportPost($list_name, $encoding_name, $file_url, $file)
 ```
 
 Upload Contacts
@@ -557,10 +490,11 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 );
 $list_name = 'list_name_example'; // string | Name of an existing list to add these contacts to
 $encoding_name = 'encoding_name_example'; // string | In what encoding the file is uploaded
+$file_url = 'file_url_example'; // string | Optional url of csv to import
 $file = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $apiInstance->contactsImportPost($list_name, $encoding_name, $file);
+    $apiInstance->contactsImportPost($list_name, $encoding_name, $file_url, $file);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->contactsImportPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -568,11 +502,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **list_name** | **string**| Name of an existing list to add these contacts to | [optional]
- **encoding_name** | **string**| In what encoding the file is uploaded | [optional]
- **file** | **\SplFileObject****\SplFileObject**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_name** | **string**| Name of an existing list to add these contacts to | [optional] |
+| **encoding_name** | **string**| In what encoding the file is uploaded | [optional] |
+| **file_url** | **string**| Optional url of csv to import | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
 
@@ -633,10 +568,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contact_payload** | [**\ElasticEmail\Model\ContactPayload[]**](../Model/ContactPayload.md)|  |
- **listnames** | [**string[]**](../Model/string.md)| Names of lists to which the uploaded contacts should be added to | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contact_payload** | [**\ElasticEmail\Model\ContactPayload[]**](../Model/ContactPayload.md)|  | |
+| **listnames** | [**string[]**](../Model/string.md)| Names of lists to which the uploaded contacts should be added to | [optional] |
 
 ### Return type
 

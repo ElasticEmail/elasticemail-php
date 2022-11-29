@@ -1,13 +1,13 @@
 # ElasticEmail\EmailsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**emailsByMsgidViewGet()**](EmailsApi.md#emailsByMsgidViewGet) | **GET** /emails/{msgid}/view | View Email
-[**emailsMergefilePost()**](EmailsApi.md#emailsMergefilePost) | **POST** /emails/mergefile | Send Bulk Emails CSV
-[**emailsPost()**](EmailsApi.md#emailsPost) | **POST** /emails | Send Bulk Emails
-[**emailsTransactionalPost()**](EmailsApi.md#emailsTransactionalPost) | **POST** /emails/transactional | Send Transactional Email
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**emailsByMsgidViewGet()**](EmailsApi.md#emailsByMsgidViewGet) | **GET** /emails/{msgid}/view | View Email |
+| [**emailsMergefilePost()**](EmailsApi.md#emailsMergefilePost) | **POST** /emails/mergefile | Send Bulk Emails CSV |
+| [**emailsPost()**](EmailsApi.md#emailsPost) | **POST** /emails | Send Bulk Emails |
+| [**emailsTransactionalPost()**](EmailsApi.md#emailsTransactionalPost) | **POST** /emails/transactional | Send Transactional Email |
 
 
 ## `emailsByMsgidViewGet()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **msgid** | **string**| Message identifier |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **msgid** | **string**| Message identifier | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **merge_email_payload** | [**\ElasticEmail\Model\MergeEmailPayload**](../Model/MergeEmailPayload.md)| Email data |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merge_email_payload** | [**\ElasticEmail\Model\MergeEmailPayload**](../Model/MergeEmailPayload.md)| Email data | |
 
 ### Return type
 
@@ -175,9 +175,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email_message_data** | [**\ElasticEmail\Model\EmailMessageData**](../Model/EmailMessageData.md)| Email data |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email_message_data** | [**\ElasticEmail\Model\EmailMessageData**](../Model/EmailMessageData.md)| Email data | |
 
 ### Return type
 
@@ -237,9 +237,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email_transactional_message_data** | [**\ElasticEmail\Model\EmailTransactionalMessageData**](../Model/EmailTransactionalMessageData.md)| Email data |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email_transactional_message_data** | [**\ElasticEmail\Model\EmailTransactionalMessageData**](../Model/EmailTransactionalMessageData.md)| Email data | |
 
 ### Return type
 

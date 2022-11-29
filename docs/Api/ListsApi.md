@@ -1,16 +1,16 @@
 # ElasticEmail\ListsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**listsByNameContactsPost()**](ListsApi.md#listsByNameContactsPost) | **POST** /lists/{name}/contacts | Add Contacts to List
-[**listsByNameContactsRemovePost()**](ListsApi.md#listsByNameContactsRemovePost) | **POST** /lists/{name}/contacts/remove | Remove Contacts from List
-[**listsByNameDelete()**](ListsApi.md#listsByNameDelete) | **DELETE** /lists/{name} | Delete List
-[**listsByNameGet()**](ListsApi.md#listsByNameGet) | **GET** /lists/{name} | Load List
-[**listsByNamePut()**](ListsApi.md#listsByNamePut) | **PUT** /lists/{name} | Update List
-[**listsGet()**](ListsApi.md#listsGet) | **GET** /lists | Load Lists
-[**listsPost()**](ListsApi.md#listsPost) | **POST** /lists | Add List
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**listsByNameContactsPost()**](ListsApi.md#listsByNameContactsPost) | **POST** /lists/{name}/contacts | Add Contacts to List |
+| [**listsByNameContactsRemovePost()**](ListsApi.md#listsByNameContactsRemovePost) | **POST** /lists/{name}/contacts/remove | Remove Contacts from List |
+| [**listsByNameDelete()**](ListsApi.md#listsByNameDelete) | **DELETE** /lists/{name} | Delete List |
+| [**listsByNameGet()**](ListsApi.md#listsByNameGet) | **GET** /lists/{name} | Load List |
+| [**listsByNamePut()**](ListsApi.md#listsByNamePut) | **PUT** /lists/{name} | Update List |
+| [**listsGet()**](ListsApi.md#listsGet) | **GET** /lists | Load Lists |
+| [**listsPost()**](ListsApi.md#listsPost) | **POST** /lists | Add List |
 
 
 ## `listsByNameContactsPost()`
@@ -55,10 +55,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your list. |
- **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your list. | |
+| **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. | |
 
 ### Return type
 
@@ -118,10 +118,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your list. |
- **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your list. | |
+| **emails_payload** | [**\ElasticEmail\Model\EmailsPayload**](../Model/EmailsPayload.md)| Provide either rule or a list of emails, not both. | |
 
 ### Return type
 
@@ -180,9 +180,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your list. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your list. | |
 
 ### Return type
 
@@ -242,9 +242,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your list. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your list. | |
 
 ### Return type
 
@@ -305,10 +305,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of your list. |
- **list_update_payload** | [**\ElasticEmail\Model\ListUpdatePayload**](../Model/ListUpdatePayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| Name of your list. | |
+| **list_update_payload** | [**\ElasticEmail\Model\ListUpdatePayload**](../Model/ListUpdatePayload.md)|  | |
 
 ### Return type
 
@@ -369,10 +369,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -432,9 +432,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **list_payload** | [**\ElasticEmail\Model\ListPayload**](../Model/ListPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_payload** | [**\ElasticEmail\Model\ListPayload**](../Model/ListPayload.md)|  | |
 
 ### Return type
 

@@ -1,15 +1,15 @@
 # ElasticEmail\SubAccountsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**subaccountsByEmailCreditsPatch()**](SubAccountsApi.md#subaccountsByEmailCreditsPatch) | **PATCH** /subaccounts/{email}/credits | Add, Subtract Email Credits
-[**subaccountsByEmailDelete()**](SubAccountsApi.md#subaccountsByEmailDelete) | **DELETE** /subaccounts/{email} | Delete SubAccount
-[**subaccountsByEmailGet()**](SubAccountsApi.md#subaccountsByEmailGet) | **GET** /subaccounts/{email} | Load SubAccount
-[**subaccountsByEmailSettingsEmailPut()**](SubAccountsApi.md#subaccountsByEmailSettingsEmailPut) | **PUT** /subaccounts/{email}/settings/email | Update SubAccount Email Settings
-[**subaccountsGet()**](SubAccountsApi.md#subaccountsGet) | **GET** /subaccounts | Load SubAccounts
-[**subaccountsPost()**](SubAccountsApi.md#subaccountsPost) | **POST** /subaccounts | Add SubAccount
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**subaccountsByEmailCreditsPatch()**](SubAccountsApi.md#subaccountsByEmailCreditsPatch) | **PATCH** /subaccounts/{email}/credits | Add, Subtract Email Credits |
+| [**subaccountsByEmailDelete()**](SubAccountsApi.md#subaccountsByEmailDelete) | **DELETE** /subaccounts/{email} | Delete SubAccount |
+| [**subaccountsByEmailGet()**](SubAccountsApi.md#subaccountsByEmailGet) | **GET** /subaccounts/{email} | Load SubAccount |
+| [**subaccountsByEmailSettingsEmailPut()**](SubAccountsApi.md#subaccountsByEmailSettingsEmailPut) | **PUT** /subaccounts/{email}/settings/email | Update SubAccount Email Settings |
+| [**subaccountsGet()**](SubAccountsApi.md#subaccountsGet) | **GET** /subaccounts | Load SubAccounts |
+| [**subaccountsPost()**](SubAccountsApi.md#subaccountsPost) | **POST** /subaccounts | Add SubAccount |
 
 
 ## `subaccountsByEmailCreditsPatch()`
@@ -53,10 +53,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address of Sub-Account |
- **subaccount_email_credits_payload** | [**\ElasticEmail\Model\SubaccountEmailCreditsPayload**](../Model/SubaccountEmailCreditsPayload.md)| Amount of email credits to add or subtract from the current SubAccount email credits pool (positive or negative value) |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address of Sub-Account | |
+| **subaccount_email_credits_payload** | [**\ElasticEmail\Model\SubaccountEmailCreditsPayload**](../Model/SubaccountEmailCreditsPayload.md)| Amount of email credits to add or subtract from the current SubAccount email credits pool (positive or negative value) | |
 
 ### Return type
 
@@ -115,9 +115,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address of Sub-Account |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address of Sub-Account | |
 
 ### Return type
 
@@ -177,9 +177,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address of Sub-Account |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address of Sub-Account | |
 
 ### Return type
 
@@ -240,10 +240,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**|  |
- **subaccount_email_settings** | [**\ElasticEmail\Model\SubaccountEmailSettings**](../Model/SubaccountEmailSettings.md)| Updated Email Settings |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**|  | |
+| **subaccount_email_settings** | [**\ElasticEmail\Model\SubaccountEmailSettings**](../Model/SubaccountEmailSettings.md)| Updated Email Settings | |
 
 ### Return type
 
@@ -304,10 +304,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -367,9 +367,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subaccount_payload** | [**\ElasticEmail\Model\SubaccountPayload**](../Model/SubaccountPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subaccount_payload** | [**\ElasticEmail\Model\SubaccountPayload**](../Model/SubaccountPayload.md)|  | |
 
 ### Return type
 

@@ -1,15 +1,15 @@
 # ElasticEmail\InboundRouteApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**inboundrouteByIdDelete()**](InboundRouteApi.md#inboundrouteByIdDelete) | **DELETE** /inboundroute/{id} | Delete Route
-[**inboundrouteByIdGet()**](InboundRouteApi.md#inboundrouteByIdGet) | **GET** /inboundroute/{id} | Get Route
-[**inboundrouteByIdPut()**](InboundRouteApi.md#inboundrouteByIdPut) | **PUT** /inboundroute/{id} | Update Route
-[**inboundrouteGet()**](InboundRouteApi.md#inboundrouteGet) | **GET** /inboundroute | Get Routes
-[**inboundrouteOrderPut()**](InboundRouteApi.md#inboundrouteOrderPut) | **PUT** /inboundroute/order | Update Sorting
-[**inboundroutePost()**](InboundRouteApi.md#inboundroutePost) | **POST** /inboundroute | Create Route
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**inboundrouteByIdDelete()**](InboundRouteApi.md#inboundrouteByIdDelete) | **DELETE** /inboundroute/{id} | Delete Route |
+| [**inboundrouteByIdGet()**](InboundRouteApi.md#inboundrouteByIdGet) | **GET** /inboundroute/{id} | Get Route |
+| [**inboundrouteByIdPut()**](InboundRouteApi.md#inboundrouteByIdPut) | **PUT** /inboundroute/{id} | Update Route |
+| [**inboundrouteGet()**](InboundRouteApi.md#inboundrouteGet) | **GET** /inboundroute | Get Routes |
+| [**inboundrouteOrderPut()**](InboundRouteApi.md#inboundrouteOrderPut) | **PUT** /inboundroute/order | Update Sorting |
+| [**inboundroutePost()**](InboundRouteApi.md#inboundroutePost) | **POST** /inboundroute | Create Route |
 
 
 ## `inboundrouteByIdDelete()`
@@ -52,9 +52,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -114,9 +114,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID number of your attachment |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID number of your attachment | |
 
 ### Return type
 
@@ -177,10 +177,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
- **inbound_payload** | [**\ElasticEmail\Model\InboundPayload**](../Model/InboundPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | |
+| **inbound_payload** | [**\ElasticEmail\Model\InboundPayload**](../Model/InboundPayload.md)|  | |
 
 ### Return type
 
@@ -299,9 +299,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sort_order_item** | [**\ElasticEmail\Model\SortOrderItem[]**](../Model/SortOrderItem.md)| Change the ordering of inbound routes for when matching the inbound |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **sort_order_item** | [**\ElasticEmail\Model\SortOrderItem[]**](../Model/SortOrderItem.md)| Change the ordering of inbound routes for when matching the inbound | |
 
 ### Return type
 
@@ -361,9 +361,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inbound_payload** | [**\ElasticEmail\Model\InboundPayload**](../Model/InboundPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **inbound_payload** | [**\ElasticEmail\Model\InboundPayload**](../Model/InboundPayload.md)|  | |
 
 ### Return type
 

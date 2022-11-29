@@ -1,19 +1,19 @@
 # ElasticEmail\VerificationsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**verificationsByEmailDelete()**](VerificationsApi.md#verificationsByEmailDelete) | **DELETE** /verifications/{email} | Delete Email Verification Result
-[**verificationsByEmailGet()**](VerificationsApi.md#verificationsByEmailGet) | **GET** /verifications/{email} | Get Email Verification Result
-[**verificationsByEmailPost()**](VerificationsApi.md#verificationsByEmailPost) | **POST** /verifications/{email} | Verify Email
-[**verificationsFilesByIdDelete()**](VerificationsApi.md#verificationsFilesByIdDelete) | **DELETE** /verifications/files/{id} | Delete File Verification Result
-[**verificationsFilesByIdResultDownloadGet()**](VerificationsApi.md#verificationsFilesByIdResultDownloadGet) | **GET** /verifications/files/{id}/result/download | Download File Verification Result
-[**verificationsFilesByIdResultGet()**](VerificationsApi.md#verificationsFilesByIdResultGet) | **GET** /verifications/files/{id}/result | Get Detailed File Verification Result
-[**verificationsFilesByIdVerificationPost()**](VerificationsApi.md#verificationsFilesByIdVerificationPost) | **POST** /verifications/files/{id}/verification | Start verification
-[**verificationsFilesPost()**](VerificationsApi.md#verificationsFilesPost) | **POST** /verifications/files | Upload File with Emails
-[**verificationsFilesResultGet()**](VerificationsApi.md#verificationsFilesResultGet) | **GET** /verifications/files/result | Get Files Verification Results
-[**verificationsGet()**](VerificationsApi.md#verificationsGet) | **GET** /verifications | Get Emails Verification Results
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**verificationsByEmailDelete()**](VerificationsApi.md#verificationsByEmailDelete) | **DELETE** /verifications/{email} | Delete Email Verification Result |
+| [**verificationsByEmailGet()**](VerificationsApi.md#verificationsByEmailGet) | **GET** /verifications/{email} | Get Email Verification Result |
+| [**verificationsByEmailPost()**](VerificationsApi.md#verificationsByEmailPost) | **POST** /verifications/{email} | Verify Email |
+| [**verificationsFilesByIdDelete()**](VerificationsApi.md#verificationsFilesByIdDelete) | **DELETE** /verifications/files/{id} | Delete File Verification Result |
+| [**verificationsFilesByIdResultDownloadGet()**](VerificationsApi.md#verificationsFilesByIdResultDownloadGet) | **GET** /verifications/files/{id}/result/download | Download File Verification Result |
+| [**verificationsFilesByIdResultGet()**](VerificationsApi.md#verificationsFilesByIdResultGet) | **GET** /verifications/files/{id}/result | Get Detailed File Verification Result |
+| [**verificationsFilesByIdVerificationPost()**](VerificationsApi.md#verificationsFilesByIdVerificationPost) | **POST** /verifications/files/{id}/verification | Start verification |
+| [**verificationsFilesPost()**](VerificationsApi.md#verificationsFilesPost) | **POST** /verifications/files | Upload File with Emails |
+| [**verificationsFilesResultGet()**](VerificationsApi.md#verificationsFilesResultGet) | **GET** /verifications/files/result | Get Files Verification Results |
+| [**verificationsGet()**](VerificationsApi.md#verificationsGet) | **GET** /verifications | Get Emails Verification Results |
 
 
 ## `verificationsByEmailDelete()`
@@ -56,9 +56,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address to verification |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address to verification | |
 
 ### Return type
 
@@ -85,7 +85,7 @@ verificationsByEmailGet($email): \ElasticEmail\Model\EmailValidationResult
 
 Get Email Verification Result
 
-Returns a result of verified email. Required Access Level: ViewEmailVerifications
+Returns a result of verified email. Required Access Level: VerifyEmails, ViewEmailVerifications
 
 ### Example
 
@@ -118,9 +118,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address to view verification result of |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address to view verification result of | |
 
 ### Return type
 
@@ -180,9 +180,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address to verify |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address to verify | |
 
 ### Return type
 
@@ -241,9 +241,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the exported file |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID of the exported file | |
 
 ### Return type
 
@@ -303,9 +303,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Verification ID to download |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Verification ID to download | |
 
 ### Return type
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/_*`
+- **Accept**: `application/*`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -332,7 +332,7 @@ verificationsFilesByIdResultGet($id, $limit, $offset): \ElasticEmail\Model\Verif
 
 Get Detailed File Verification Result
 
-Returns status and results (if verified) of file with given ID. Required Access Level: ViewEmailVerifications
+Returns status and results (if verified) of file with given ID. Required Access Level: VerifyEmails, ViewEmailVerifications
 
 ### Example
 
@@ -367,11 +367,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the Verification to display status of |
- **limit** | **int**| Maximum number of returned email verification results | [optional]
- **offset** | **int**| How many result items should be returned ahead | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID of the Verification to display status of | |
+| **limit** | **int**| Maximum number of returned email verification results | [optional] |
+| **offset** | **int**| How many result items should be returned ahead | [optional] |
 
 ### Return type
 
@@ -430,9 +430,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| File ID to start verification |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| File ID to start verification | |
 
 ### Return type
 
@@ -492,9 +492,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | **\SplFileObject****\SplFileObject**|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
 
@@ -521,7 +521,7 @@ verificationsFilesResultGet(): \ElasticEmail\Model\VerificationFileResult[]
 
 Get Files Verification Results
 
-Returns a list of uploaded files, their statuses and results. Required Access Level: ViewEmailVerifications
+Returns a list of uploaded files, their statuses and results. Required Access Level: VerifyEmails, ViewEmailVerifications
 
 ### Example
 
@@ -580,7 +580,7 @@ verificationsGet($limit, $offset): \ElasticEmail\Model\EmailValidationResult[]
 
 Get Emails Verification Results
 
-Returns a results of all verified single emails. Required Access Level: ViewEmailVerifications
+Returns a results of all verified single emails. Required Access Level: VerifyEmails, ViewEmailVerifications
 
 ### Example
 
@@ -614,10 +614,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 

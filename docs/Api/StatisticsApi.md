@@ -1,14 +1,14 @@
 # ElasticEmail\StatisticsApi
 
-All URIs are relative to https://api.elasticemail.com/v4.
+All URIs are relative to https://api.elasticemail.com/v4, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**statisticsCampaignsByNameGet()**](StatisticsApi.md#statisticsCampaignsByNameGet) | **GET** /statistics/campaigns/{name} | Load Campaign Stats
-[**statisticsCampaignsGet()**](StatisticsApi.md#statisticsCampaignsGet) | **GET** /statistics/campaigns | Load Campaigns Stats
-[**statisticsChannelsByNameGet()**](StatisticsApi.md#statisticsChannelsByNameGet) | **GET** /statistics/channels/{name} | Load Channel Stats
-[**statisticsChannelsGet()**](StatisticsApi.md#statisticsChannelsGet) | **GET** /statistics/channels | Load Channels Stats
-[**statisticsGet()**](StatisticsApi.md#statisticsGet) | **GET** /statistics | Load Statistics
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**statisticsCampaignsByNameGet()**](StatisticsApi.md#statisticsCampaignsByNameGet) | **GET** /statistics/campaigns/{name} | Load Campaign Stats |
+| [**statisticsCampaignsGet()**](StatisticsApi.md#statisticsCampaignsGet) | **GET** /statistics/campaigns | Load Campaigns Stats |
+| [**statisticsChannelsByNameGet()**](StatisticsApi.md#statisticsChannelsByNameGet) | **GET** /statistics/channels/{name} | Load Channel Stats |
+| [**statisticsChannelsGet()**](StatisticsApi.md#statisticsChannelsGet) | **GET** /statistics/channels | Load Channels Stats |
+| [**statisticsGet()**](StatisticsApi.md#statisticsGet) | **GET** /statistics | Load Statistics |
 
 
 ## `statisticsCampaignsByNameGet()`
@@ -52,9 +52,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| The name of the campaign to get. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| The name of the campaign to get. | |
 
 ### Return type
 
@@ -115,10 +115,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -178,9 +178,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| The name of the channel to get. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**| The name of the channel to get. | |
 
 ### Return type
 
@@ -241,10 +241,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| Maximum number of returned items. | [optional]
- **offset** | **int**| How many items should be returned ahead. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
 
 ### Return type
 
@@ -305,10 +305,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. |
- **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from** | **\DateTime**| Starting date for search in YYYY-MM-DDThh:mm:ss format. | |
+| **to** | **\DateTime**| Ending date for search in YYYY-MM-DDThh:mm:ss format. | [optional] |
 
 ### Return type
 
