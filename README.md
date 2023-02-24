@@ -49,33 +49,40 @@ require_once('/path/to/ElasticEmail/vendor/autoload.php');
 
 ## Getting Started
 
+Below is a code snippet that will allow you to send your first email with us. Please make sure that you have registered an account and created an API key before trying to run the code.
+
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+define('MY_APIKEY', '<your API key>');
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
 
-
-// Configure API key authorization: apikey
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
-
-
-$apiInstance = new ElasticEmail\Api\CampaignsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+$apiInstance = new ElasticEmail\Api\EmailsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$name = 'name_example'; // string | Name of Campaign to delete
 
-try {
-    $apiInstance->campaignsByNameDelete($name);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignsApi->campaignsByNameDelete: ', $e->getMessage(), PHP_EOL;
-}
+$email_message_data = new \ElasticEmail\Model\EmailMessageData([
+    "recipients" => [new \ElasticEmail\Model\EmailRecipient([
+        "email" => "<to address>"
+    ])],
+    "content" => new \ElasticEmail\Model\EmailContent([
+        "body" => [new \ElasticEmail\Model\BodyPart([
+                "content_type" => "HTML",
+                "content" => "My test email content"
+            ])
+        ],
+        "from" => "<from address>",
+        "subject" => "My Subject",
+    ])
+]);
+ 
+$response = $apiInstance->emailsPost($email_message_data);
+?>
+
 
 ```
 
