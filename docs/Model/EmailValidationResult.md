@@ -13,5 +13,7 @@ Name | Type | Description | Notes
 **reason** | **string** | All detected issues | [optional]
 **date_added** | **\DateTime** | Date of creation in YYYY-MM-DDThh:ii:ss format | [optional]
 **result** | [**\ElasticEmail\Model\EmailValidationStatus**](EmailValidationStatus.md) |  | [optional]
+**predicted_score** | **float** |  | [optional]
+**predicted_status** | [**\ElasticEmail\Model\EmailPredictedValidationStatus**](EmailPredictedValidationStatus.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,6 +1,6 @@
 <?php
 /**
- * InboundRouteActionType
+ * EmailPredictedValidationStatus
  *
  * PHP version 7.4
  *
@@ -31,23 +31,27 @@ namespace ElasticEmail\Model;
 use \ElasticEmail\ObjectSerializer;
 
 /**
- * InboundRouteActionType Class Doc Comment
+ * EmailPredictedValidationStatus Class Doc Comment
  *
  * @category Class
  * @package  ElasticEmail
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InboundRouteActionType
+class EmailPredictedValidationStatus
 {
     /**
      * Possible values of this enum
      */
-    public const FORWARD_TO_EMAIL = 'ForwardToEmail';
+    public const NONE = 'None';
 
-    public const NOTIFY_VIA_HTTP = 'NotifyViaHttp';
+    public const VALID = 'Valid';
 
-    public const STOP = 'Stop';
+    public const LOW_RISK = 'LowRisk';
+
+    public const HIGH_RISK = 'HighRisk';
+
+    public const INVALID = 'Invalid';
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +60,11 @@ class InboundRouteActionType
     public static function getAllowableEnumValues()
     {
         return [
-            self::FORWARD_TO_EMAIL,
-            self::NOTIFY_VIA_HTTP,
-            self::STOP
+            self::NONE,
+            self::VALID,
+            self::LOW_RISK,
+            self::HIGH_RISK,
+            self::INVALID
         ];
     }
 }
