@@ -338,7 +338,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -386,7 +386,7 @@ class InboundRouteApi
      */
     public function inboundrouteByIdGet($id, string $contentType = self::contentTypes['inboundrouteByIdGet'][0])
     {
-        list($response) = $this->inboundrouteByIdGetWithHttpInfo($id, $contentType);
+        [$response] = $this->inboundrouteByIdGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -448,7 +448,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\InboundRoute' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -465,7 +465,7 @@ class InboundRouteApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -536,7 +536,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -626,7 +626,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -675,7 +675,7 @@ class InboundRouteApi
      */
     public function inboundrouteByIdPut($id, $inbound_payload, string $contentType = self::contentTypes['inboundrouteByIdPut'][0])
     {
-        list($response) = $this->inboundrouteByIdPutWithHttpInfo($id, $inbound_payload, $contentType);
+        [$response] = $this->inboundrouteByIdPutWithHttpInfo($id, $inbound_payload, $contentType);
         return $response;
     }
 
@@ -738,7 +738,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\InboundRoute' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -755,7 +755,7 @@ class InboundRouteApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -828,7 +828,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -912,7 +912,7 @@ class InboundRouteApi
         if (isset($inbound_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($inbound_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($inbound_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $inbound_payload;
             }
@@ -933,7 +933,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -980,7 +980,7 @@ class InboundRouteApi
      */
     public function inboundrouteGet(string $contentType = self::contentTypes['inboundrouteGet'][0])
     {
-        list($response) = $this->inboundrouteGetWithHttpInfo($contentType);
+        [$response] = $this->inboundrouteGetWithHttpInfo($contentType);
         return $response;
     }
 
@@ -1041,7 +1041,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\InboundRoute[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1058,7 +1058,7 @@ class InboundRouteApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1127,7 +1127,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1201,7 +1201,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1249,7 +1249,7 @@ class InboundRouteApi
      */
     public function inboundrouteOrderPut($sort_order_item, string $contentType = self::contentTypes['inboundrouteOrderPut'][0])
     {
-        list($response) = $this->inboundrouteOrderPutWithHttpInfo($sort_order_item, $contentType);
+        [$response] = $this->inboundrouteOrderPutWithHttpInfo($sort_order_item, $contentType);
         return $response;
     }
 
@@ -1311,7 +1311,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\InboundRoute[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1328,7 +1328,7 @@ class InboundRouteApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1399,7 +1399,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1467,7 +1467,7 @@ class InboundRouteApi
         if (isset($sort_order_item)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sort_order_item));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($sort_order_item), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $sort_order_item;
             }
@@ -1488,7 +1488,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1536,7 +1536,7 @@ class InboundRouteApi
      */
     public function inboundroutePost($inbound_payload, string $contentType = self::contentTypes['inboundroutePost'][0])
     {
-        list($response) = $this->inboundroutePostWithHttpInfo($inbound_payload, $contentType);
+        [$response] = $this->inboundroutePostWithHttpInfo($inbound_payload, $contentType);
         return $response;
     }
 
@@ -1598,7 +1598,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\InboundRoute' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1615,7 +1615,7 @@ class InboundRouteApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1686,7 +1686,7 @@ class InboundRouteApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1754,7 +1754,7 @@ class InboundRouteApi
         if (isset($inbound_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($inbound_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($inbound_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $inbound_payload;
             }
@@ -1775,7 +1775,7 @@ class InboundRouteApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

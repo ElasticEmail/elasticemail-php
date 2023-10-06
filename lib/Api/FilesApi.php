@@ -335,7 +335,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -383,7 +383,7 @@ class FilesApi
      */
     public function filesByNameGet($name, string $contentType = self::contentTypes['filesByNameGet'][0])
     {
-        list($response) = $this->filesByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->filesByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -445,7 +445,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SplFileObject' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -462,7 +462,7 @@ class FilesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -533,7 +533,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -623,7 +623,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -671,7 +671,7 @@ class FilesApi
      */
     public function filesByNameInfoGet($name, string $contentType = self::contentTypes['filesByNameInfoGet'][0])
     {
-        list($response) = $this->filesByNameInfoGetWithHttpInfo($name, $contentType);
+        [$response] = $this->filesByNameInfoGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -733,7 +733,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\FileInfo' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -750,7 +750,7 @@ class FilesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -821,7 +821,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -911,7 +911,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -960,7 +960,7 @@ class FilesApi
      */
     public function filesGet($limit = null, $offset = null, string $contentType = self::contentTypes['filesGet'][0])
     {
-        list($response) = $this->filesGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->filesGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1023,7 +1023,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\FileInfo[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1040,7 +1040,7 @@ class FilesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1113,7 +1113,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1209,7 +1209,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1258,7 +1258,7 @@ class FilesApi
      */
     public function filesPost($file_payload, $expires_after_days = null, string $contentType = self::contentTypes['filesPost'][0])
     {
-        list($response) = $this->filesPostWithHttpInfo($file_payload, $expires_after_days, $contentType);
+        [$response] = $this->filesPostWithHttpInfo($file_payload, $expires_after_days, $contentType);
         return $response;
     }
 
@@ -1321,7 +1321,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\FileInfo' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1338,7 +1338,7 @@ class FilesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1411,7 +1411,7 @@ class FilesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1490,7 +1490,7 @@ class FilesApi
         if (isset($file_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($file_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($file_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $file_payload;
             }
@@ -1511,7 +1511,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

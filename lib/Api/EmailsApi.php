@@ -146,7 +146,7 @@ class EmailsApi
      */
     public function emailsByMsgidViewGet($msgid, string $contentType = self::contentTypes['emailsByMsgidViewGet'][0])
     {
-        list($response) = $this->emailsByMsgidViewGetWithHttpInfo($msgid, $contentType);
+        [$response] = $this->emailsByMsgidViewGetWithHttpInfo($msgid, $contentType);
         return $response;
     }
 
@@ -208,7 +208,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailData' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -225,7 +225,7 @@ class EmailsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -296,7 +296,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -386,7 +386,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -434,7 +434,7 @@ class EmailsApi
      */
     public function emailsMergefilePost($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
-        list($response) = $this->emailsMergefilePostWithHttpInfo($merge_email_payload, $contentType);
+        [$response] = $this->emailsMergefilePostWithHttpInfo($merge_email_payload, $contentType);
         return $response;
     }
 
@@ -496,7 +496,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailSend' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -513,7 +513,7 @@ class EmailsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -584,7 +584,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -652,7 +652,7 @@ class EmailsApi
         if (isset($merge_email_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($merge_email_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($merge_email_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $merge_email_payload;
             }
@@ -673,7 +673,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -721,7 +721,7 @@ class EmailsApi
      */
     public function emailsPost($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
     {
-        list($response) = $this->emailsPostWithHttpInfo($email_message_data, $contentType);
+        [$response] = $this->emailsPostWithHttpInfo($email_message_data, $contentType);
         return $response;
     }
 
@@ -783,7 +783,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailSend' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -800,7 +800,7 @@ class EmailsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -871,7 +871,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -939,7 +939,7 @@ class EmailsApi
         if (isset($email_message_data)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_message_data));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($email_message_data), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $email_message_data;
             }
@@ -960,7 +960,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1008,7 +1008,7 @@ class EmailsApi
      */
     public function emailsTransactionalPost($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
-        list($response) = $this->emailsTransactionalPostWithHttpInfo($email_transactional_message_data, $contentType);
+        [$response] = $this->emailsTransactionalPostWithHttpInfo($email_transactional_message_data, $contentType);
         return $response;
     }
 
@@ -1070,7 +1070,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailSend' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1087,7 +1087,7 @@ class EmailsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1158,7 +1158,7 @@ class EmailsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1226,7 +1226,7 @@ class EmailsApi
         if (isset($email_transactional_message_data)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_transactional_message_data));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($email_transactional_message_data), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $email_transactional_message_data;
             }
@@ -1247,7 +1247,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

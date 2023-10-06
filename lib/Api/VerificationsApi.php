@@ -350,7 +350,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -398,7 +398,7 @@ class VerificationsApi
      */
     public function verificationsByEmailGet($email, string $contentType = self::contentTypes['verificationsByEmailGet'][0])
     {
-        list($response) = $this->verificationsByEmailGetWithHttpInfo($email, $contentType);
+        [$response] = $this->verificationsByEmailGetWithHttpInfo($email, $contentType);
         return $response;
     }
 
@@ -460,7 +460,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailValidationResult' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -477,7 +477,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -548,7 +548,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -638,7 +638,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -686,7 +686,7 @@ class VerificationsApi
      */
     public function verificationsByEmailPost($email, string $contentType = self::contentTypes['verificationsByEmailPost'][0])
     {
-        list($response) = $this->verificationsByEmailPostWithHttpInfo($email, $contentType);
+        [$response] = $this->verificationsByEmailPostWithHttpInfo($email, $contentType);
         return $response;
     }
 
@@ -748,7 +748,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailValidationResult' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -765,7 +765,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -836,7 +836,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -926,7 +926,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1160,7 +1160,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1208,7 +1208,7 @@ class VerificationsApi
      */
     public function verificationsFilesByIdResultDownloadGet($id, string $contentType = self::contentTypes['verificationsFilesByIdResultDownloadGet'][0])
     {
-        list($response) = $this->verificationsFilesByIdResultDownloadGetWithHttpInfo($id, $contentType);
+        [$response] = $this->verificationsFilesByIdResultDownloadGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -1270,7 +1270,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SplFileObject' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1287,7 +1287,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1358,7 +1358,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1448,7 +1448,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1498,7 +1498,7 @@ class VerificationsApi
      */
     public function verificationsFilesByIdResultGet($id, $limit = null, $offset = null, string $contentType = self::contentTypes['verificationsFilesByIdResultGet'][0])
     {
-        list($response) = $this->verificationsFilesByIdResultGetWithHttpInfo($id, $limit, $offset, $contentType);
+        [$response] = $this->verificationsFilesByIdResultGetWithHttpInfo($id, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -1562,7 +1562,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\VerificationFileResultDetails' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1579,7 +1579,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1654,7 +1654,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1766,7 +1766,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1948,7 +1948,6 @@ class VerificationsApi
      */
     public function verificationsFilesByIdVerificationPostRequest($id, string $contentType = self::contentTypes['verificationsFilesByIdVerificationPost'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1956,15 +1955,12 @@ class VerificationsApi
             );
         }
 
-
         $resourcePath = '/verifications/files/{id}/verification';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($id !== null) {
@@ -1974,7 +1970,6 @@ class VerificationsApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             [],
@@ -2000,7 +1995,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2048,7 +2043,7 @@ class VerificationsApi
      */
     public function verificationsFilesPost($file = null, string $contentType = self::contentTypes['verificationsFilesPost'][0])
     {
-        list($response) = $this->verificationsFilesPostWithHttpInfo($file, $contentType);
+        [$response] = $this->verificationsFilesPostWithHttpInfo($file, $contentType);
         return $response;
     }
 
@@ -2110,7 +2105,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\VerificationFileResult' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2127,7 +2122,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2198,7 +2193,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2286,7 +2281,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2333,7 +2328,7 @@ class VerificationsApi
      */
     public function verificationsFilesResultGet(string $contentType = self::contentTypes['verificationsFilesResultGet'][0])
     {
-        list($response) = $this->verificationsFilesResultGetWithHttpInfo($contentType);
+        [$response] = $this->verificationsFilesResultGetWithHttpInfo($contentType);
         return $response;
     }
 
@@ -2394,7 +2389,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\VerificationFileResult[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2411,7 +2406,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2480,7 +2475,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2554,7 +2549,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2603,7 +2598,7 @@ class VerificationsApi
      */
     public function verificationsGet($limit = null, $offset = null, string $contentType = self::contentTypes['verificationsGet'][0])
     {
-        list($response) = $this->verificationsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->verificationsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -2666,7 +2661,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\EmailValidationResult[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2683,7 +2678,7 @@ class VerificationsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2756,7 +2751,7 @@ class VerificationsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2852,7 +2847,7 @@ class VerificationsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

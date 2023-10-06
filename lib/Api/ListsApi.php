@@ -156,7 +156,7 @@ class ListsApi
      */
     public function listsByNameContactsPost($name, $emails_payload, string $contentType = self::contentTypes['listsByNameContactsPost'][0])
     {
-        list($response) = $this->listsByNameContactsPostWithHttpInfo($name, $emails_payload, $contentType);
+        [$response] = $this->listsByNameContactsPostWithHttpInfo($name, $emails_payload, $contentType);
         return $response;
     }
 
@@ -219,7 +219,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ContactsList' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -236,7 +236,7 @@ class ListsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -309,7 +309,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -393,7 +393,7 @@ class ListsApi
         if (isset($emails_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($emails_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($emails_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $emails_payload;
             }
@@ -414,7 +414,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -646,7 +646,7 @@ class ListsApi
         if (isset($emails_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($emails_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($emails_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $emails_payload;
             }
@@ -667,7 +667,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -901,7 +901,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -949,7 +949,7 @@ class ListsApi
      */
     public function listsByNameGet($name, string $contentType = self::contentTypes['listsByNameGet'][0])
     {
-        list($response) = $this->listsByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->listsByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -1011,7 +1011,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ContactsList' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1028,7 +1028,7 @@ class ListsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1099,7 +1099,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1189,7 +1189,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1238,7 +1238,7 @@ class ListsApi
      */
     public function listsByNamePut($name, $list_update_payload, string $contentType = self::contentTypes['listsByNamePut'][0])
     {
-        list($response) = $this->listsByNamePutWithHttpInfo($name, $list_update_payload, $contentType);
+        [$response] = $this->listsByNamePutWithHttpInfo($name, $list_update_payload, $contentType);
         return $response;
     }
 
@@ -1301,7 +1301,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ContactsList' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1318,7 +1318,7 @@ class ListsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1391,7 +1391,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1475,7 +1475,7 @@ class ListsApi
         if (isset($list_update_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($list_update_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_update_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $list_update_payload;
             }
@@ -1496,7 +1496,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1545,7 +1545,7 @@ class ListsApi
      */
     public function listsGet($limit = null, $offset = null, string $contentType = self::contentTypes['listsGet'][0])
     {
-        list($response) = $this->listsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->listsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1608,7 +1608,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ContactsList[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1625,7 +1625,7 @@ class ListsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1698,7 +1698,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1794,7 +1794,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1842,7 +1842,7 @@ class ListsApi
      */
     public function listsPost($list_payload, string $contentType = self::contentTypes['listsPost'][0])
     {
-        list($response) = $this->listsPostWithHttpInfo($list_payload, $contentType);
+        [$response] = $this->listsPostWithHttpInfo($list_payload, $contentType);
         return $response;
     }
 
@@ -1904,7 +1904,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ContactsList' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1921,7 +1921,7 @@ class ListsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1992,7 +1992,7 @@ class ListsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2060,7 +2060,7 @@ class ListsApi
         if (isset($list_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($list_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $list_payload;
             }
@@ -2081,7 +2081,7 @@ class ListsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

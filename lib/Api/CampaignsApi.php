@@ -335,7 +335,7 @@ class CampaignsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -383,7 +383,7 @@ class CampaignsApi
      */
     public function campaignsByNameGet($name, string $contentType = self::contentTypes['campaignsByNameGet'][0])
     {
-        list($response) = $this->campaignsByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->campaignsByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -445,7 +445,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Campaign' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -462,7 +462,7 @@ class CampaignsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -533,7 +533,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -623,7 +623,7 @@ class CampaignsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -672,7 +672,7 @@ class CampaignsApi
      */
     public function campaignsByNamePut($name, $campaign, string $contentType = self::contentTypes['campaignsByNamePut'][0])
     {
-        list($response) = $this->campaignsByNamePutWithHttpInfo($name, $campaign, $contentType);
+        [$response] = $this->campaignsByNamePutWithHttpInfo($name, $campaign, $contentType);
         return $response;
     }
 
@@ -735,7 +735,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Campaign' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -752,7 +752,7 @@ class CampaignsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -825,7 +825,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -909,7 +909,7 @@ class CampaignsApi
         if (isset($campaign)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($campaign));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($campaign), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $campaign;
             }
@@ -930,7 +930,7 @@ class CampaignsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -980,7 +980,7 @@ class CampaignsApi
      */
     public function campaignsGet($search = null, $offset = null, $limit = null, string $contentType = self::contentTypes['campaignsGet'][0])
     {
-        list($response) = $this->campaignsGetWithHttpInfo($search, $offset, $limit, $contentType);
+        [$response] = $this->campaignsGetWithHttpInfo($search, $offset, $limit, $contentType);
         return $response;
     }
 
@@ -1044,7 +1044,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Campaign[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1061,7 +1061,7 @@ class CampaignsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1136,7 +1136,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1243,7 +1243,7 @@ class CampaignsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1291,7 +1291,7 @@ class CampaignsApi
      */
     public function campaignsPost($campaign, string $contentType = self::contentTypes['campaignsPost'][0])
     {
-        list($response) = $this->campaignsPostWithHttpInfo($campaign, $contentType);
+        [$response] = $this->campaignsPostWithHttpInfo($campaign, $contentType);
         return $response;
     }
 
@@ -1353,7 +1353,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Campaign' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1370,7 +1370,7 @@ class CampaignsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1441,7 +1441,7 @@ class CampaignsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1509,7 +1509,7 @@ class CampaignsApi
         if (isset($campaign)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($campaign));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($campaign), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $campaign;
             }
@@ -1530,7 +1530,7 @@ class CampaignsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

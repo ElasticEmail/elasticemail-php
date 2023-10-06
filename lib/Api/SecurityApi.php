@@ -365,7 +365,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -414,7 +414,7 @@ class SecurityApi
      */
     public function securityApikeysByNameGet($name, $subaccount = null, string $contentType = self::contentTypes['securityApikeysByNameGet'][0])
     {
-        list($response) = $this->securityApikeysByNameGetWithHttpInfo($name, $subaccount, $contentType);
+        [$response] = $this->securityApikeysByNameGetWithHttpInfo($name, $subaccount, $contentType);
         return $response;
     }
 
@@ -477,7 +477,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ApiKey' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -494,7 +494,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -567,7 +567,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -668,7 +668,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -717,7 +717,7 @@ class SecurityApi
      */
     public function securityApikeysByNamePut($name, $api_key_payload, string $contentType = self::contentTypes['securityApikeysByNamePut'][0])
     {
-        list($response) = $this->securityApikeysByNamePutWithHttpInfo($name, $api_key_payload, $contentType);
+        [$response] = $this->securityApikeysByNamePutWithHttpInfo($name, $api_key_payload, $contentType);
         return $response;
     }
 
@@ -780,7 +780,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ApiKey' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -797,7 +797,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -870,7 +870,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -954,7 +954,7 @@ class SecurityApi
         if (isset($api_key_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($api_key_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($api_key_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $api_key_payload;
             }
@@ -975,7 +975,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1023,7 +1023,7 @@ class SecurityApi
      */
     public function securityApikeysGet($subaccount = null, string $contentType = self::contentTypes['securityApikeysGet'][0])
     {
-        list($response) = $this->securityApikeysGetWithHttpInfo($subaccount, $contentType);
+        [$response] = $this->securityApikeysGetWithHttpInfo($subaccount, $contentType);
         return $response;
     }
 
@@ -1085,7 +1085,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ApiKey[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1102,7 +1102,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1173,7 +1173,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1258,7 +1258,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1306,7 +1306,7 @@ class SecurityApi
      */
     public function securityApikeysPost($api_key_payload, string $contentType = self::contentTypes['securityApikeysPost'][0])
     {
-        list($response) = $this->securityApikeysPostWithHttpInfo($api_key_payload, $contentType);
+        [$response] = $this->securityApikeysPostWithHttpInfo($api_key_payload, $contentType);
         return $response;
     }
 
@@ -1368,7 +1368,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\NewApiKey' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1385,7 +1385,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1456,7 +1456,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1524,7 +1524,7 @@ class SecurityApi
         if (isset($api_key_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($api_key_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($api_key_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $api_key_payload;
             }
@@ -1545,7 +1545,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1794,7 +1794,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1843,7 +1843,7 @@ class SecurityApi
      */
     public function securitySmtpByNameGet($name, $subaccount = null, string $contentType = self::contentTypes['securitySmtpByNameGet'][0])
     {
-        list($response) = $this->securitySmtpByNameGetWithHttpInfo($name, $subaccount, $contentType);
+        [$response] = $this->securitySmtpByNameGetWithHttpInfo($name, $subaccount, $contentType);
         return $response;
     }
 
@@ -1906,7 +1906,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SmtpCredentials' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1923,7 +1923,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1996,7 +1996,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2097,7 +2097,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2146,7 +2146,7 @@ class SecurityApi
      */
     public function securitySmtpByNamePut($name, $smtp_credentials_payload, string $contentType = self::contentTypes['securitySmtpByNamePut'][0])
     {
-        list($response) = $this->securitySmtpByNamePutWithHttpInfo($name, $smtp_credentials_payload, $contentType);
+        [$response] = $this->securitySmtpByNamePutWithHttpInfo($name, $smtp_credentials_payload, $contentType);
         return $response;
     }
 
@@ -2209,7 +2209,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SmtpCredentials' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2226,7 +2226,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2299,7 +2299,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2383,7 +2383,7 @@ class SecurityApi
         if (isset($smtp_credentials_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($smtp_credentials_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($smtp_credentials_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $smtp_credentials_payload;
             }
@@ -2404,7 +2404,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2452,7 +2452,7 @@ class SecurityApi
      */
     public function securitySmtpGet($subaccount = null, string $contentType = self::contentTypes['securitySmtpGet'][0])
     {
-        list($response) = $this->securitySmtpGetWithHttpInfo($subaccount, $contentType);
+        [$response] = $this->securitySmtpGetWithHttpInfo($subaccount, $contentType);
         return $response;
     }
 
@@ -2514,7 +2514,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SmtpCredentials[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2531,7 +2531,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2602,7 +2602,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2687,7 +2687,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2735,7 +2735,7 @@ class SecurityApi
      */
     public function securitySmtpPost($smtp_credentials_payload, string $contentType = self::contentTypes['securitySmtpPost'][0])
     {
-        list($response) = $this->securitySmtpPostWithHttpInfo($smtp_credentials_payload, $contentType);
+        [$response] = $this->securitySmtpPostWithHttpInfo($smtp_credentials_payload, $contentType);
         return $response;
     }
 
@@ -2797,7 +2797,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\NewSmtpCredentials' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2814,7 +2814,7 @@ class SecurityApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2885,7 +2885,7 @@ class SecurityApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2953,7 +2953,7 @@ class SecurityApi
         if (isset($smtp_credentials_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($smtp_credentials_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($smtp_credentials_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $smtp_credentials_payload;
             }
@@ -2974,7 +2974,7 @@ class SecurityApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

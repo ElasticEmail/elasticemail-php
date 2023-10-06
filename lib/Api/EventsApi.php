@@ -160,7 +160,7 @@ class EventsApi
      */
     public function eventsByTransactionidGet($transactionid, $from = null, $to = null, $order_by = null, $limit = null, $offset = null, string $contentType = self::contentTypes['eventsByTransactionidGet'][0])
     {
-        list($response) = $this->eventsByTransactionidGetWithHttpInfo($transactionid, $from, $to, $order_by, $limit, $offset, $contentType);
+        [$response] = $this->eventsByTransactionidGetWithHttpInfo($transactionid, $from, $to, $order_by, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -227,7 +227,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\RecipientEvent[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -244,7 +244,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -325,7 +325,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -470,7 +470,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -524,7 +524,7 @@ class EventsApi
      */
     public function eventsChannelsByNameExportPost($name, $event_types = null, $from = null, $to = null, $file_format = null, $compression_format = null, $file_name = null, string $contentType = self::contentTypes['eventsChannelsByNameExportPost'][0])
     {
-        list($response) = $this->eventsChannelsByNameExportPostWithHttpInfo($name, $event_types, $from, $to, $file_format, $compression_format, $file_name, $contentType);
+        [$response] = $this->eventsChannelsByNameExportPostWithHttpInfo($name, $event_types, $from, $to, $file_format, $compression_format, $file_name, $contentType);
         return $response;
     }
 
@@ -592,7 +592,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportLink' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -609,7 +609,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -692,7 +692,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -848,7 +848,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -902,7 +902,7 @@ class EventsApi
      */
     public function eventsChannelsByNameGet($name, $event_types = null, $from = null, $to = null, $order_by = null, $limit = null, $offset = null, string $contentType = self::contentTypes['eventsChannelsByNameGet'][0])
     {
-        list($response) = $this->eventsChannelsByNameGetWithHttpInfo($name, $event_types, $from, $to, $order_by, $limit, $offset, $contentType);
+        [$response] = $this->eventsChannelsByNameGetWithHttpInfo($name, $event_types, $from, $to, $order_by, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -970,7 +970,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\RecipientEvent[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -987,7 +987,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1070,7 +1070,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1226,7 +1226,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1274,7 +1274,7 @@ class EventsApi
      */
     public function eventsChannelsExportByIdStatusGet($id, string $contentType = self::contentTypes['eventsChannelsExportByIdStatusGet'][0])
     {
-        list($response) = $this->eventsChannelsExportByIdStatusGetWithHttpInfo($id, $contentType);
+        [$response] = $this->eventsChannelsExportByIdStatusGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -1336,7 +1336,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportStatus' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1353,7 +1353,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1424,7 +1424,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1514,7 +1514,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1562,7 +1562,7 @@ class EventsApi
      */
     public function eventsExportByIdStatusGet($id, string $contentType = self::contentTypes['eventsExportByIdStatusGet'][0])
     {
-        list($response) = $this->eventsExportByIdStatusGetWithHttpInfo($id, $contentType);
+        [$response] = $this->eventsExportByIdStatusGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -1624,7 +1624,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportStatus' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1641,7 +1641,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1712,7 +1712,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1802,7 +1802,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1855,7 +1855,7 @@ class EventsApi
      */
     public function eventsExportPost($event_types = null, $from = null, $to = null, $file_format = null, $compression_format = null, $file_name = null, string $contentType = self::contentTypes['eventsExportPost'][0])
     {
-        list($response) = $this->eventsExportPostWithHttpInfo($event_types, $from, $to, $file_format, $compression_format, $file_name, $contentType);
+        [$response] = $this->eventsExportPostWithHttpInfo($event_types, $from, $to, $file_format, $compression_format, $file_name, $contentType);
         return $response;
     }
 
@@ -1922,7 +1922,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportLink' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1939,7 +1939,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2020,7 +2020,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2160,7 +2160,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2213,7 +2213,7 @@ class EventsApi
      */
     public function eventsGet($event_types = null, $from = null, $to = null, $order_by = null, $limit = null, $offset = null, string $contentType = self::contentTypes['eventsGet'][0])
     {
-        list($response) = $this->eventsGetWithHttpInfo($event_types, $from, $to, $order_by, $limit, $offset, $contentType);
+        [$response] = $this->eventsGetWithHttpInfo($event_types, $from, $to, $order_by, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -2280,7 +2280,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\RecipientEvent[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2297,7 +2297,7 @@ class EventsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2378,7 +2378,7 @@ class EventsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2421,14 +2421,6 @@ class EventsApi
      */
     public function eventsGetRequest($event_types = null, $from = null, $to = null, $order_by = null, $limit = null, $offset = null, string $contentType = self::contentTypes['eventsGet'][0])
     {
-
-
-
-
-
-
-
-
         $resourcePath = '/events';
         $formParams = [];
         $queryParams = [];
@@ -2491,9 +2483,6 @@ class EventsApi
             false // required
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],
             $contentType,
@@ -2518,7 +2507,7 @@ class EventsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

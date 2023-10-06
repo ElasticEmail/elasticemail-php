@@ -172,7 +172,7 @@ class SuppressionsApi
      */
     public function suppressionsBouncesGet($search = null, $limit = null, $offset = null, string $contentType = self::contentTypes['suppressionsBouncesGet'][0])
     {
-        list($response) = $this->suppressionsBouncesGetWithHttpInfo($search, $limit, $offset, $contentType);
+        [$response] = $this->suppressionsBouncesGetWithHttpInfo($search, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -236,7 +236,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -253,7 +253,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -328,7 +328,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -435,7 +435,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -667,7 +667,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -715,7 +715,7 @@ class SuppressionsApi
      */
     public function suppressionsBouncesPost($request_body, string $contentType = self::contentTypes['suppressionsBouncesPost'][0])
     {
-        list($response) = $this->suppressionsBouncesPostWithHttpInfo($request_body, $contentType);
+        [$response] = $this->suppressionsBouncesPostWithHttpInfo($request_body, $contentType);
         return $response;
     }
 
@@ -777,7 +777,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -794,7 +794,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -865,7 +865,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -933,7 +933,7 @@ class SuppressionsApi
         if (isset($request_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $request_body;
             }
@@ -954,7 +954,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1188,7 +1188,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1236,7 +1236,7 @@ class SuppressionsApi
      */
     public function suppressionsByEmailGet($email, string $contentType = self::contentTypes['suppressionsByEmailGet'][0])
     {
-        list($response) = $this->suppressionsByEmailGetWithHttpInfo($email, $contentType);
+        [$response] = $this->suppressionsByEmailGetWithHttpInfo($email, $contentType);
         return $response;
     }
 
@@ -1298,7 +1298,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1315,7 +1315,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1386,7 +1386,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1476,7 +1476,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1526,7 +1526,7 @@ class SuppressionsApi
      */
     public function suppressionsComplaintsGet($search = null, $limit = null, $offset = null, string $contentType = self::contentTypes['suppressionsComplaintsGet'][0])
     {
-        list($response) = $this->suppressionsComplaintsGetWithHttpInfo($search, $limit, $offset, $contentType);
+        [$response] = $this->suppressionsComplaintsGetWithHttpInfo($search, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -1590,7 +1590,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1607,7 +1607,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1682,7 +1682,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1789,7 +1789,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2021,7 +2021,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2069,7 +2069,7 @@ class SuppressionsApi
      */
     public function suppressionsComplaintsPost($request_body, string $contentType = self::contentTypes['suppressionsComplaintsPost'][0])
     {
-        list($response) = $this->suppressionsComplaintsPostWithHttpInfo($request_body, $contentType);
+        [$response] = $this->suppressionsComplaintsPostWithHttpInfo($request_body, $contentType);
         return $response;
     }
 
@@ -2131,7 +2131,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2148,7 +2148,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2219,7 +2219,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2287,7 +2287,7 @@ class SuppressionsApi
         if (isset($request_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $request_body;
             }
@@ -2308,7 +2308,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2357,7 +2357,7 @@ class SuppressionsApi
      */
     public function suppressionsGet($limit = null, $offset = null, string $contentType = self::contentTypes['suppressionsGet'][0])
     {
-        list($response) = $this->suppressionsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->suppressionsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -2420,7 +2420,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2437,7 +2437,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2510,7 +2510,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2606,7 +2606,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2656,7 +2656,7 @@ class SuppressionsApi
      */
     public function suppressionsUnsubscribesGet($search = null, $limit = null, $offset = null, string $contentType = self::contentTypes['suppressionsUnsubscribesGet'][0])
     {
-        list($response) = $this->suppressionsUnsubscribesGetWithHttpInfo($search, $limit, $offset, $contentType);
+        [$response] = $this->suppressionsUnsubscribesGetWithHttpInfo($search, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -2720,7 +2720,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2737,7 +2737,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2812,7 +2812,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2919,7 +2919,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3151,7 +3151,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3199,7 +3199,7 @@ class SuppressionsApi
      */
     public function suppressionsUnsubscribesPost($request_body, string $contentType = self::contentTypes['suppressionsUnsubscribesPost'][0])
     {
-        list($response) = $this->suppressionsUnsubscribesPostWithHttpInfo($request_body, $contentType);
+        [$response] = $this->suppressionsUnsubscribesPostWithHttpInfo($request_body, $contentType);
         return $response;
     }
 
@@ -3261,7 +3261,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Suppression[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -3278,7 +3278,7 @@ class SuppressionsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -3349,7 +3349,7 @@ class SuppressionsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -3417,7 +3417,7 @@ class SuppressionsApi
         if (isset($request_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $request_body;
             }
@@ -3438,7 +3438,7 @@ class SuppressionsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
