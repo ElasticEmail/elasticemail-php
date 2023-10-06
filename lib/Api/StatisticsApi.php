@@ -149,7 +149,7 @@ class StatisticsApi
      */
     public function statisticsCampaignsByNameGet($name, string $contentType = self::contentTypes['statisticsCampaignsByNameGet'][0])
     {
-        list($response) = $this->statisticsCampaignsByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->statisticsCampaignsByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -211,7 +211,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ChannelLogStatusSummary' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -228,7 +228,7 @@ class StatisticsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -299,7 +299,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -389,7 +389,7 @@ class StatisticsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -438,7 +438,7 @@ class StatisticsApi
      */
     public function statisticsCampaignsGet($limit = null, $offset = null, string $contentType = self::contentTypes['statisticsCampaignsGet'][0])
     {
-        list($response) = $this->statisticsCampaignsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->statisticsCampaignsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -501,7 +501,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ChannelLogStatusSummary[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -518,7 +518,7 @@ class StatisticsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -591,7 +591,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -687,7 +687,7 @@ class StatisticsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -735,7 +735,7 @@ class StatisticsApi
      */
     public function statisticsChannelsByNameGet($name, string $contentType = self::contentTypes['statisticsChannelsByNameGet'][0])
     {
-        list($response) = $this->statisticsChannelsByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->statisticsChannelsByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -797,7 +797,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ChannelLogStatusSummary' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -814,7 +814,7 @@ class StatisticsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -885,7 +885,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -975,7 +975,7 @@ class StatisticsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1024,7 +1024,7 @@ class StatisticsApi
      */
     public function statisticsChannelsGet($limit = null, $offset = null, string $contentType = self::contentTypes['statisticsChannelsGet'][0])
     {
-        list($response) = $this->statisticsChannelsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->statisticsChannelsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1087,7 +1087,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ChannelLogStatusSummary[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1104,7 +1104,7 @@ class StatisticsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1177,7 +1177,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1273,7 +1273,7 @@ class StatisticsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1322,7 +1322,7 @@ class StatisticsApi
      */
     public function statisticsGet($from, $to = null, string $contentType = self::contentTypes['statisticsGet'][0])
     {
-        list($response) = $this->statisticsGetWithHttpInfo($from, $to, $contentType);
+        [$response] = $this->statisticsGetWithHttpInfo($from, $to, $contentType);
         return $response;
     }
 
@@ -1385,7 +1385,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\LogStatusSummary' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1402,7 +1402,7 @@ class StatisticsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1475,7 +1475,7 @@ class StatisticsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1577,7 +1577,7 @@ class StatisticsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

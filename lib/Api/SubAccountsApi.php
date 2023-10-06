@@ -336,7 +336,7 @@ class SubAccountsApi
         if (isset($subaccount_email_credits_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_email_credits_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_email_credits_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $subaccount_email_credits_payload;
             }
@@ -357,7 +357,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -591,7 +591,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -639,7 +639,7 @@ class SubAccountsApi
      */
     public function subaccountsByEmailGet($email, string $contentType = self::contentTypes['subaccountsByEmailGet'][0])
     {
-        list($response) = $this->subaccountsByEmailGetWithHttpInfo($email, $contentType);
+        [$response] = $this->subaccountsByEmailGetWithHttpInfo($email, $contentType);
         return $response;
     }
 
@@ -701,7 +701,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SubAccountInfo' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -718,7 +718,7 @@ class SubAccountsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -789,7 +789,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -879,7 +879,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -928,7 +928,7 @@ class SubAccountsApi
      */
     public function subaccountsByEmailSettingsEmailPut($email, $subaccount_email_settings, string $contentType = self::contentTypes['subaccountsByEmailSettingsEmailPut'][0])
     {
-        list($response) = $this->subaccountsByEmailSettingsEmailPutWithHttpInfo($email, $subaccount_email_settings, $contentType);
+        [$response] = $this->subaccountsByEmailSettingsEmailPutWithHttpInfo($email, $subaccount_email_settings, $contentType);
         return $response;
     }
 
@@ -991,7 +991,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SubaccountEmailSettings' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1008,7 +1008,7 @@ class SubAccountsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1081,7 +1081,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1165,7 +1165,7 @@ class SubAccountsApi
         if (isset($subaccount_email_settings)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_email_settings));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_email_settings), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $subaccount_email_settings;
             }
@@ -1186,7 +1186,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1235,7 +1235,7 @@ class SubAccountsApi
      */
     public function subaccountsGet($limit = null, $offset = null, string $contentType = self::contentTypes['subaccountsGet'][0])
     {
-        list($response) = $this->subaccountsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->subaccountsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1298,7 +1298,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SubAccountInfo[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1315,7 +1315,7 @@ class SubAccountsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1388,7 +1388,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1484,7 +1484,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1532,7 +1532,7 @@ class SubAccountsApi
      */
     public function subaccountsPost($subaccount_payload, string $contentType = self::contentTypes['subaccountsPost'][0])
     {
-        list($response) = $this->subaccountsPostWithHttpInfo($subaccount_payload, $contentType);
+        [$response] = $this->subaccountsPostWithHttpInfo($subaccount_payload, $contentType);
         return $response;
     }
 
@@ -1594,7 +1594,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\SubAccountInfo' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1611,7 +1611,7 @@ class SubAccountsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1682,7 +1682,7 @@ class SubAccountsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1750,7 +1750,7 @@ class SubAccountsApi
         if (isset($subaccount_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($subaccount_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $subaccount_payload;
             }
@@ -1771,7 +1771,7 @@ class SubAccountsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

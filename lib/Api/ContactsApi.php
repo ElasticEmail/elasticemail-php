@@ -347,7 +347,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -395,7 +395,7 @@ class ContactsApi
      */
     public function contactsByEmailGet($email, string $contentType = self::contentTypes['contactsByEmailGet'][0])
     {
-        list($response) = $this->contactsByEmailGetWithHttpInfo($email, $contentType);
+        [$response] = $this->contactsByEmailGetWithHttpInfo($email, $contentType);
         return $response;
     }
 
@@ -457,7 +457,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Contact' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -474,7 +474,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -545,7 +545,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -635,7 +635,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -684,7 +684,7 @@ class ContactsApi
      */
     public function contactsByEmailPut($email, $contact_update_payload, string $contentType = self::contentTypes['contactsByEmailPut'][0])
     {
-        list($response) = $this->contactsByEmailPutWithHttpInfo($email, $contact_update_payload, $contentType);
+        [$response] = $this->contactsByEmailPutWithHttpInfo($email, $contact_update_payload, $contentType);
         return $response;
     }
 
@@ -747,7 +747,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Contact' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -764,7 +764,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -837,7 +837,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -921,7 +921,7 @@ class ContactsApi
         if (isset($contact_update_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($contact_update_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($contact_update_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $contact_update_payload;
             }
@@ -942,7 +942,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1154,7 +1154,7 @@ class ContactsApi
         if (isset($emails_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($emails_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($emails_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $emails_payload;
             }
@@ -1175,7 +1175,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1223,7 +1223,7 @@ class ContactsApi
      */
     public function contactsExportByIdStatusGet($id, string $contentType = self::contentTypes['contactsExportByIdStatusGet'][0])
     {
-        list($response) = $this->contactsExportByIdStatusGetWithHttpInfo($id, $contentType);
+        [$response] = $this->contactsExportByIdStatusGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -1285,7 +1285,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportStatus' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1302,7 +1302,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1373,7 +1373,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1463,7 +1463,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1515,7 +1515,7 @@ class ContactsApi
      */
     public function contactsExportPost($file_format = null, $rule = null, $emails = null, $compression_format = null, $file_name = null, string $contentType = self::contentTypes['contactsExportPost'][0])
     {
-        list($response) = $this->contactsExportPostWithHttpInfo($file_format, $rule, $emails, $compression_format, $file_name, $contentType);
+        [$response] = $this->contactsExportPostWithHttpInfo($file_format, $rule, $emails, $compression_format, $file_name, $contentType);
         return $response;
     }
 
@@ -1581,7 +1581,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\ExportLink' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1598,7 +1598,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1677,7 +1677,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1806,7 +1806,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1855,7 +1855,7 @@ class ContactsApi
      */
     public function contactsGet($limit = null, $offset = null, string $contentType = self::contentTypes['contactsGet'][0])
     {
-        list($response) = $this->contactsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->contactsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1918,7 +1918,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Contact[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1935,7 +1935,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2008,7 +2008,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2104,7 +2104,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2381,7 +2381,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2430,7 +2430,7 @@ class ContactsApi
      */
     public function contactsPost($contact_payload, $listnames = null, string $contentType = self::contentTypes['contactsPost'][0])
     {
-        list($response) = $this->contactsPostWithHttpInfo($contact_payload, $listnames, $contentType);
+        [$response] = $this->contactsPostWithHttpInfo($contact_payload, $listnames, $contentType);
         return $response;
     }
 
@@ -2493,7 +2493,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Contact[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2510,7 +2510,7 @@ class ContactsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -2583,7 +2583,7 @@ class ContactsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -2662,7 +2662,7 @@ class ContactsApi
         if (isset($contact_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($contact_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($contact_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $contact_payload;
             }
@@ -2683,7 +2683,7 @@ class ContactsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

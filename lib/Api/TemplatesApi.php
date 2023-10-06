@@ -335,7 +335,7 @@ class TemplatesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -383,7 +383,7 @@ class TemplatesApi
      */
     public function templatesByNameGet($name, string $contentType = self::contentTypes['templatesByNameGet'][0])
     {
-        list($response) = $this->templatesByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->templatesByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -445,7 +445,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Template' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -462,7 +462,7 @@ class TemplatesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -533,7 +533,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -623,7 +623,7 @@ class TemplatesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -672,7 +672,7 @@ class TemplatesApi
      */
     public function templatesByNamePut($name, $template_payload, string $contentType = self::contentTypes['templatesByNamePut'][0])
     {
-        list($response) = $this->templatesByNamePutWithHttpInfo($name, $template_payload, $contentType);
+        [$response] = $this->templatesByNamePutWithHttpInfo($name, $template_payload, $contentType);
         return $response;
     }
 
@@ -735,7 +735,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Template' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -752,7 +752,7 @@ class TemplatesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -825,7 +825,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -909,7 +909,7 @@ class TemplatesApi
         if (isset($template_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($template_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($template_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $template_payload;
             }
@@ -930,7 +930,7 @@ class TemplatesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -981,7 +981,7 @@ class TemplatesApi
      */
     public function templatesGet($scope_type, $template_types = null, $limit = null, $offset = null, string $contentType = self::contentTypes['templatesGet'][0])
     {
-        list($response) = $this->templatesGetWithHttpInfo($scope_type, $template_types, $limit, $offset, $contentType);
+        [$response] = $this->templatesGetWithHttpInfo($scope_type, $template_types, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -1046,7 +1046,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Template[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1063,7 +1063,7 @@ class TemplatesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1140,7 +1140,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1264,7 +1264,7 @@ class TemplatesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1312,7 +1312,7 @@ class TemplatesApi
      */
     public function templatesPost($template_payload, string $contentType = self::contentTypes['templatesPost'][0])
     {
-        list($response) = $this->templatesPostWithHttpInfo($template_payload, $contentType);
+        [$response] = $this->templatesPostWithHttpInfo($template_payload, $contentType);
         return $response;
     }
 
@@ -1374,7 +1374,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Template' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1391,7 +1391,7 @@ class TemplatesApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1462,7 +1462,7 @@ class TemplatesApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1530,7 +1530,7 @@ class TemplatesApi
         if (isset($template_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($template_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($template_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $template_payload;
             }
@@ -1551,7 +1551,7 @@ class TemplatesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

@@ -335,7 +335,7 @@ class SegmentsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -383,7 +383,7 @@ class SegmentsApi
      */
     public function segmentsByNameGet($name, string $contentType = self::contentTypes['segmentsByNameGet'][0])
     {
-        list($response) = $this->segmentsByNameGetWithHttpInfo($name, $contentType);
+        [$response] = $this->segmentsByNameGetWithHttpInfo($name, $contentType);
         return $response;
     }
 
@@ -445,7 +445,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Segment' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -462,7 +462,7 @@ class SegmentsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -533,7 +533,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -623,7 +623,7 @@ class SegmentsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -672,7 +672,7 @@ class SegmentsApi
      */
     public function segmentsByNamePut($name, $segment_payload, string $contentType = self::contentTypes['segmentsByNamePut'][0])
     {
-        list($response) = $this->segmentsByNamePutWithHttpInfo($name, $segment_payload, $contentType);
+        [$response] = $this->segmentsByNamePutWithHttpInfo($name, $segment_payload, $contentType);
         return $response;
     }
 
@@ -735,7 +735,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Segment' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -752,7 +752,7 @@ class SegmentsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -825,7 +825,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -909,7 +909,7 @@ class SegmentsApi
         if (isset($segment_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($segment_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($segment_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $segment_payload;
             }
@@ -930,7 +930,7 @@ class SegmentsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -979,7 +979,7 @@ class SegmentsApi
      */
     public function segmentsGet($limit = null, $offset = null, string $contentType = self::contentTypes['segmentsGet'][0])
     {
-        list($response) = $this->segmentsGetWithHttpInfo($limit, $offset, $contentType);
+        [$response] = $this->segmentsGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
     }
 
@@ -1042,7 +1042,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Segment[]' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1059,7 +1059,7 @@ class SegmentsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1132,7 +1132,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1228,7 +1228,7 @@ class SegmentsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1276,7 +1276,7 @@ class SegmentsApi
      */
     public function segmentsPost($segment_payload, string $contentType = self::contentTypes['segmentsPost'][0])
     {
-        list($response) = $this->segmentsPostWithHttpInfo($segment_payload, $contentType);
+        [$response] = $this->segmentsPostWithHttpInfo($segment_payload, $contentType);
         return $response;
     }
 
@@ -1338,7 +1338,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ('\ElasticEmail\Model\Segment' !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1355,7 +1355,7 @@ class SegmentsApi
             } else {
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                    $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                 }
             }
 
@@ -1426,7 +1426,7 @@ class SegmentsApi
                     } else {
                         $content = (string) $response->getBody();
                         if ($returnType !== 'string') {
-                            $content = json_decode($content);
+                            $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         }
                     }
 
@@ -1494,7 +1494,7 @@ class SegmentsApi
         if (isset($segment_payload)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($segment_payload));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($segment_payload), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $segment_payload;
             }
@@ -1515,7 +1515,7 @@ class SegmentsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
