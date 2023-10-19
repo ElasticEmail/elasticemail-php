@@ -38,7 +38,7 @@ Create an instance of ContactsApi that will be used to add contacts.
 ```php
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "work.rafkwa+test@gmail.com",
+        "email" => "foo.bar@gmail.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'
@@ -65,7 +65,7 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "work.rafkwa+test@gmail.com",
+        "email" => "foo.bar@gmail.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'
