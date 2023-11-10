@@ -29,6 +29,7 @@
 
 namespace ElasticEmail;
 
+use ElasticEmail\Model\EventType;
 use GuzzleHttp\Psr7\Utils;
 use ElasticEmail\Model\ModelInterface;
 
@@ -393,13 +394,11 @@ class ObjectSerializer
 
     /**
      * Deserialize a JSON string into an object
-     *
-     * @param mixed    $data          object or primitive to be deserialized
-     * @param string   $class         class name is passed as a string
-     * @param string[] $httpHeaders   HTTP headers
-     * @param string   $discriminator discriminator if polymorphism is used
-     *
-     * @return object|array|null a single or an array of $class instances
+     * @param mixed $data object or primitive to be deserialized
+     * @param string $class class name is passed as a string
+     * @param null $httpHeaders HTTP headers
+     * @return object|array|string|null a single or an array of $class instances
+     * @throws \Exception
      */
     public static function deserialize($data, $class, $httpHeaders = null)
     {
@@ -500,8 +499,14 @@ class ObjectSerializer
 
         if (method_exists($class, 'getAllowableEnumValues')) {
             if (!in_array($data, $class::getAllowableEnumValues(), true)) {
+                if ($class === '\ElasticEmail\Model\EventType') {
+                    //API Could send wrong event_type value
+                    //We do not want to skip such messages, they are failed, but they exist
+                    $data = EventType::FAILED_ATTEMPT;
+                    return $data;
+                }
                 $imploded = implode("', '", $class::getAllowableEnumValues());
-                throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
+                throw new \InvalidArgumentException("Invalid value '$data' for enum '$class', must be one of: '$imploded'");
             }
             return $data;
         } else {
