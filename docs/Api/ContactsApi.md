@@ -356,7 +356,7 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 );
 $file_format = new \ElasticEmail\Model\ExportFileFormats(); // ExportFileFormats | Format of the exported file
 $rule = Status%20=%20Engaged; // string | Query used for filtering.
-$emails = ["mail@contact.com,mail1@contact.com,mail2@contact.com"]; // string[] | Comma delimited list of contact emails
+$emails = ["["mail@contact.com,mail1@contact.com,mail2@contact.com"]"]; // string[] | Comma delimited list of contact emails
 $compression_format = new \ElasticEmail\Model\CompressionFormat(); // CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 

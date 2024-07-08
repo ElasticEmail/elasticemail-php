@@ -1,6 +1,6 @@
 <?php
 /**
- * ChannelLogStatusSummary
+ * EmailJobStatus
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \ElasticEmail\ObjectSerializer;
 
 /**
- * ChannelLogStatusSummary Class Doc Comment
+ * EmailJobStatus Class Doc Comment
  *
  * @category Class
- * @description Summary of channel log status
  * @package  ElasticEmail
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSerializable
+class EmailJobStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ChannelLogStatusSummary';
+    protected static $openAPIModelName = 'EmailJobStatus';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,20 +58,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'channel_name' => 'string',
-        'recipients' => 'int',
-        'email_total' => 'int',
-        'sms_total' => 'int',
-        'delivered' => 'int',
-        'bounced' => 'int',
-        'in_progress' => 'int',
-        'opened' => 'int',
-        'clicked' => 'int',
-        'unsubscribed' => 'int',
-        'complaints' => 'int',
-        'inbound' => 'int',
-        'manual_cancel' => 'int',
-        'not_delivered' => 'int'
+        'id' => 'string',
+        'status' => 'string',
+        'recipients_count' => 'int',
+        'failed' => '\ElasticEmail\Model\EmailJobFailedStatus[]',
+        'failed_count' => 'int',
+        'sent' => 'string[]',
+        'sent_count' => 'int',
+        'delivered' => 'string[]',
+        'delivered_count' => 'int',
+        'pending' => 'string[]',
+        'pending_count' => 'int',
+        'opened' => 'string[]',
+        'opened_count' => 'int',
+        'clicked' => 'string[]',
+        'clicked_count' => 'int',
+        'unsubscribed' => 'string[]',
+        'unsubscribed_count' => 'int',
+        'abuse_reports' => 'string[]',
+        'abuse_reports_count' => 'int',
+        'message_ids' => 'string[]'
     ];
 
     /**
@@ -83,20 +88,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'channel_name' => 'string',
-        'recipients' => 'int64',
-        'email_total' => 'int64',
-        'sms_total' => 'int64',
-        'delivered' => 'int64',
-        'bounced' => 'int64',
-        'in_progress' => 'int64',
-        'opened' => 'int64',
-        'clicked' => 'int64',
-        'unsubscribed' => 'int64',
-        'complaints' => 'int64',
-        'inbound' => 'int64',
-        'manual_cancel' => 'int64',
-        'not_delivered' => 'int64'
+        'id' => 'string',
+        'status' => 'string',
+        'recipients_count' => 'int32',
+        'failed' => null,
+        'failed_count' => 'int32',
+        'sent' => 'string',
+        'sent_count' => 'int32',
+        'delivered' => 'string',
+        'delivered_count' => 'int32',
+        'pending' => 'string',
+        'pending_count' => 'int32',
+        'opened' => 'string',
+        'opened_count' => 'int32',
+        'clicked' => 'string',
+        'clicked_count' => 'int32',
+        'unsubscribed' => 'string',
+        'unsubscribed_count' => 'int32',
+        'abuse_reports' => 'string',
+        'abuse_reports_count' => 'int32',
+        'message_ids' => 'string'
     ];
 
     /**
@@ -105,20 +116,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'channel_name' => false,
-        'recipients' => false,
-        'email_total' => false,
-        'sms_total' => false,
+        'id' => false,
+        'status' => false,
+        'recipients_count' => false,
+        'failed' => false,
+        'failed_count' => false,
+        'sent' => false,
+        'sent_count' => false,
         'delivered' => false,
-        'bounced' => false,
-        'in_progress' => false,
+        'delivered_count' => false,
+        'pending' => false,
+        'pending_count' => false,
         'opened' => false,
+        'opened_count' => false,
         'clicked' => false,
+        'clicked_count' => false,
         'unsubscribed' => false,
-        'complaints' => false,
-        'inbound' => false,
-        'manual_cancel' => false,
-        'not_delivered' => false
+        'unsubscribed_count' => false,
+        'abuse_reports' => false,
+        'abuse_reports_count' => false,
+        'message_ids' => false
     ];
 
     /**
@@ -207,20 +224,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'channel_name' => 'ChannelName',
-        'recipients' => 'Recipients',
-        'email_total' => 'EmailTotal',
-        'sms_total' => 'SmsTotal',
+        'id' => 'ID',
+        'status' => 'Status',
+        'recipients_count' => 'RecipientsCount',
+        'failed' => 'Failed',
+        'failed_count' => 'FailedCount',
+        'sent' => 'Sent',
+        'sent_count' => 'SentCount',
         'delivered' => 'Delivered',
-        'bounced' => 'Bounced',
-        'in_progress' => 'InProgress',
+        'delivered_count' => 'DeliveredCount',
+        'pending' => 'Pending',
+        'pending_count' => 'PendingCount',
         'opened' => 'Opened',
+        'opened_count' => 'OpenedCount',
         'clicked' => 'Clicked',
+        'clicked_count' => 'ClickedCount',
         'unsubscribed' => 'Unsubscribed',
-        'complaints' => 'Complaints',
-        'inbound' => 'Inbound',
-        'manual_cancel' => 'ManualCancel',
-        'not_delivered' => 'NotDelivered'
+        'unsubscribed_count' => 'UnsubscribedCount',
+        'abuse_reports' => 'AbuseReports',
+        'abuse_reports_count' => 'AbuseReportsCount',
+        'message_ids' => 'MessageIDs'
     ];
 
     /**
@@ -229,20 +252,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'channel_name' => 'setChannelName',
-        'recipients' => 'setRecipients',
-        'email_total' => 'setEmailTotal',
-        'sms_total' => 'setSmsTotal',
+        'id' => 'setId',
+        'status' => 'setStatus',
+        'recipients_count' => 'setRecipientsCount',
+        'failed' => 'setFailed',
+        'failed_count' => 'setFailedCount',
+        'sent' => 'setSent',
+        'sent_count' => 'setSentCount',
         'delivered' => 'setDelivered',
-        'bounced' => 'setBounced',
-        'in_progress' => 'setInProgress',
+        'delivered_count' => 'setDeliveredCount',
+        'pending' => 'setPending',
+        'pending_count' => 'setPendingCount',
         'opened' => 'setOpened',
+        'opened_count' => 'setOpenedCount',
         'clicked' => 'setClicked',
+        'clicked_count' => 'setClickedCount',
         'unsubscribed' => 'setUnsubscribed',
-        'complaints' => 'setComplaints',
-        'inbound' => 'setInbound',
-        'manual_cancel' => 'setManualCancel',
-        'not_delivered' => 'setNotDelivered'
+        'unsubscribed_count' => 'setUnsubscribedCount',
+        'abuse_reports' => 'setAbuseReports',
+        'abuse_reports_count' => 'setAbuseReportsCount',
+        'message_ids' => 'setMessageIds'
     ];
 
     /**
@@ -251,20 +280,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'channel_name' => 'getChannelName',
-        'recipients' => 'getRecipients',
-        'email_total' => 'getEmailTotal',
-        'sms_total' => 'getSmsTotal',
+        'id' => 'getId',
+        'status' => 'getStatus',
+        'recipients_count' => 'getRecipientsCount',
+        'failed' => 'getFailed',
+        'failed_count' => 'getFailedCount',
+        'sent' => 'getSent',
+        'sent_count' => 'getSentCount',
         'delivered' => 'getDelivered',
-        'bounced' => 'getBounced',
-        'in_progress' => 'getInProgress',
+        'delivered_count' => 'getDeliveredCount',
+        'pending' => 'getPending',
+        'pending_count' => 'getPendingCount',
         'opened' => 'getOpened',
+        'opened_count' => 'getOpenedCount',
         'clicked' => 'getClicked',
+        'clicked_count' => 'getClickedCount',
         'unsubscribed' => 'getUnsubscribed',
-        'complaints' => 'getComplaints',
-        'inbound' => 'getInbound',
-        'manual_cancel' => 'getManualCancel',
-        'not_delivered' => 'getNotDelivered'
+        'unsubscribed_count' => 'getUnsubscribedCount',
+        'abuse_reports' => 'getAbuseReports',
+        'abuse_reports_count' => 'getAbuseReportsCount',
+        'message_ids' => 'getMessageIds'
     ];
 
     /**
@@ -324,20 +359,26 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('channel_name', $data ?? [], null);
-        $this->setIfExists('recipients', $data ?? [], null);
-        $this->setIfExists('email_total', $data ?? [], null);
-        $this->setIfExists('sms_total', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('recipients_count', $data ?? [], null);
+        $this->setIfExists('failed', $data ?? [], null);
+        $this->setIfExists('failed_count', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
+        $this->setIfExists('sent_count', $data ?? [], null);
         $this->setIfExists('delivered', $data ?? [], null);
-        $this->setIfExists('bounced', $data ?? [], null);
-        $this->setIfExists('in_progress', $data ?? [], null);
+        $this->setIfExists('delivered_count', $data ?? [], null);
+        $this->setIfExists('pending', $data ?? [], null);
+        $this->setIfExists('pending_count', $data ?? [], null);
         $this->setIfExists('opened', $data ?? [], null);
+        $this->setIfExists('opened_count', $data ?? [], null);
         $this->setIfExists('clicked', $data ?? [], null);
+        $this->setIfExists('clicked_count', $data ?? [], null);
         $this->setIfExists('unsubscribed', $data ?? [], null);
-        $this->setIfExists('complaints', $data ?? [], null);
-        $this->setIfExists('inbound', $data ?? [], null);
-        $this->setIfExists('manual_cancel', $data ?? [], null);
-        $this->setIfExists('not_delivered', $data ?? [], null);
+        $this->setIfExists('unsubscribed_count', $data ?? [], null);
+        $this->setIfExists('abuse_reports', $data ?? [], null);
+        $this->setIfExists('abuse_reports_count', $data ?? [], null);
+        $this->setIfExists('message_ids', $data ?? [], null);
     }
 
     /**
@@ -383,109 +424,190 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets channel_name
+     * Gets id
      *
      * @return string|null
      */
-    public function getChannelName()
+    public function getId()
     {
-        return $this->container['channel_name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets channel_name
+     * Sets id
      *
-     * @param string|null $channel_name Channel name
+     * @param string|null $id ID number of your attachment
      *
      * @return self
      */
-    public function setChannelName($channel_name)
+    public function setId($id)
     {
-        if (is_null($channel_name)) {
-            throw new \InvalidArgumentException('non-nullable channel_name cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['channel_name'] = $channel_name;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets recipients
+     * Gets status
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getRecipients()
+    public function getStatus()
     {
-        return $this->container['recipients'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets recipients
+     * Sets status
      *
-     * @param int|null $recipients Number of recipients
+     * @param string|null $status Name of status: submitted, complete, in_progress
      *
      * @return self
      */
-    public function setRecipients($recipients)
+    public function setStatus($status)
     {
-        if (is_null($recipients)) {
-            throw new \InvalidArgumentException('non-nullable recipients cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['recipients'] = $recipients;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets email_total
+     * Gets recipients_count
      *
      * @return int|null
      */
-    public function getEmailTotal()
+    public function getRecipientsCount()
     {
-        return $this->container['email_total'];
+        return $this->container['recipients_count'];
     }
 
     /**
-     * Sets email_total
+     * Sets recipients_count
      *
-     * @param int|null $email_total Number of emails
+     * @param int|null $recipients_count recipients_count
      *
      * @return self
      */
-    public function setEmailTotal($email_total)
+    public function setRecipientsCount($recipients_count)
     {
-        if (is_null($email_total)) {
-            throw new \InvalidArgumentException('non-nullable email_total cannot be null');
+        if (is_null($recipients_count)) {
+            throw new \InvalidArgumentException('non-nullable recipients_count cannot be null');
         }
-        $this->container['email_total'] = $email_total;
+        $this->container['recipients_count'] = $recipients_count;
 
         return $this;
     }
 
     /**
-     * Gets sms_total
+     * Gets failed
      *
-     * @return int|null
+     * @return \ElasticEmail\Model\EmailJobFailedStatus[]|null
      */
-    public function getSmsTotal()
+    public function getFailed()
     {
-        return $this->container['sms_total'];
+        return $this->container['failed'];
     }
 
     /**
-     * Sets sms_total
+     * Sets failed
      *
-     * @param int|null $sms_total Number of SMS
+     * @param \ElasticEmail\Model\EmailJobFailedStatus[]|null $failed failed
      *
      * @return self
      */
-    public function setSmsTotal($sms_total)
+    public function setFailed($failed)
     {
-        if (is_null($sms_total)) {
-            throw new \InvalidArgumentException('non-nullable sms_total cannot be null');
+        if (is_null($failed)) {
+            throw new \InvalidArgumentException('non-nullable failed cannot be null');
         }
-        $this->container['sms_total'] = $sms_total;
+        $this->container['failed'] = $failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets failed_count
+     *
+     * @return int|null
+     */
+    public function getFailedCount()
+    {
+        return $this->container['failed_count'];
+    }
+
+    /**
+     * Sets failed_count
+     *
+     * @param int|null $failed_count Total emails failed.
+     *
+     * @return self
+     */
+    public function setFailedCount($failed_count)
+    {
+        if (is_null($failed_count)) {
+            throw new \InvalidArgumentException('non-nullable failed_count cannot be null');
+        }
+        $this->container['failed_count'] = $failed_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent
+     *
+     * @return string[]|null
+     */
+    public function getSent()
+    {
+        return $this->container['sent'];
+    }
+
+    /**
+     * Sets sent
+     *
+     * @param string[]|null $sent sent
+     *
+     * @return self
+     */
+    public function setSent($sent)
+    {
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
+        }
+        $this->container['sent'] = $sent;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_count
+     *
+     * @return int|null
+     */
+    public function getSentCount()
+    {
+        return $this->container['sent_count'];
+    }
+
+    /**
+     * Sets sent_count
+     *
+     * @param int|null $sent_count Total emails sent.
+     *
+     * @return self
+     */
+    public function setSentCount($sent_count)
+    {
+        if (is_null($sent_count)) {
+            throw new \InvalidArgumentException('non-nullable sent_count cannot be null');
+        }
+        $this->container['sent_count'] = $sent_count;
 
         return $this;
     }
@@ -493,7 +615,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets delivered
      *
-     * @return int|null
+     * @return string[]|null
      */
     public function getDelivered()
     {
@@ -503,7 +625,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets delivered
      *
-     * @param int|null $delivered Number of delivered messages
+     * @param string[]|null $delivered Number of delivered messages
      *
      * @return self
      */
@@ -518,55 +640,82 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets bounced
+     * Gets delivered_count
      *
      * @return int|null
      */
-    public function getBounced()
+    public function getDeliveredCount()
     {
-        return $this->container['bounced'];
+        return $this->container['delivered_count'];
     }
 
     /**
-     * Sets bounced
+     * Sets delivered_count
      *
-     * @param int|null $bounced Number of bounced messages
+     * @param int|null $delivered_count delivered_count
      *
      * @return self
      */
-    public function setBounced($bounced)
+    public function setDeliveredCount($delivered_count)
     {
-        if (is_null($bounced)) {
-            throw new \InvalidArgumentException('non-nullable bounced cannot be null');
+        if (is_null($delivered_count)) {
+            throw new \InvalidArgumentException('non-nullable delivered_count cannot be null');
         }
-        $this->container['bounced'] = $bounced;
+        $this->container['delivered_count'] = $delivered_count;
 
         return $this;
     }
 
     /**
-     * Gets in_progress
+     * Gets pending
      *
-     * @return int|null
+     * @return string[]|null
      */
-    public function getInProgress()
+    public function getPending()
     {
-        return $this->container['in_progress'];
+        return $this->container['pending'];
     }
 
     /**
-     * Sets in_progress
+     * Sets pending
      *
-     * @param int|null $in_progress Number of messages in progress
+     * @param string[]|null $pending pending
      *
      * @return self
      */
-    public function setInProgress($in_progress)
+    public function setPending($pending)
     {
-        if (is_null($in_progress)) {
-            throw new \InvalidArgumentException('non-nullable in_progress cannot be null');
+        if (is_null($pending)) {
+            throw new \InvalidArgumentException('non-nullable pending cannot be null');
         }
-        $this->container['in_progress'] = $in_progress;
+        $this->container['pending'] = $pending;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_count
+     *
+     * @return int|null
+     */
+    public function getPendingCount()
+    {
+        return $this->container['pending_count'];
+    }
+
+    /**
+     * Sets pending_count
+     *
+     * @param int|null $pending_count pending_count
+     *
+     * @return self
+     */
+    public function setPendingCount($pending_count)
+    {
+        if (is_null($pending_count)) {
+            throw new \InvalidArgumentException('non-nullable pending_count cannot be null');
+        }
+        $this->container['pending_count'] = $pending_count;
 
         return $this;
     }
@@ -574,7 +723,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets opened
      *
-     * @return int|null
+     * @return string[]|null
      */
     public function getOpened()
     {
@@ -584,7 +733,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets opened
      *
-     * @param int|null $opened Number of opened messages
+     * @param string[]|null $opened Number of opened messages
      *
      * @return self
      */
@@ -599,9 +748,36 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets clicked
+     * Gets opened_count
      *
      * @return int|null
+     */
+    public function getOpenedCount()
+    {
+        return $this->container['opened_count'];
+    }
+
+    /**
+     * Sets opened_count
+     *
+     * @param int|null $opened_count Total emails opened.
+     *
+     * @return self
+     */
+    public function setOpenedCount($opened_count)
+    {
+        if (is_null($opened_count)) {
+            throw new \InvalidArgumentException('non-nullable opened_count cannot be null');
+        }
+        $this->container['opened_count'] = $opened_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets clicked
+     *
+     * @return string[]|null
      */
     public function getClicked()
     {
@@ -611,7 +787,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets clicked
      *
-     * @param int|null $clicked Number of clicked messages
+     * @param string[]|null $clicked Number of clicked messages
      *
      * @return self
      */
@@ -626,9 +802,36 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets unsubscribed
+     * Gets clicked_count
      *
      * @return int|null
+     */
+    public function getClickedCount()
+    {
+        return $this->container['clicked_count'];
+    }
+
+    /**
+     * Sets clicked_count
+     *
+     * @param int|null $clicked_count Total emails clicked
+     *
+     * @return self
+     */
+    public function setClickedCount($clicked_count)
+    {
+        if (is_null($clicked_count)) {
+            throw new \InvalidArgumentException('non-nullable clicked_count cannot be null');
+        }
+        $this->container['clicked_count'] = $clicked_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets unsubscribed
+     *
+     * @return string[]|null
      */
     public function getUnsubscribed()
     {
@@ -638,7 +841,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets unsubscribed
      *
-     * @param int|null $unsubscribed Number of unsubscribed messages
+     * @param string[]|null $unsubscribed Number of unsubscribed messages
      *
      * @return self
      */
@@ -653,109 +856,109 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets complaints
+     * Gets unsubscribed_count
      *
      * @return int|null
      */
-    public function getComplaints()
+    public function getUnsubscribedCount()
     {
-        return $this->container['complaints'];
+        return $this->container['unsubscribed_count'];
     }
 
     /**
-     * Sets complaints
+     * Sets unsubscribed_count
      *
-     * @param int|null $complaints Number of complaint messages
+     * @param int|null $unsubscribed_count Total emails unsubscribed
      *
      * @return self
      */
-    public function setComplaints($complaints)
+    public function setUnsubscribedCount($unsubscribed_count)
     {
-        if (is_null($complaints)) {
-            throw new \InvalidArgumentException('non-nullable complaints cannot be null');
+        if (is_null($unsubscribed_count)) {
+            throw new \InvalidArgumentException('non-nullable unsubscribed_count cannot be null');
         }
-        $this->container['complaints'] = $complaints;
+        $this->container['unsubscribed_count'] = $unsubscribed_count;
 
         return $this;
     }
 
     /**
-     * Gets inbound
+     * Gets abuse_reports
      *
-     * @return int|null
+     * @return string[]|null
      */
-    public function getInbound()
+    public function getAbuseReports()
     {
-        return $this->container['inbound'];
+        return $this->container['abuse_reports'];
     }
 
     /**
-     * Sets inbound
+     * Sets abuse_reports
      *
-     * @param int|null $inbound Number of inbound messages
+     * @param string[]|null $abuse_reports abuse_reports
      *
      * @return self
      */
-    public function setInbound($inbound)
+    public function setAbuseReports($abuse_reports)
     {
-        if (is_null($inbound)) {
-            throw new \InvalidArgumentException('non-nullable inbound cannot be null');
+        if (is_null($abuse_reports)) {
+            throw new \InvalidArgumentException('non-nullable abuse_reports cannot be null');
         }
-        $this->container['inbound'] = $inbound;
+        $this->container['abuse_reports'] = $abuse_reports;
 
         return $this;
     }
 
     /**
-     * Gets manual_cancel
+     * Gets abuse_reports_count
      *
      * @return int|null
      */
-    public function getManualCancel()
+    public function getAbuseReportsCount()
     {
-        return $this->container['manual_cancel'];
+        return $this->container['abuse_reports_count'];
     }
 
     /**
-     * Sets manual_cancel
+     * Sets abuse_reports_count
      *
-     * @param int|null $manual_cancel Number of manually cancelled messages
+     * @param int|null $abuse_reports_count abuse_reports_count
      *
      * @return self
      */
-    public function setManualCancel($manual_cancel)
+    public function setAbuseReportsCount($abuse_reports_count)
     {
-        if (is_null($manual_cancel)) {
-            throw new \InvalidArgumentException('non-nullable manual_cancel cannot be null');
+        if (is_null($abuse_reports_count)) {
+            throw new \InvalidArgumentException('non-nullable abuse_reports_count cannot be null');
         }
-        $this->container['manual_cancel'] = $manual_cancel;
+        $this->container['abuse_reports_count'] = $abuse_reports_count;
 
         return $this;
     }
 
     /**
-     * Gets not_delivered
+     * Gets message_ids
      *
-     * @return int|null
+     * @return string[]|null
      */
-    public function getNotDelivered()
+    public function getMessageIds()
     {
-        return $this->container['not_delivered'];
+        return $this->container['message_ids'];
     }
 
     /**
-     * Sets not_delivered
+     * Sets message_ids
      *
-     * @param int|null $not_delivered Number of messages flagged with 'Not Delivered'
+     * @param string[]|null $message_ids List of all MessageIDs for this job.
      *
      * @return self
      */
-    public function setNotDelivered($not_delivered)
+    public function setMessageIds($message_ids)
     {
-        if (is_null($not_delivered)) {
-            throw new \InvalidArgumentException('non-nullable not_delivered cannot be null');
+        if (is_null($message_ids)) {
+            throw new \InvalidArgumentException('non-nullable message_ids cannot be null');
         }
-        $this->container['not_delivered'] = $not_delivered;
+        $this->container['message_ids'] = $message_ids;
 
         return $this;
     }

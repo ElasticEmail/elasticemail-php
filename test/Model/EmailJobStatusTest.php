@@ -1,6 +1,6 @@
 <?php
 /**
- * LogStatusSummaryTest
+ * EmailJobStatusTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace ElasticEmail\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * LogStatusSummaryTest Class Doc Comment
+ * EmailJobStatusTest Class Doc Comment
  *
  * @category    Class
- * @description Summary of log status
+ * @description EmailJobStatus
  * @package     ElasticEmail
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class LogStatusSummaryTest extends TestCase
+class EmailJobStatusTest extends TestCase
 {
 
     /**
@@ -72,36 +72,72 @@ class LogStatusSummaryTest extends TestCase
     }
 
     /**
-     * Test "LogStatusSummary"
+     * Test "EmailJobStatus"
      */
-    public function testLogStatusSummary()
+    public function testEmailJobStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "recipients"
+     * Test attribute "id"
      */
-    public function testPropertyRecipients()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "email_total"
+     * Test attribute "status"
      */
-    public function testPropertyEmailTotal()
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sms_total"
+     * Test attribute "recipients_count"
      */
-    public function testPropertySmsTotal()
+    public function testPropertyRecipientsCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "failed"
+     */
+    public function testPropertyFailed()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "failed_count"
+     */
+    public function testPropertyFailedCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent"
+     */
+    public function testPropertySent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent_count"
+     */
+    public function testPropertySentCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -117,18 +153,27 @@ class LogStatusSummaryTest extends TestCase
     }
 
     /**
-     * Test attribute "bounced"
+     * Test attribute "delivered_count"
      */
-    public function testPropertyBounced()
+    public function testPropertyDeliveredCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "in_progress"
+     * Test attribute "pending"
      */
-    public function testPropertyInProgress()
+    public function testPropertyPending()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pending_count"
+     */
+    public function testPropertyPendingCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -144,9 +189,27 @@ class LogStatusSummaryTest extends TestCase
     }
 
     /**
+     * Test attribute "opened_count"
+     */
+    public function testPropertyOpenedCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "clicked"
      */
     public function testPropertyClicked()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "clicked_count"
+     */
+    public function testPropertyClickedCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -162,36 +225,36 @@ class LogStatusSummaryTest extends TestCase
     }
 
     /**
-     * Test attribute "complaints"
+     * Test attribute "unsubscribed_count"
      */
-    public function testPropertyComplaints()
+    public function testPropertyUnsubscribedCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "inbound"
+     * Test attribute "abuse_reports"
      */
-    public function testPropertyInbound()
+    public function testPropertyAbuseReports()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "manual_cancel"
+     * Test attribute "abuse_reports_count"
      */
-    public function testPropertyManualCancel()
+    public function testPropertyAbuseReportsCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "not_delivered"
+     * Test attribute "message_ids"
      */
-    public function testPropertyNotDelivered()
+    public function testPropertyMessageIds()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

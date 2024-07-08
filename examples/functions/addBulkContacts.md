@@ -36,17 +36,11 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 Create an instance of ContactsApi that will be used to add contacts.
 
 ```php
-$contact_payload = [new \ElasticEmail\Model\ContactPayload(
-    [
-        "email" => "foo.bar@gmail.com",
-        "first_name" => "John",
-        "last_name" => "Doe",
-        "status" => 'Active'
-        ]
-    )];
-$listnames = "My Contacts 1";
+$list_name = "My Contacts 1";
+$encoding_name = "UTF-8";
+$file = "my-contacts.csv";
 
-response = $apiInstance->contactsPost($contact_payload, $listnames);
+$response = $apiInstance->contactsImportPost($list_name, $encoding_name, $file);
 ```
 
 ## The whole code to copy and paste:
@@ -63,19 +57,13 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
     $config
 );
 
-$contact_payload = [new \ElasticEmail\Model\ContactPayload(
-    [
-        "email" => "foo.bar@gmail.com",
-        "first_name" => "John",
-        "last_name" => "Doe",
-        "status" => 'Active'
-        ]
-    )];
-$listnames = "My Contacts 1";
+$list_name = "My Contacts 1";
+$encoding_name = "UTF-8";
+$file = "my-contacts.csv";
 
 try {
-    $response = $apiInstance->contactsPost($contact_payload, $listnames);
+    $response = $apiInstance->contactsImportPost($list_name, $encoding_name, $file);
 } catch (Exception $e) {
-    echo 'Exception when calling ContactsApi->contactsPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContactsApi->contactsImportPost: ', $e->getMessage(), PHP_EOL;
 }
 ```

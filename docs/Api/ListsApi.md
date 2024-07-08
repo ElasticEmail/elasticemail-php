@@ -4,6 +4,7 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**listsByListnameContactsGet()**](ListsApi.md#listsByListnameContactsGet) | **GET** /lists/{listname}/contacts | Load Contacts in List |
 | [**listsByNameContactsPost()**](ListsApi.md#listsByNameContactsPost) | **POST** /lists/{name}/contacts | Add Contacts to List |
 | [**listsByNameContactsRemovePost()**](ListsApi.md#listsByNameContactsRemovePost) | **POST** /lists/{name}/contacts/remove | Remove Contacts from List |
 | [**listsByNameDelete()**](ListsApi.md#listsByNameDelete) | **DELETE** /lists/{name} | Delete List |
@@ -12,6 +13,72 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 | [**listsGet()**](ListsApi.md#listsGet) | **GET** /lists | Load Lists |
 | [**listsPost()**](ListsApi.md#listsPost) | **POST** /lists | Add List |
 
+
+## `listsByListnameContactsGet()`
+
+```php
+listsByListnameContactsGet($listname, $limit, $offset): \ElasticEmail\Model\Contact[]
+```
+
+Load Contacts in List
+
+Returns a list of contacts. Required Access Level: ViewContacts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+
+
+$apiInstance = new ElasticEmail\Api\ListsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$listname = My List 1; // string | Name of your list.
+$limit = 100; // int | Maximum number of returned items.
+$offset = 20; // int | How many items should be returned ahead.
+
+try {
+    $result = $apiInstance->listsByListnameContactsGet($listname, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ListsApi->listsByListnameContactsGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **listname** | **string**| Name of your list. | |
+| **limit** | **int**| Maximum number of returned items. | [optional] |
+| **offset** | **int**| How many items should be returned ahead. | [optional] |
+
+### Return type
+
+[**\ElasticEmail\Model\Contact[]**](../Model/Contact.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `listsByNameContactsPost()`
 
