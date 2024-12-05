@@ -1,6 +1,6 @@
 {
     "name": "elasticemail/elasticemail-php",
-    "version": "4.0.24",
+    "version": "4.0.25",
     "description": "The PHP library for the Elastic Email REST API. This API is based on the REST API architecture, allowing the user to easily manage their data with this resource-based approach. To start using this API, you will need your Access Token. Remember to keep it safe.",
     "keywords": [
         "openapitools",
