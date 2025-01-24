@@ -1006,7 +1006,7 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \ElasticEmail\Model\FileInfo[]
      */
-    public function filesGet(?$limit = null, ?$offset = null, string $contentType = self::contentTypes['filesGet'][0])
+    public function filesGet($limit = null, $offset = null, string $contentType = self::contentTypes['filesGet'][0])
     {
         list($response) = $this->filesGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
