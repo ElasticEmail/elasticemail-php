@@ -262,7 +262,7 @@ class ContactsList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('list_name', $data ?? [], null);
         $this->setIfExists('public_list_id', $data ?? [], null);

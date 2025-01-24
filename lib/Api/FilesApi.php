@@ -96,9 +96,9 @@ class FilesApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
@@ -1006,7 +1006,7 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \ElasticEmail\Model\FileInfo[]
      */
-    public function filesGet($limit = null, $offset = null, string $contentType = self::contentTypes['filesGet'][0])
+    public function filesGet(?$limit = null, ?$offset = null, string $contentType = self::contentTypes['filesGet'][0])
     {
         list($response) = $this->filesGetWithHttpInfo($limit, $offset, $contentType);
         return $response;
