@@ -147,6 +147,18 @@ class AccessLevel
 
     public const MODIFY_SUBSCRIPTION_ANTI_SPAM = 'ModifySubscriptionAntiSpam';
 
+    public const VIEW_LANDING_PAGES_CHECKOUT = 'ViewLandingPagesCheckout';
+
+    public const MODIFY_LANDING_PAGES_CHECKOUT = 'ModifyLandingPagesCheckout';
+
+    public const VIEW_HTML_EDITOR = 'ViewHTMLEditor';
+
+    public const MODIFY_ACCESS_TOKENS = 'ModifyAccessTokens';
+
+    public const VIEW_PAID_NEWSLETTERS = 'ViewPaidNewsletters';
+
+    public const MODIFY_PAID_NEWSLETTERS = 'ModifyPaidNewsletters';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -205,7 +217,13 @@ class AccessLevel
             self::VIEW_DRAG_DROP_EDITOR,
             self::VIEW_TEMPLATE_EDITOR,
             self::VIEW_AI_TOOLS,
-            self::MODIFY_SUBSCRIPTION_ANTI_SPAM
+            self::MODIFY_SUBSCRIPTION_ANTI_SPAM,
+            self::VIEW_LANDING_PAGES_CHECKOUT,
+            self::MODIFY_LANDING_PAGES_CHECKOUT,
+            self::VIEW_HTML_EDITOR,
+            self::MODIFY_ACCESS_TOKENS,
+            self::VIEW_PAID_NEWSLETTERS,
+            self::MODIFY_PAID_NEWSLETTERS
         ];
     }
 }

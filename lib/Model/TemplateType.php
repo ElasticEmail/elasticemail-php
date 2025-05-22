@@ -55,6 +55,14 @@ class TemplateType
 
     public const LANDING_PAGE_TEMPLATE = 'LandingPageTemplate';
 
+    public const PAYMENT_CONFIRMATION_TEMPLATE = 'PaymentConfirmationTemplate';
+
+    public const LANDING_PAGE_PRODUCT_TEMPLATE = 'LandingPageProductTemplate';
+
+    public const LANDING_PAGE_CHECKOUT_TEMPLATE = 'LandingPageCheckoutTemplate';
+
+    public const LANDING_PAGE_PAYMENT_CONFIRMATION_TEMPLATE = 'LandingPagePaymentConfirmationTemplate';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -67,7 +75,11 @@ class TemplateType
             self::LANDING_PAGE_EDITOR,
             self::TEMPLATE_EDITOR,
             self::FORM_TEMPLATE,
-            self::LANDING_PAGE_TEMPLATE
+            self::LANDING_PAGE_TEMPLATE,
+            self::PAYMENT_CONFIRMATION_TEMPLATE,
+            self::LANDING_PAGE_PRODUCT_TEMPLATE,
+            self::LANDING_PAGE_CHECKOUT_TEMPLATE,
+            self::LANDING_PAGE_PAYMENT_CONFIRMATION_TEMPLATE
         ];
     }
 }
