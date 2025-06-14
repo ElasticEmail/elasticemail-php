@@ -322,7 +322,7 @@ class ChannelLogStatusSummary implements ModelInterface, ArrayAccess, \JsonSeria
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('channel_name', $data ?? [], null);
         $this->setIfExists('recipients', $data ?? [], null);
