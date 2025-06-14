@@ -25,11 +25,11 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "email@email.com",
+        "email" => "work.rafkwa+test@gmail.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'
-    ]
+        ]
     )]; // \ElasticEmail\Model\ContactPayload[]
 $listnames = "My Contacts 1"; // string[] | Names of lists to which the uploaded contacts should be added to
 
