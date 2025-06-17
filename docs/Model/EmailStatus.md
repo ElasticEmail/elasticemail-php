@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **error_message** | **string** | Detailed error or bounced message. | [optional]
 **transaction_id** | **string** | ID number of transaction | [optional]
 **envelope_from** | **string** | Envelope from address | [optional]
+**error_category** | [**\ElasticEmail\Model\MessageCategoryEnum**](MessageCategoryEnum.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

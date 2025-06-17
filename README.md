@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CampaignsApi* | [**campaignsByNameDelete**](docs/Api/CampaignsApi.md#campaignsbynamedelete) | **DELETE** /campaigns/{name} | Delete Campaign
 *CampaignsApi* | [**campaignsByNameGet**](docs/Api/CampaignsApi.md#campaignsbynameget) | **GET** /campaigns/{name} | Load Campaign
+*CampaignsApi* | [**campaignsByNamePausePut**](docs/Api/CampaignsApi.md#campaignsbynamepauseput) | **PUT** /campaigns/{name}/pause | Pause Campaign
 *CampaignsApi* | [**campaignsByNamePut**](docs/Api/CampaignsApi.md#campaignsbynameput) | **PUT** /campaigns/{name} | Update Campaign
 *CampaignsApi* | [**campaignsGet**](docs/Api/CampaignsApi.md#campaignsget) | **GET** /campaigns | Load Campaigns
 *CampaignsApi* | [**campaignsPost**](docs/Api/CampaignsApi.md#campaignspost) | **POST** /campaigns | Add Campaign
@@ -124,7 +125,16 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**contactsGet**](docs/Api/ContactsApi.md#contactsget) | **GET** /contacts | Load Contacts
 *ContactsApi* | [**contactsImportPost**](docs/Api/ContactsApi.md#contactsimportpost) | **POST** /contacts/import | Upload Contacts
 *ContactsApi* | [**contactsPost**](docs/Api/ContactsApi.md#contactspost) | **POST** /contacts | Add Contact
+*DomainsApi* | [**domainsByDomainDelete**](docs/Api/DomainsApi.md#domainsbydomaindelete) | **DELETE** /domains/{domain} | Delete Domain
+*DomainsApi* | [**domainsByDomainGet**](docs/Api/DomainsApi.md#domainsbydomainget) | **GET** /domains/{domain} | Load Domain
+*DomainsApi* | [**domainsByDomainPut**](docs/Api/DomainsApi.md#domainsbydomainput) | **PUT** /domains/{domain} | Update Domain
+*DomainsApi* | [**domainsByDomainRestrictedGet**](docs/Api/DomainsApi.md#domainsbydomainrestrictedget) | **GET** /domains/{domain}/restricted | Check for domain restriction
+*DomainsApi* | [**domainsByDomainVerificationPut**](docs/Api/DomainsApi.md#domainsbydomainverificationput) | **PUT** /domains/{domain}/verification | Verify Domain
+*DomainsApi* | [**domainsByEmailDefaultPatch**](docs/Api/DomainsApi.md#domainsbyemaildefaultpatch) | **PATCH** /domains/{email}/default | Set Default
+*DomainsApi* | [**domainsGet**](docs/Api/DomainsApi.md#domainsget) | **GET** /domains | Load Domains
+*DomainsApi* | [**domainsPost**](docs/Api/DomainsApi.md#domainspost) | **POST** /domains | Add Domain
 *EmailsApi* | [**emailsByMsgidViewGet**](docs/Api/EmailsApi.md#emailsbymsgidviewget) | **GET** /emails/{msgid}/view | View Email
+*EmailsApi* | [**emailsByTransactionidStatusGet**](docs/Api/EmailsApi.md#emailsbytransactionidstatusget) | **GET** /emails/{transactionid}/status | Get Status
 *EmailsApi* | [**emailsMergefilePost**](docs/Api/EmailsApi.md#emailsmergefilepost) | **POST** /emails/mergefile | Send Bulk Emails CSV
 *EmailsApi* | [**emailsPost**](docs/Api/EmailsApi.md#emailspost) | **POST** /emails | Send Bulk Emails
 *EmailsApi* | [**emailsTransactionalPost**](docs/Api/EmailsApi.md#emailstransactionalpost) | **POST** /emails/transactional | Send Transactional Email
@@ -146,6 +156,7 @@ Class | Method | HTTP request | Description
 *InboundRouteApi* | [**inboundrouteGet**](docs/Api/InboundRouteApi.md#inboundrouteget) | **GET** /inboundroute | Get Routes
 *InboundRouteApi* | [**inboundrouteOrderPut**](docs/Api/InboundRouteApi.md#inboundrouteorderput) | **PUT** /inboundroute/order | Update Sorting
 *InboundRouteApi* | [**inboundroutePost**](docs/Api/InboundRouteApi.md#inboundroutepost) | **POST** /inboundroute | Create Route
+*ListsApi* | [**listsByListnameContactsGet**](docs/Api/ListsApi.md#listsbylistnamecontactsget) | **GET** /lists/{listname}/contacts | Load Contacts in List
 *ListsApi* | [**listsByNameContactsPost**](docs/Api/ListsApi.md#listsbynamecontactspost) | **POST** /lists/{name}/contacts | Add Contacts to List
 *ListsApi* | [**listsByNameContactsRemovePost**](docs/Api/ListsApi.md#listsbynamecontactsremovepost) | **POST** /lists/{name}/contacts/remove | Remove Contacts from List
 *ListsApi* | [**listsByNameDelete**](docs/Api/ListsApi.md#listsbynamedelete) | **DELETE** /lists/{name} | Delete List
@@ -220,6 +231,7 @@ Class | Method | HTTP request | Description
 - [CampaignRecipient](docs/Model/CampaignRecipient.md)
 - [CampaignStatus](docs/Model/CampaignStatus.md)
 - [CampaignTemplate](docs/Model/CampaignTemplate.md)
+- [CertificateValidationStatus](docs/Model/CertificateValidationStatus.md)
 - [ChannelLogStatusSummary](docs/Model/ChannelLogStatusSummary.md)
 - [CompressionFormat](docs/Model/CompressionFormat.md)
 - [ConsentData](docs/Model/ConsentData.md)
@@ -232,8 +244,15 @@ Class | Method | HTTP request | Description
 - [ContactUpdatePayload](docs/Model/ContactUpdatePayload.md)
 - [ContactsList](docs/Model/ContactsList.md)
 - [DeliveryOptimizationType](docs/Model/DeliveryOptimizationType.md)
+- [DomainData](docs/Model/DomainData.md)
+- [DomainDetail](docs/Model/DomainDetail.md)
+- [DomainOwner](docs/Model/DomainOwner.md)
+- [DomainPayload](docs/Model/DomainPayload.md)
+- [DomainUpdatePayload](docs/Model/DomainUpdatePayload.md)
 - [EmailContent](docs/Model/EmailContent.md)
 - [EmailData](docs/Model/EmailData.md)
+- [EmailJobFailedStatus](docs/Model/EmailJobFailedStatus.md)
+- [EmailJobStatus](docs/Model/EmailJobStatus.md)
 - [EmailMessageData](docs/Model/EmailMessageData.md)
 - [EmailPredictedValidationStatus](docs/Model/EmailPredictedValidationStatus.md)
 - [EmailRecipient](docs/Model/EmailRecipient.md)
@@ -264,6 +283,7 @@ Class | Method | HTTP request | Description
 - [MergeEmailPayload](docs/Model/MergeEmailPayload.md)
 - [MessageAttachment](docs/Model/MessageAttachment.md)
 - [MessageCategory](docs/Model/MessageCategory.md)
+- [MessageCategoryEnum](docs/Model/MessageCategoryEnum.md)
 - [NewApiKey](docs/Model/NewApiKey.md)
 - [NewSmtpCredentials](docs/Model/NewSmtpCredentials.md)
 - [Options](docs/Model/Options.md)
@@ -287,6 +307,8 @@ Class | Method | HTTP request | Description
 - [TemplatePayload](docs/Model/TemplatePayload.md)
 - [TemplateScope](docs/Model/TemplateScope.md)
 - [TemplateType](docs/Model/TemplateType.md)
+- [TrackingType](docs/Model/TrackingType.md)
+- [TrackingValidationStatus](docs/Model/TrackingValidationStatus.md)
 - [TransactionalRecipient](docs/Model/TransactionalRecipient.md)
 - [Utm](docs/Model/Utm.md)
 - [VerificationFileResult](docs/Model/VerificationFileResult.md)
@@ -295,10 +317,18 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 
+Authentication schemes defined for the API:
 ### apikey
 
 - **Type**: API key
 - **API key parameter name**: X-ElasticEmail-ApiKey
+- **Location**: HTTP header
+
+
+### ApiKeyAuthCustomBranding
+
+- **Type**: API key
+- **API key parameter name**: X-Auth-Token
 - **Location**: HTTP header
 
 
@@ -320,5 +350,6 @@ support@elasticemail.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `4.0.0`
-    - Package version: `4.0.22`
+    - Package version: `4.0.26`
+    - Generator version: `7.5.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

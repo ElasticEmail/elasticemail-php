@@ -24,7 +24,7 @@ securityApikeysByNameDelete($name, $subaccount)
 
 Delete ApiKey
 
-Delete your existing ApiKey. Required Access Level: Security
+Delete your existing ApiKey. Required Access Level: ModifyAccessTokens
 
 ### Example
 
@@ -151,7 +151,7 @@ securityApikeysByNamePut($name, $api_key_payload): \ElasticEmail\Model\ApiKey
 
 Update ApiKey
 
-Update your existing ApiKey. Required Access Level: Security
+Update your existing ApiKey. Required Access Level: ModifyAccessTokens
 
 ### Example
 
@@ -277,7 +277,7 @@ securityApikeysPost($api_key_payload): \ElasticEmail\Model\NewApiKey
 
 Add ApiKey
 
-Add a new ApiKey. Required Access Level: Security
+Add a new ApiKey. Required Access Level: ModifyAccessTokens
 
 ### Example
 
@@ -339,7 +339,7 @@ securitySmtpByNameDelete($name, $subaccount)
 
 Delete SMTP Credential
 
-Delete your existing SMTP Credentials. Required Access Level: Security
+Delete your existing SMTP Credentials. Required Access Level: ModifyAccessTokens
 
 ### Example
 
@@ -466,7 +466,7 @@ securitySmtpByNamePut($name, $smtp_credentials_payload): \ElasticEmail\Model\Smt
 
 Update SMTP Credential
 
-Update your existing SMTP Credentials. Required Access Level: Security
+Update your existing SMTP Credentials. Required Access Level: ModifyAccessTokens
 
 ### Example
 
@@ -592,7 +592,7 @@ securitySmtpPost($smtp_credentials_payload): \ElasticEmail\Model\NewSmtpCredenti
 
 Add SMTP Credential
 
-Add new SMTP Credential. Required Access Level: Security
+Add new SMTP Credential. Required Access Level: ModifyAccessTokens
 
 ### Example
 
