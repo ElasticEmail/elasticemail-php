@@ -89,15 +89,15 @@ class ObjectSerializer
                     $getter = $data::getters()[$property];
                     $value = $data->$getter();
                     if ($value !== null && !in_array($openAPIType, ['\DateTime', '\SplFileObject', 'array', 'bool', 'boolean', 'byte', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
-                        $callable = [$openAPIType, 'getAllowableEnumValues'];
+                        /*$callable = [$openAPIType, 'getAllowableEnumValues'];
                         if (is_callable($callable)) {
-                            /** array $callable */
+                            //TODO Backward compatibility, remove in future versions
                             $allowedEnumTypes = $callable();
                             if (!in_array($value, $allowedEnumTypes, true)) {
                                 $imploded = implode("', '", $allowedEnumTypes);
                                 throw new \InvalidArgumentException("Invalid value for enum '$openAPIType', must be one of: '$imploded'");
                             }
-                        }
+                        }*/
                     }
                     if (($data::isNullable($property) && $data->isNullableSetToNull($property)) || $value !== null) {
                         $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $openAPIType, $formats[$property]);
@@ -498,10 +498,11 @@ class ObjectSerializer
 
 
         if (method_exists($class, 'getAllowableEnumValues')) {
-            if (!in_array($data, $class::getAllowableEnumValues(), true)) {
+            //TODO Backward compatibility, remove in future versions
+            /*if (!in_array($data, $class::getAllowableEnumValues(), true)) {
                 $imploded = implode("', '", $class::getAllowableEnumValues());
                 throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
-            }
+            }*/
             return $data;
         } else {
             $data = is_string($data) ? json_decode($data) : $data;
