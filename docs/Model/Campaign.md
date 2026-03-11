@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** | Campaign name |
 **status** | [**\ElasticEmail\Model\CampaignStatus**](CampaignStatus.md) |  | [optional]
 **recipients** | [**\ElasticEmail\Model\CampaignRecipient**](CampaignRecipient.md) |  |
+**excluded_recipients** | [**\ElasticEmail\Model\CampaignRecipient**](CampaignRecipient.md) |  | [optional]
 **options** | [**\ElasticEmail\Model\CampaignOptions**](CampaignOptions.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

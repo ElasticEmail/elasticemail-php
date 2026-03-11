@@ -354,10 +354,10 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_format = new \ElasticEmail\Model\ExportFileFormats(); // ExportFileFormats | Format of the exported file
+$file_format = new \ElasticEmail\Model\ExportFileFormats(); // \ElasticEmail\Model\ExportFileFormats | Format of the exported file
 $rule = Status%20=%20Engaged; // string | Query used for filtering.
 $emails = ["["mail@contact.com,mail1@contact.com,mail2@contact.com"]"]; // string[] | Comma delimited list of contact emails
-$compression_format = new \ElasticEmail\Model\CompressionFormat(); // CompressionFormat | FileResponse compression format. None or Zip.
+$compression_format = new \ElasticEmail\Model\CompressionFormat(); // \ElasticEmail\Model\CompressionFormat | FileResponse compression format. None or Zip.
 $file_name = filename.txt; // string | Name of your file including extension.
 
 try {
@@ -372,10 +372,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_format** | [**ExportFileFormats**](../Model/.md)| Format of the exported file | [optional] |
+| **file_format** | [**\ElasticEmail\Model\ExportFileFormats**](../Model/.md)| Format of the exported file | [optional] |
 | **rule** | **string**| Query used for filtering. | [optional] |
 | **emails** | [**string[]**](../Model/string.md)| Comma delimited list of contact emails | [optional] |
-| **compression_format** | [**CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional] |
+| **compression_format** | [**\ElasticEmail\Model\CompressionFormat**](../Model/.md)| FileResponse compression format. None or Zip. | [optional] |
 | **file_name** | **string**| Name of your file including extension. | [optional] |
 
 ### Return type
@@ -491,7 +491,7 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 $list_name = 'list_name_example'; // string | Name of an existing list to add these contacts to
 $encoding_name = 'encoding_name_example'; // string | In what encoding the file is uploaded
 $file_url = 'file_url_example'; // string | Optional url of csv to import
-$file = "/path/to/file.txt"; // \SplFileObject
+$file = '/path/to/file.txt'; // \SplFileObject
 
 try {
     $apiInstance->contactsImportPost($list_name, $encoding_name, $file_url, $file);

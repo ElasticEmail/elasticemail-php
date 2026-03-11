@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **custom_fields** | **array<string,string>** | A key-value collection of custom contact fields which can be used in the system. | [optional]
 **consent** | [**\ElasticEmail\Model\ConsentData**](ConsentData.md) |  | [optional]
 **source** | [**\ElasticEmail\Model\ContactSource**](ContactSource.md) |  | [optional]
+**source_info** | **string** |  | [optional]
 **date_added** | **\DateTime** | Date of creation in YYYY-MM-DDThh:ii:ss format | [optional]
 **date_updated** | **\DateTime** | Last change date | [optional]
 **status_change_date** | **\DateTime** | Date of last status change. | [optional]

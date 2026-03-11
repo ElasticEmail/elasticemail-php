@@ -292,8 +292,8 @@ $apiInstance = new ElasticEmail\Api\StatisticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Starting date for search in YYYY-MM-DDThh:mm:ss format.
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Ending date for search in YYYY-MM-DDThh:mm:ss format.
 
 try {
     $result = $apiInstance->statisticsGet($from, $to);

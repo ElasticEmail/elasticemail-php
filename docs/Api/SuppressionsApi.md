@@ -113,7 +113,7 @@ $apiInstance = new ElasticEmail\Api\SuppressionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = "/path/to/file.txt"; // \SplFileObject
+$file = '/path/to/file.txt'; // \SplFileObject
 
 try {
     $apiInstance->suppressionsBouncesImportPost($file);
@@ -425,7 +425,7 @@ $apiInstance = new ElasticEmail\Api\SuppressionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = "/path/to/file.txt"; // \SplFileObject
+$file = '/path/to/file.txt'; // \SplFileObject
 
 try {
     $apiInstance->suppressionsComplaintsImportPost($file);
@@ -678,7 +678,7 @@ $apiInstance = new ElasticEmail\Api\SuppressionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = "/path/to/file.txt"; // \SplFileObject
+$file = '/path/to/file.txt'; // \SplFileObject
 
 try {
     $apiInstance->suppressionsUnsubscribesImportPost($file);
