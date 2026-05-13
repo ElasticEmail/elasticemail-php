@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **postback** | **string** | Postback header. | [optional]
 **envelope_from** | **string** | E-mail with an optional name to be used as the envelope from address (e.g.: John Doe &lt;email@domain.com&gt;) | [optional]
 **from** | **string** | Your e-mail with an optional name (e.g.: John Doe &lt;email@domain.com&gt;) |
-**reply_to** | **string** | To what address should the recipients reply to (e.g. John Doe &lt;email@domain.com&gt;) | [optional]
+**reply_to** | **string** | To what addresses should the recipients reply to (e.g. John Doe &lt;email@domain.com&gt;) | [optional]
 **subject** | **string** | Default subject of email. | [optional]
 **template_name** | **string** | Name of template. | [optional]
 **attach_files** | **string[]** | Names of previously uploaded files that should be sent as downloadable attachments | [optional]

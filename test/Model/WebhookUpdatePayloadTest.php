@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignOptionsTest
+ * WebhookUpdatePayloadTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace ElasticEmail\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CampaignOptionsTest Class Doc Comment
+ * WebhookUpdatePayloadTest Class Doc Comment
  *
  * @category    Class
- * @description Different send options for a Campaign
+ * @description Update webhook payload
  * @package     ElasticEmail
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CampaignOptionsTest extends TestCase
+class WebhookUpdatePayloadTest extends TestCase
 {
 
     /**
@@ -72,81 +72,99 @@ class CampaignOptionsTest extends TestCase
     }
 
     /**
-     * Test "CampaignOptions"
+     * Test "WebhookUpdatePayload"
      */
-    public function testCampaignOptions()
+    public function testWebhookUpdatePayload()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "delivery_optimization"
+     * Test attribute "name"
      */
-    public function testPropertyDeliveryOptimization()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "track_opens"
+     * Test attribute "url"
      */
-    public function testPropertyTrackOpens()
+    public function testPropertyUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "track_clicks"
+     * Test attribute "notify_once_per_email"
      */
-    public function testPropertyTrackClicks()
+    public function testPropertyNotifyOncePerEmail()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "schedule_for"
+     * Test attribute "notification_for_sent"
      */
-    public function testPropertyScheduleFor()
+    public function testPropertyNotificationForSent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "trigger_frequency"
+     * Test attribute "notification_for_opened"
      */
-    public function testPropertyTriggerFrequency()
+    public function testPropertyNotificationForOpened()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "trigger_count"
+     * Test attribute "notification_for_clicked"
      */
-    public function testPropertyTriggerCount()
+    public function testPropertyNotificationForClicked()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "split_options"
+     * Test attribute "notification_for_unsubscribed"
      */
-    public function testPropertySplitOptions()
+    public function testPropertyNotificationForUnsubscribed()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "send_at_local_time"
+     * Test attribute "notification_for_abuse_report"
      */
-    public function testPropertySendAtLocalTime()
+    public function testPropertyNotificationForAbuseReport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "notification_for_error"
+     */
+    public function testPropertyNotificationForError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_enabled"
+     */
+    public function testPropertyIsEnabled()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

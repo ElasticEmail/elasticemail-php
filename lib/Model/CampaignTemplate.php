@@ -403,7 +403,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reply_to
      *
-     * @param string|null $reply_to To what address should the recipients reply to (e.g. John Doe <email@domain.com>)
+     * @param string|null $reply_to To what addresses should the recipients reply to (e.g. John Doe <email@domain.com>)
      *
      * @return self
      */

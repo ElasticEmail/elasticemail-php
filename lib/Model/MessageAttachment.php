@@ -411,7 +411,7 @@ class MessageAttachment implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets size
      *
-     * @param int|null $size Size of your attachment (in bytes).
+     * @param int|null $size Size of the attachement in B
      *
      * @return self
      */

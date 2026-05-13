@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignOptions
+ * WebhookCreatePayload
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \ElasticEmail\ObjectSerializer;
 
 /**
- * CampaignOptions Class Doc Comment
+ * WebhookCreatePayload Class Doc Comment
  *
  * @category Class
- * @description Different send options for a Campaign
+ * @description Create webhook payload
  * @package  ElasticEmail
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CampaignOptions';
+    protected static $openAPIModelName = 'WebhookCreatePayload';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'delivery_optimization' => '\ElasticEmail\Model\DeliveryOptimizationType',
-        'track_opens' => 'bool',
-        'track_clicks' => 'bool',
-        'schedule_for' => '\DateTime',
-        'trigger_frequency' => 'float',
-        'trigger_count' => 'int',
-        'split_options' => '\ElasticEmail\Model\SplitOptions',
-        'send_at_local_time' => 'bool'
+        'name' => 'string',
+        'url' => 'string',
+        'notify_once_per_email' => 'bool',
+        'notification_for_sent' => 'bool',
+        'notification_for_opened' => 'bool',
+        'notification_for_clicked' => 'bool',
+        'notification_for_unsubscribed' => 'bool',
+        'notification_for_abuse_report' => 'bool',
+        'notification_for_error' => 'bool'
     ];
 
     /**
@@ -77,14 +78,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'delivery_optimization' => null,
-        'track_opens' => 'boolean',
-        'track_clicks' => 'boolean',
-        'schedule_for' => 'date-time',
-        'trigger_frequency' => 'double',
-        'trigger_count' => 'int32',
-        'split_options' => null,
-        'send_at_local_time' => 'boolean'
+        'name' => 'string',
+        'url' => 'string',
+        'notify_once_per_email' => 'boolean',
+        'notification_for_sent' => 'boolean',
+        'notification_for_opened' => 'boolean',
+        'notification_for_clicked' => 'boolean',
+        'notification_for_unsubscribed' => 'boolean',
+        'notification_for_abuse_report' => 'boolean',
+        'notification_for_error' => 'boolean'
     ];
 
     /**
@@ -93,14 +95,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_optimization' => false,
-        'track_opens' => true,
-        'track_clicks' => true,
-        'schedule_for' => true,
-        'trigger_frequency' => false,
-        'trigger_count' => false,
-        'split_options' => false,
-        'send_at_local_time' => true
+        'name' => false,
+        'url' => false,
+        'notify_once_per_email' => false,
+        'notification_for_sent' => false,
+        'notification_for_opened' => false,
+        'notification_for_clicked' => false,
+        'notification_for_unsubscribed' => false,
+        'notification_for_abuse_report' => false,
+        'notification_for_error' => false
     ];
 
     /**
@@ -189,14 +192,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'delivery_optimization' => 'DeliveryOptimization',
-        'track_opens' => 'TrackOpens',
-        'track_clicks' => 'TrackClicks',
-        'schedule_for' => 'ScheduleFor',
-        'trigger_frequency' => 'TriggerFrequency',
-        'trigger_count' => 'TriggerCount',
-        'split_options' => 'SplitOptions',
-        'send_at_local_time' => 'SendAtLocalTime'
+        'name' => 'Name',
+        'url' => 'URL',
+        'notify_once_per_email' => 'NotifyOncePerEmail',
+        'notification_for_sent' => 'NotificationForSent',
+        'notification_for_opened' => 'NotificationForOpened',
+        'notification_for_clicked' => 'NotificationForClicked',
+        'notification_for_unsubscribed' => 'NotificationForUnsubscribed',
+        'notification_for_abuse_report' => 'NotificationForAbuseReport',
+        'notification_for_error' => 'NotificationForError'
     ];
 
     /**
@@ -205,14 +209,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'delivery_optimization' => 'setDeliveryOptimization',
-        'track_opens' => 'setTrackOpens',
-        'track_clicks' => 'setTrackClicks',
-        'schedule_for' => 'setScheduleFor',
-        'trigger_frequency' => 'setTriggerFrequency',
-        'trigger_count' => 'setTriggerCount',
-        'split_options' => 'setSplitOptions',
-        'send_at_local_time' => 'setSendAtLocalTime'
+        'name' => 'setName',
+        'url' => 'setUrl',
+        'notify_once_per_email' => 'setNotifyOncePerEmail',
+        'notification_for_sent' => 'setNotificationForSent',
+        'notification_for_opened' => 'setNotificationForOpened',
+        'notification_for_clicked' => 'setNotificationForClicked',
+        'notification_for_unsubscribed' => 'setNotificationForUnsubscribed',
+        'notification_for_abuse_report' => 'setNotificationForAbuseReport',
+        'notification_for_error' => 'setNotificationForError'
     ];
 
     /**
@@ -221,14 +226,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'delivery_optimization' => 'getDeliveryOptimization',
-        'track_opens' => 'getTrackOpens',
-        'track_clicks' => 'getTrackClicks',
-        'schedule_for' => 'getScheduleFor',
-        'trigger_frequency' => 'getTriggerFrequency',
-        'trigger_count' => 'getTriggerCount',
-        'split_options' => 'getSplitOptions',
-        'send_at_local_time' => 'getSendAtLocalTime'
+        'name' => 'getName',
+        'url' => 'getUrl',
+        'notify_once_per_email' => 'getNotifyOncePerEmail',
+        'notification_for_sent' => 'getNotificationForSent',
+        'notification_for_opened' => 'getNotificationForOpened',
+        'notification_for_clicked' => 'getNotificationForClicked',
+        'notification_for_unsubscribed' => 'getNotificationForUnsubscribed',
+        'notification_for_abuse_report' => 'getNotificationForAbuseReport',
+        'notification_for_error' => 'getNotificationForError'
     ];
 
     /**
@@ -288,14 +294,15 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('delivery_optimization', $data ?? [], null);
-        $this->setIfExists('track_opens', $data ?? [], null);
-        $this->setIfExists('track_clicks', $data ?? [], null);
-        $this->setIfExists('schedule_for', $data ?? [], null);
-        $this->setIfExists('trigger_frequency', $data ?? [], null);
-        $this->setIfExists('trigger_count', $data ?? [], null);
-        $this->setIfExists('split_options', $data ?? [], null);
-        $this->setIfExists('send_at_local_time', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('notify_once_per_email', $data ?? [], null);
+        $this->setIfExists('notification_for_sent', $data ?? [], null);
+        $this->setIfExists('notification_for_opened', $data ?? [], null);
+        $this->setIfExists('notification_for_clicked', $data ?? [], null);
+        $this->setIfExists('notification_for_unsubscribed', $data ?? [], null);
+        $this->setIfExists('notification_for_abuse_report', $data ?? [], null);
+        $this->setIfExists('notification_for_error', $data ?? [], null);
     }
 
     /**
@@ -325,6 +332,12 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -341,245 +354,244 @@ class CampaignOptions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets delivery_optimization
+     * Gets name
      *
-     * @return \ElasticEmail\Model\DeliveryOptimizationType|null
+     * @return string
      */
-    public function getDeliveryOptimization()
+    public function getName()
     {
-        return $this->container['delivery_optimization'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets delivery_optimization
+     * Sets name
      *
-     * @param \ElasticEmail\Model\DeliveryOptimizationType|null $delivery_optimization delivery_optimization
+     * @param string $name Filename
      *
      * @return self
      */
-    public function setDeliveryOptimization($delivery_optimization)
+    public function setName($name)
     {
-        if (is_null($delivery_optimization)) {
-            throw new \InvalidArgumentException('non-nullable delivery_optimization cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['delivery_optimization'] = $delivery_optimization;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets track_opens
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url URL of notification.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets notify_once_per_email
      *
      * @return bool|null
      */
-    public function getTrackOpens()
+    public function getNotifyOncePerEmail()
     {
-        return $this->container['track_opens'];
+        return $this->container['notify_once_per_email'];
     }
 
     /**
-     * Sets track_opens
+     * Sets notify_once_per_email
      *
-     * @param bool|null $track_opens Should the opens be tracked? If no value has been provided, Account's default setting will be used.
+     * @param bool|null $notify_once_per_email notify_once_per_email
      *
      * @return self
      */
-    public function setTrackOpens($track_opens)
+    public function setNotifyOncePerEmail($notify_once_per_email)
     {
-        if (is_null($track_opens)) {
-            array_push($this->openAPINullablesSetToNull, 'track_opens');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('track_opens', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($notify_once_per_email)) {
+            throw new \InvalidArgumentException('non-nullable notify_once_per_email cannot be null');
         }
-        $this->container['track_opens'] = $track_opens;
+        $this->container['notify_once_per_email'] = $notify_once_per_email;
 
         return $this;
     }
 
     /**
-     * Gets track_clicks
+     * Gets notification_for_sent
      *
      * @return bool|null
      */
-    public function getTrackClicks()
+    public function getNotificationForSent()
     {
-        return $this->container['track_clicks'];
+        return $this->container['notification_for_sent'];
     }
 
     /**
-     * Sets track_clicks
+     * Sets notification_for_sent
      *
-     * @param bool|null $track_clicks Should the clicks be tracked? If no value has been provided, Account's default setting will be used.
+     * @param bool|null $notification_for_sent notification_for_sent
      *
      * @return self
      */
-    public function setTrackClicks($track_clicks)
+    public function setNotificationForSent($notification_for_sent)
     {
-        if (is_null($track_clicks)) {
-            array_push($this->openAPINullablesSetToNull, 'track_clicks');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('track_clicks', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($notification_for_sent)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_sent cannot be null');
         }
-        $this->container['track_clicks'] = $track_clicks;
+        $this->container['notification_for_sent'] = $notification_for_sent;
 
         return $this;
     }
 
     /**
-     * Gets schedule_for
-     *
-     * @return \DateTime|null
-     */
-    public function getScheduleFor()
-    {
-        return $this->container['schedule_for'];
-    }
-
-    /**
-     * Sets schedule_for
-     *
-     * @param \DateTime|null $schedule_for Date when this Campaign is scheduled to be sent on
-     *
-     * @return self
-     */
-    public function setScheduleFor($schedule_for)
-    {
-        if (is_null($schedule_for)) {
-            array_push($this->openAPINullablesSetToNull, 'schedule_for');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('schedule_for', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['schedule_for'] = $schedule_for;
-
-        return $this;
-    }
-
-    /**
-     * Gets trigger_frequency
-     *
-     * @return float|null
-     */
-    public function getTriggerFrequency()
-    {
-        return $this->container['trigger_frequency'];
-    }
-
-    /**
-     * Sets trigger_frequency
-     *
-     * @param float|null $trigger_frequency How often (in minutes) to send the campaign
-     *
-     * @return self
-     */
-    public function setTriggerFrequency($trigger_frequency)
-    {
-        if (is_null($trigger_frequency)) {
-            throw new \InvalidArgumentException('non-nullable trigger_frequency cannot be null');
-        }
-        $this->container['trigger_frequency'] = $trigger_frequency;
-
-        return $this;
-    }
-
-    /**
-     * Gets trigger_count
-     *
-     * @return int|null
-     */
-    public function getTriggerCount()
-    {
-        return $this->container['trigger_count'];
-    }
-
-    /**
-     * Sets trigger_count
-     *
-     * @param int|null $trigger_count How many times send the campaign
-     *
-     * @return self
-     */
-    public function setTriggerCount($trigger_count)
-    {
-        if (is_null($trigger_count)) {
-            throw new \InvalidArgumentException('non-nullable trigger_count cannot be null');
-        }
-        $this->container['trigger_count'] = $trigger_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets split_options
-     *
-     * @return \ElasticEmail\Model\SplitOptions|null
-     */
-    public function getSplitOptions()
-    {
-        return $this->container['split_options'];
-    }
-
-    /**
-     * Sets split_options
-     *
-     * @param \ElasticEmail\Model\SplitOptions|null $split_options split_options
-     *
-     * @return self
-     */
-    public function setSplitOptions($split_options)
-    {
-        if (is_null($split_options)) {
-            throw new \InvalidArgumentException('non-nullable split_options cannot be null');
-        }
-        $this->container['split_options'] = $split_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_at_local_time
+     * Gets notification_for_opened
      *
      * @return bool|null
      */
-    public function getSendAtLocalTime()
+    public function getNotificationForOpened()
     {
-        return $this->container['send_at_local_time'];
+        return $this->container['notification_for_opened'];
     }
 
     /**
-     * Sets send_at_local_time
+     * Sets notification_for_opened
      *
-     * @param bool|null $send_at_local_time Send email at local time of contact.
+     * @param bool|null $notification_for_opened notification_for_opened
      *
      * @return self
      */
-    public function setSendAtLocalTime($send_at_local_time)
+    public function setNotificationForOpened($notification_for_opened)
     {
-        if (is_null($send_at_local_time)) {
-            array_push($this->openAPINullablesSetToNull, 'send_at_local_time');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('send_at_local_time', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($notification_for_opened)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_opened cannot be null');
         }
-        $this->container['send_at_local_time'] = $send_at_local_time;
+        $this->container['notification_for_opened'] = $notification_for_opened;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_for_clicked
+     *
+     * @return bool|null
+     */
+    public function getNotificationForClicked()
+    {
+        return $this->container['notification_for_clicked'];
+    }
+
+    /**
+     * Sets notification_for_clicked
+     *
+     * @param bool|null $notification_for_clicked notification_for_clicked
+     *
+     * @return self
+     */
+    public function setNotificationForClicked($notification_for_clicked)
+    {
+        if (is_null($notification_for_clicked)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_clicked cannot be null');
+        }
+        $this->container['notification_for_clicked'] = $notification_for_clicked;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_for_unsubscribed
+     *
+     * @return bool|null
+     */
+    public function getNotificationForUnsubscribed()
+    {
+        return $this->container['notification_for_unsubscribed'];
+    }
+
+    /**
+     * Sets notification_for_unsubscribed
+     *
+     * @param bool|null $notification_for_unsubscribed notification_for_unsubscribed
+     *
+     * @return self
+     */
+    public function setNotificationForUnsubscribed($notification_for_unsubscribed)
+    {
+        if (is_null($notification_for_unsubscribed)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_unsubscribed cannot be null');
+        }
+        $this->container['notification_for_unsubscribed'] = $notification_for_unsubscribed;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_for_abuse_report
+     *
+     * @return bool|null
+     */
+    public function getNotificationForAbuseReport()
+    {
+        return $this->container['notification_for_abuse_report'];
+    }
+
+    /**
+     * Sets notification_for_abuse_report
+     *
+     * @param bool|null $notification_for_abuse_report notification_for_abuse_report
+     *
+     * @return self
+     */
+    public function setNotificationForAbuseReport($notification_for_abuse_report)
+    {
+        if (is_null($notification_for_abuse_report)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_abuse_report cannot be null');
+        }
+        $this->container['notification_for_abuse_report'] = $notification_for_abuse_report;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_for_error
+     *
+     * @return bool|null
+     */
+    public function getNotificationForError()
+    {
+        return $this->container['notification_for_error'];
+    }
+
+    /**
+     * Sets notification_for_error
+     *
+     * @param bool|null $notification_for_error notification_for_error
+     *
+     * @return self
+     */
+    public function setNotificationForError($notification_for_error)
+    {
+        if (is_null($notification_for_error)) {
+            throw new \InvalidArgumentException('non-nullable notification_for_error cannot be null');
+        }
+        $this->container['notification_for_error'] = $notification_for_error;
 
         return $this;
     }

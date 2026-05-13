@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **trigger_frequency** | **float** | How often (in minutes) to send the campaign | [optional]
 **trigger_count** | **int** | How many times send the campaign | [optional]
 **split_options** | [**\ElasticEmail\Model\SplitOptions**](SplitOptions.md) |  | [optional]
+**send_at_local_time** | **bool** | Send email at local time of contact. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
