@@ -4,6 +4,7 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**subaccountsByEmailApikeyGet()**](SubAccountsApi.md#subaccountsByEmailApikeyGet) | **GET** /subaccounts/{email}/apikey | Get SubAccount ApiKey |
 | [**subaccountsByEmailCreditsPatch()**](SubAccountsApi.md#subaccountsByEmailCreditsPatch) | **PATCH** /subaccounts/{email}/credits | Add, Subtract Email Credits |
 | [**subaccountsByEmailDelete()**](SubAccountsApi.md#subaccountsByEmailDelete) | **DELETE** /subaccounts/{email} | Delete SubAccount |
 | [**subaccountsByEmailGet()**](SubAccountsApi.md#subaccountsByEmailGet) | **GET** /subaccounts/{email} | Load SubAccount |
@@ -11,6 +12,68 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 | [**subaccountsGet()**](SubAccountsApi.md#subaccountsGet) | **GET** /subaccounts | Load SubAccounts |
 | [**subaccountsPost()**](SubAccountsApi.md#subaccountsPost) | **POST** /subaccounts | Add SubAccount |
 
+
+## `subaccountsByEmailApikeyGet()`
+
+```php
+subaccountsByEmailApikeyGet($email): string
+```
+
+Get SubAccount ApiKey
+
+Returns API key token for the specified SubAccount.             The default API key created for the subaccount has a 48-hour expiration period. Required Access Level: ModifySubAccounts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+
+
+$apiInstance = new ElasticEmail\Api\SubAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$email = mail@example.com; // string | Email address of Sub-Account
+
+try {
+    $result = $apiInstance->subaccountsByEmailApikeyGet($email);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubAccountsApi->subaccountsByEmailApikeyGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email** | **string**| Email address of Sub-Account | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `subaccountsByEmailCreditsPatch()`
 
@@ -334,7 +397,7 @@ subaccountsPost($subaccount_payload): \ElasticEmail\Model\SubAccountInfo
 
 Add SubAccount
 
-Add a new SubAccount to your Account. To receive an access token for this SubAccount, make a POST security/apikeys request using the 'subaccount' parameter. Required Access Level: ModifySubAccounts
+Add a new SubAccount to your Account. To receive an access token for this SubAccount, make a POST security/apikeys request using the 'subaccount' parameter.             The default API key created for the subaccount has a 48-hour expiration period. Required Access Level: ModifySubAccounts
 
 ### Example
 

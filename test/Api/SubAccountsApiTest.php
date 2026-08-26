@@ -73,6 +73,18 @@ class SubAccountsApiTest extends TestCase
     }
 
     /**
+     * Test case for subaccountsByEmailApikeyGet
+     *
+     * Get SubAccount ApiKey.
+     *
+     */
+    public function testSubaccountsByEmailApikeyGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for subaccountsByEmailCreditsPatch
      *
      * Add, Subtract Email Credits.

@@ -180,6 +180,15 @@ class DomainDetailTest extends TestCase
     }
 
     /**
+     * Test attribute "certificate_expiry_date"
+     */
+    public function testPropertyCertificateExpiryDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "certificate_validation_error"
      */
     public function testPropertyCertificateValidationError()
@@ -225,6 +234,15 @@ class DomainDetailTest extends TestCase
     }
 
     /**
+     * Test attribute "was_ever_verified"
+     */
+    public function testPropertyWasEverVerified()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "is_marked_for_deletion"
      */
     public function testPropertyIsMarkedForDeletion()
@@ -237,6 +255,15 @@ class DomainDetailTest extends TestCase
      * Test attribute "ownership"
      */
     public function testPropertyOwnership()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "dkim_record"
+     */
+    public function testPropertyDkimRecord()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

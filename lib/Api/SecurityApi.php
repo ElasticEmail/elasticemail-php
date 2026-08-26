@@ -393,7 +393,7 @@ class SecurityApi
      * Load ApiKey
      *
      * @param  string $name Name of the ApiKey (required)
-     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysByNameGet'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
@@ -412,7 +412,7 @@ class SecurityApi
      * Load ApiKey
      *
      * @param  string $name Name of the ApiKey (required)
-     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysByNameGet'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
@@ -538,7 +538,7 @@ class SecurityApi
      * Load ApiKey
      *
      * @param  string $name Name of the ApiKey (required)
-     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysByNameGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -560,7 +560,7 @@ class SecurityApi
      * Load ApiKey
      *
      * @param  string $name Name of the ApiKey (required)
-     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysByNameGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -611,7 +611,7 @@ class SecurityApi
      * Create request for operation 'securityApikeysByNameGet'
      *
      * @param  string $name Name of the ApiKey (required)
-     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysByNameGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1052,7 +1052,7 @@ class SecurityApi
      *
      * List ApiKeys
      *
-     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysGet'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1070,7 +1070,7 @@ class SecurityApi
      *
      * List ApiKeys
      *
-     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysGet'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1195,7 +1195,7 @@ class SecurityApi
      *
      * List ApiKeys
      *
-     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1216,7 +1216,7 @@ class SecurityApi
      *
      * List ApiKeys
      *
-     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1266,7 +1266,7 @@ class SecurityApi
     /**
      * Create request for operation 'securityApikeysGet'
      *
-     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded (optional)
+     * @param  string|null $subaccount Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['securityApikeysGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

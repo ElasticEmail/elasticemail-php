@@ -51,6 +51,8 @@ class CertificateValidationStatus
 
     public const NOT_VALID = 'NotValid';
 
+    public const IN_PROGRESS = 'InProgress';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -61,7 +63,8 @@ class CertificateValidationStatus
             self::ERROR_OCCURED,
             self::CERT_NOT_SET,
             self::VALID,
-            self::NOT_VALID
+            self::NOT_VALID,
+            self::IN_PROGRESS
         ];
     }
 }

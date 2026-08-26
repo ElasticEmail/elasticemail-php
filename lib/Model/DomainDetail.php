@@ -70,13 +70,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => '\ElasticEmail\Model\TrackingType',
         'tracking_status' => '\ElasticEmail\Model\TrackingValidationStatus',
         'certificate_status' => '\ElasticEmail\Model\CertificateValidationStatus',
+        'certificate_expiry_date' => '\DateTime',
         'certificate_validation_error' => 'string',
         'tracking_type_user_request' => '\ElasticEmail\Model\TrackingType',
         'verp' => 'bool',
         'custom_bounces_domain' => 'string',
         'is_custom_bounces_domain_default' => 'bool',
+        'was_ever_verified' => 'bool',
         'is_marked_for_deletion' => 'bool',
-        'ownership' => '\ElasticEmail\Model\DomainOwner'
+        'ownership' => '\ElasticEmail\Model\DomainOwner',
+        'dkim_record' => '\ElasticEmail\Model\DKIMRecord'
     ];
 
     /**
@@ -98,13 +101,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'tracking_status' => null,
         'certificate_status' => null,
+        'certificate_expiry_date' => 'date-time',
         'certificate_validation_error' => 'string',
         'tracking_type_user_request' => null,
         'verp' => 'boolean',
         'custom_bounces_domain' => 'string',
         'is_custom_bounces_domain_default' => 'boolean',
+        'was_ever_verified' => 'boolean',
         'is_marked_for_deletion' => 'boolean',
-        'ownership' => null
+        'ownership' => null,
+        'dkim_record' => null
     ];
 
     /**
@@ -124,13 +130,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => false,
         'tracking_status' => false,
         'certificate_status' => false,
+        'certificate_expiry_date' => true,
         'certificate_validation_error' => false,
         'tracking_type_user_request' => false,
         'verp' => false,
         'custom_bounces_domain' => false,
         'is_custom_bounces_domain_default' => false,
+        'was_ever_verified' => false,
         'is_marked_for_deletion' => false,
-        'ownership' => false
+        'ownership' => false,
+        'dkim_record' => false
     ];
 
     /**
@@ -230,13 +239,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'Type',
         'tracking_status' => 'TrackingStatus',
         'certificate_status' => 'CertificateStatus',
+        'certificate_expiry_date' => 'CertificateExpiryDate',
         'certificate_validation_error' => 'CertificateValidationError',
         'tracking_type_user_request' => 'TrackingTypeUserRequest',
         'verp' => 'VERP',
         'custom_bounces_domain' => 'CustomBouncesDomain',
         'is_custom_bounces_domain_default' => 'IsCustomBouncesDomainDefault',
+        'was_ever_verified' => 'WasEverVerified',
         'is_marked_for_deletion' => 'IsMarkedForDeletion',
-        'ownership' => 'Ownership'
+        'ownership' => 'Ownership',
+        'dkim_record' => 'DKIMRecord'
     ];
 
     /**
@@ -256,13 +268,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'tracking_status' => 'setTrackingStatus',
         'certificate_status' => 'setCertificateStatus',
+        'certificate_expiry_date' => 'setCertificateExpiryDate',
         'certificate_validation_error' => 'setCertificateValidationError',
         'tracking_type_user_request' => 'setTrackingTypeUserRequest',
         'verp' => 'setVerp',
         'custom_bounces_domain' => 'setCustomBouncesDomain',
         'is_custom_bounces_domain_default' => 'setIsCustomBouncesDomainDefault',
+        'was_ever_verified' => 'setWasEverVerified',
         'is_marked_for_deletion' => 'setIsMarkedForDeletion',
-        'ownership' => 'setOwnership'
+        'ownership' => 'setOwnership',
+        'dkim_record' => 'setDkimRecord'
     ];
 
     /**
@@ -282,13 +297,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'tracking_status' => 'getTrackingStatus',
         'certificate_status' => 'getCertificateStatus',
+        'certificate_expiry_date' => 'getCertificateExpiryDate',
         'certificate_validation_error' => 'getCertificateValidationError',
         'tracking_type_user_request' => 'getTrackingTypeUserRequest',
         'verp' => 'getVerp',
         'custom_bounces_domain' => 'getCustomBouncesDomain',
         'is_custom_bounces_domain_default' => 'getIsCustomBouncesDomainDefault',
+        'was_ever_verified' => 'getWasEverVerified',
         'is_marked_for_deletion' => 'getIsMarkedForDeletion',
-        'ownership' => 'getOwnership'
+        'ownership' => 'getOwnership',
+        'dkim_record' => 'getDkimRecord'
     ];
 
     /**
@@ -359,13 +377,16 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('tracking_status', $data ?? [], null);
         $this->setIfExists('certificate_status', $data ?? [], null);
+        $this->setIfExists('certificate_expiry_date', $data ?? [], null);
         $this->setIfExists('certificate_validation_error', $data ?? [], null);
         $this->setIfExists('tracking_type_user_request', $data ?? [], null);
         $this->setIfExists('verp', $data ?? [], null);
         $this->setIfExists('custom_bounces_domain', $data ?? [], null);
         $this->setIfExists('is_custom_bounces_domain_default', $data ?? [], null);
+        $this->setIfExists('was_ever_verified', $data ?? [], null);
         $this->setIfExists('is_marked_for_deletion', $data ?? [], null);
         $this->setIfExists('ownership', $data ?? [], null);
+        $this->setIfExists('dkim_record', $data ?? [], null);
     }
 
     /**
@@ -708,6 +729,40 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets certificate_expiry_date
+     *
+     * @return \DateTime|null
+     */
+    public function getCertificateExpiryDate()
+    {
+        return $this->container['certificate_expiry_date'];
+    }
+
+    /**
+     * Sets certificate_expiry_date
+     *
+     * @param \DateTime|null $certificate_expiry_date certificate_expiry_date
+     *
+     * @return self
+     */
+    public function setCertificateExpiryDate($certificate_expiry_date)
+    {
+        if (is_null($certificate_expiry_date)) {
+            array_push($this->openAPINullablesSetToNull, 'certificate_expiry_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('certificate_expiry_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['certificate_expiry_date'] = $certificate_expiry_date;
+
+        return $this;
+    }
+
+    /**
      * Gets certificate_validation_error
      *
      * @return string|null
@@ -843,6 +898,33 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets was_ever_verified
+     *
+     * @return bool|null
+     */
+    public function getWasEverVerified()
+    {
+        return $this->container['was_ever_verified'];
+    }
+
+    /**
+     * Sets was_ever_verified
+     *
+     * @param bool|null $was_ever_verified was_ever_verified
+     *
+     * @return self
+     */
+    public function setWasEverVerified($was_ever_verified)
+    {
+        if (is_null($was_ever_verified)) {
+            throw new \InvalidArgumentException('non-nullable was_ever_verified cannot be null');
+        }
+        $this->container['was_ever_verified'] = $was_ever_verified;
+
+        return $this;
+    }
+
+    /**
      * Gets is_marked_for_deletion
      *
      * @return bool|null
@@ -892,6 +974,33 @@ class DomainDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ownership cannot be null');
         }
         $this->container['ownership'] = $ownership;
+
+        return $this;
+    }
+
+    /**
+     * Gets dkim_record
+     *
+     * @return \ElasticEmail\Model\DKIMRecord|null
+     */
+    public function getDkimRecord()
+    {
+        return $this->container['dkim_record'];
+    }
+
+    /**
+     * Sets dkim_record
+     *
+     * @param \ElasticEmail\Model\DKIMRecord|null $dkim_record dkim_record
+     *
+     * @return self
+     */
+    public function setDkimRecord($dkim_record)
+    {
+        if (is_null($dkim_record)) {
+            throw new \InvalidArgumentException('non-nullable dkim_record cannot be null');
+        }
+        $this->container['dkim_record'] = $dkim_record;
 
         return $this;
     }

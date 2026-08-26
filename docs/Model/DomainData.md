@@ -16,12 +16,15 @@ Name | Type | Description | Notes
 **type** | [**\ElasticEmail\Model\TrackingType**](TrackingType.md) |  | [optional]
 **tracking_status** | [**\ElasticEmail\Model\TrackingValidationStatus**](TrackingValidationStatus.md) |  | [optional]
 **certificate_status** | [**\ElasticEmail\Model\CertificateValidationStatus**](CertificateValidationStatus.md) |  | [optional]
+**certificate_expiry_date** | **\DateTime** |  | [optional]
 **certificate_validation_error** | **string** |  | [optional]
 **tracking_type_user_request** | [**\ElasticEmail\Model\TrackingType**](TrackingType.md) |  | [optional]
 **verp** | **bool** |  | [optional]
 **custom_bounces_domain** | **string** |  | [optional]
 **is_custom_bounces_domain_default** | **bool** |  | [optional]
+**was_ever_verified** | **bool** |  | [optional]
 **is_marked_for_deletion** | **bool** |  | [optional]
 **ownership** | [**\ElasticEmail\Model\DomainOwner**](DomainOwner.md) |  | [optional]
+**dkim_record** | [**\ElasticEmail\Model\DKIMRecord**](DKIMRecord.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

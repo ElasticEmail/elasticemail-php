@@ -4,6 +4,7 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**campaignsAutomationByNameTriggerPost()**](CampaignsApi.md#campaignsAutomationByNameTriggerPost) | **POST** /campaigns/automation/{name}/trigger | Trigger Automation for Contact |
 | [**campaignsByNameDelete()**](CampaignsApi.md#campaignsByNameDelete) | **DELETE** /campaigns/{name} | Delete Campaign |
 | [**campaignsByNameGet()**](CampaignsApi.md#campaignsByNameGet) | **GET** /campaigns/{name} | Load Campaign |
 | [**campaignsByNamePausePut()**](CampaignsApi.md#campaignsByNamePausePut) | **PUT** /campaigns/{name}/pause | Pause Campaign |
@@ -11,6 +12,69 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 | [**campaignsGet()**](CampaignsApi.md#campaignsGet) | **GET** /campaigns | Load Campaigns |
 | [**campaignsPost()**](CampaignsApi.md#campaignsPost) | **POST** /campaigns | Add Campaign |
 
+
+## `campaignsAutomationByNameTriggerPost()`
+
+```php
+campaignsAutomationByNameTriggerPost($name, $contact_email)
+```
+
+Trigger Automation for Contact
+
+Manually trigger an Automation for a contact. Required Access Level: ModifyAutomations
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+
+
+$apiInstance = new ElasticEmail\Api\CampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$name = 'name_example'; // string
+$contact_email = 'contact_email_example'; // string
+
+try {
+    $apiInstance->campaignsAutomationByNameTriggerPost($name, $contact_email);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignsApi->campaignsAutomationByNameTriggerPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **name** | **string**|  | |
+| **contact_email** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `campaignsByNameDelete()`
 

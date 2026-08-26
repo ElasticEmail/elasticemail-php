@@ -48,7 +48,7 @@ class EventType
 
     public const FAILED_ATTEMPT = 'FailedAttempt';
 
-    public const BOUNCE = 'Bounce';
+    public const ERROR = 'Error';
 
     public const SENT = 'Sent';
 
@@ -60,6 +60,12 @@ class EventType
 
     public const COMPLAINT = 'Complaint';
 
+    public const BOUNCE = 'Bounce';
+
+    public const TRANSACTIONAL_UNSUBSCRIBE = 'TransactionalUnsubscribe';
+
+    public const SUPPRESS = 'Suppress';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -69,12 +75,15 @@ class EventType
         return [
             self::SUBMISSION,
             self::FAILED_ATTEMPT,
-            self::BOUNCE,
+            self::ERROR,
             self::SENT,
             self::OPEN,
             self::CLICK,
             self::UNSUBSCRIBE,
-            self::COMPLAINT
+            self::COMPLAINT,
+            self::BOUNCE,
+            self::TRANSACTIONAL_UNSUBSCRIBE,
+            self::SUPPRESS
         ];
     }
 }

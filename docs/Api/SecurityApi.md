@@ -109,7 +109,7 @@ $apiInstance = new ElasticEmail\Api\SecurityApi(
     $config
 );
 $name = 'name_example'; // string | Name of the ApiKey
-$subaccount = 'subaccount_example'; // string | Email of the subaccount of which ApiKey should be loaded
+$subaccount = 'subaccount_example'; // string | Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period.
 
 try {
     $result = $apiInstance->securityApikeysByNameGet($name, $subaccount);
@@ -124,7 +124,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **name** | **string**| Name of the ApiKey | |
-| **subaccount** | **string**| Email of the subaccount of which ApiKey should be loaded | [optional] |
+| **subaccount** | **string**| Email of the subaccount of which ApiKey should be loaded. The default API key created for the subaccount has a 48-hour expiration period. | [optional] |
 
 ### Return type
 
@@ -236,7 +236,7 @@ $apiInstance = new ElasticEmail\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subaccount = 'subaccount_example'; // string | Email of the subaccount of which ApiKeys should be loaded
+$subaccount = 'subaccount_example'; // string | Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period.
 
 try {
     $result = $apiInstance->securityApikeysGet($subaccount);
@@ -250,7 +250,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subaccount** | **string**| Email of the subaccount of which ApiKeys should be loaded | [optional] |
+| **subaccount** | **string**| Email of the subaccount of which ApiKeys should be loaded. The default API key created for the subaccount has a 48-hour expiration period. | [optional] |
 
 ### Return type
 
