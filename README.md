@@ -1,113 +1,219 @@
-# ElasticEmail
+<div align="center">
 
-This API is based on the REST API architecture, allowing the user to easily manage their data with this resource-based approach.
+<img src=".github/ee-logo.png" alt="Elastic Email" width="96" />
 
-Every API call is established on which specific request type (GET, POST, PUT, DELETE) will be used.
+# Elastic Email PHP SDK
 
-The API has a limit of 20 concurrent connections and a hard timeout of 600 seconds per request.
+The official PHP client library for the [Elastic Email](https://elasticemail.com) REST API v4.
 
-To start using this API, you will need your Access Token (available <a target='_blank' href='https://app.elasticemail.com/marketing/settings/new/manage-api'>here</a>). Remember to keep it safe. Required access levels are listed in the given request’s description.
+[![Packagist](https://img.shields.io/packagist/v/elasticemail/elasticemail-php?logo=packagist&logoColor=white&label=Packagist&color=F28D1A)](https://packagist.org/packages/elasticemail/elasticemail-php)
+[![Packagist downloads](https://img.shields.io/packagist/dt/elasticemail/elasticemail-php?logo=packagist&logoColor=white&label=downloads&color=F28D1A)](https://packagist.org/packages/elasticemail/elasticemail-php/stats)
+[![PHP](https://img.shields.io/badge/PHP-7.4%20%7C%208.x-777BB4?logo=php&logoColor=white)](https://www.php.net/supported-versions.php)
+[![API](https://img.shields.io/badge/API-v4-0A7BBB)](https://elasticemail.com/developers/api-documentation/rest-api)
+[![OpenAPI Generator](https://img.shields.io/badge/generated%20by-OpenAPI%20Generator-6BA539?logo=openapiinitiative&logoColor=white)](https://openapi-generator.tech)
+[![License: MIT](https://img.shields.io/github/license/ElasticEmail/elasticemail-php?color=yellow)](LICENSE)
 
-Downloadable library clients can be found in our Github repository <a target='_blank' href='https://github.com/ElasticEmail?tab=repositories&q=%22rest+api%22+in%3Areadme'>here</a>
+[![Latest release](https://img.shields.io/github/v/release/ElasticEmail/elasticemail-php?logo=github&label=release)](https://github.com/ElasticEmail/elasticemail-php/releases)
+[![Last commit](https://img.shields.io/github/last-commit/ElasticEmail/elasticemail-php?logo=github)](https://github.com/ElasticEmail/elasticemail-php/commits/master)
+[![Open issues](https://img.shields.io/github/issues/ElasticEmail/elasticemail-php?logo=github)](https://github.com/ElasticEmail/elasticemail-php/issues)
+[![GitHub stars](https://img.shields.io/github/stars/ElasticEmail/elasticemail-php?style=flat&logo=github)](https://github.com/ElasticEmail/elasticemail-php/stargazers)
 
+[Installation](#installation) •
+[Quick start](#quick-start) •
+[Examples](#more-examples) •
+[API reference](#api-reference) •
+[Models](#models) •
+[Contributing](#contributing)
 
-## Installation & Usage
+</div>
 
-### Requirements
+---
 
-PHP 7.4 and later.
-Should also work with PHP 8.0.
+## Features
 
-### Composer
+- **Transactional and bulk email.** Send single messages, bulk campaigns or CSV merge-file sends.
+- **Contacts, lists and segments.** Add, update, import, export and bulk-delete contacts.
+- **Campaigns and automations.** Create, update, pause and trigger automations for a contact.
+- **Templates, files and attachments.** Manage templates and uploaded files.
+- **Domains.** Verify sending domains and check SPF, DKIM, tracking and certificate status.
+- **Webhooks and inbound routes.** Receive delivery events and route incoming mail.
+- **Statistics, events and suppressions.** Track delivery, bounces, complaints and unsubscribes.
+- **Subaccounts and security.** Manage subaccounts and API keys.
+- **Sync and async.** Every endpoint has a blocking method and an `…Async` method that returns a Guzzle promise.
 
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+## Requirements
+
+| Requirement | Version |
+| --- | --- |
+| PHP | 7.4 or later (PHP 8.x supported) |
+| Extensions | `curl`, `json`, `mbstring` |
+| HTTP client | [Guzzle](https://github.com/guzzle/guzzle) 7.3 or later |
+
+You'll also need an Elastic Email **API key**. You can create one in your [API settings](https://app.elasticemail.com/marketing/settings/new/manage-api). Each endpoint's documentation lists the access level it needs.
+
+## Installation
+
+Install the [`elasticemail/elasticemail-php`](https://packagist.org/packages/elasticemail/elasticemail-php) package from Packagist with [Composer](https://getcomposer.org/):
+
+```bash
+composer require elasticemail/elasticemail-php
+```
+
+Or add it to your `composer.json`:
 
 ```json
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/elasticemail/elasticemail-php.git"
-    }
-  ],
   "require": {
-    "elasticemail/elasticemail-php": "*@dev"
+    "elasticemail/elasticemail-php": "^4.2"
   }
 }
 ```
 
-Then run `composer install`
-
-### Manual Installation
-
-Download the files and include `autoload.php`:
+Composer installs the dependencies ([guzzlehttp/guzzle](https://packagist.org/packages/guzzlehttp/guzzle) and [guzzlehttp/psr7](https://packagist.org/packages/guzzlehttp/psr7)) for you. Then load Composer's autoloader:
 
 ```php
-<?php
-require_once('/path/to/ElasticEmail/vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
 ```
 
-## Getting Started
+## Quick start
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+### Configure the client
 
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
 
+use ElasticEmail\Api\EmailsApi;
+use ElasticEmail\ApiException;
+use ElasticEmail\Configuration;
+use ElasticEmail\Model;
 
+$config = Configuration::getDefaultConfiguration()
+    ->setApiKey('X-ElasticEmail-ApiKey', getenv('ELASTICEMAIL_API_KEY'));
+```
 
-// Configure API key authorization: apikey
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+> [!TIP]
+> Keep your API key out of source code. Load it from an environment variable, a `.env` file kept out of version control or a secrets manager.
 
+### Send a transactional email
 
-$apiInstance = new ElasticEmail\Api\CampaignsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$name = 'name_example'; // string
-$contact_email = 'contact_email_example'; // string
+```php
+$emails = new EmailsApi(new GuzzleHttp\Client(), $config);
+
+$message = new Model\EmailTransactionalMessageData([
+    'recipients' => new Model\TransactionalRecipient([
+        'to' => ['john.doe@example.com'],
+    ]),
+    'content' => new Model\EmailContent([
+        'from' => 'My App <no-reply@yourdomain.com>',
+        'subject' => 'Welcome aboard!',
+        'body' => [
+            new Model\BodyPart([
+                'content_type' => Model\BodyContentType::HTML,
+                'content' => '<h1>Hello!</h1><p>Thanks for signing up.</p>',
+            ]),
+            new Model\BodyPart([
+                'content_type' => Model\BodyContentType::PLAIN_TEXT,
+                'content' => 'Hello! Thanks for signing up.',
+            ]),
+        ],
+    ]),
+]);
 
 try {
-    $apiInstance->campaignsAutomationByNameTriggerPost($name, $contact_email);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignsApi->campaignsAutomationByNameTriggerPost: ', $e->getMessage(), PHP_EOL;
+    $result = $emails->emailsTransactionalPost($message);
+    echo "Sent. TransactionID: {$result->getTransactionId()}, MessageID: {$result->getMessageId()}", PHP_EOL;
+} catch (ApiException $e) {
+    echo "Elastic Email API error {$e->getCode()}: {$e->getMessage()}", PHP_EOL;
 }
-
 ```
 
+The `from` address must use a domain you've verified in your Elastic Email account.
 
-## Examples
+### Send from a template with merge fields
 
-Function ||
------------- | ------------- 
-[addCampaign](examples/functions/addCampaign.php) | [readme](examples/functions/addCampaign.md)
-[addBulkContacts](examples/functions/addBulkContacts.php) | [readme](examples/functions/addBulkContacts.md)
-[addSingleContact](examples/functions/addSingleContact.php) | [readme](examples/functions/addSingleContact.md)
-[addList](examples/functions/addList.php) | [readme](examples/functions/addList.md)
-[addTemplate](examples/functions/addTemplate.php) | [readme](examples/functions/addTemplate.md)
-[deleteCampaign](examples/functions/deleteCampaign.php) | [readme](examples/functions/deleteCampaign.md)
-[deleteContact](examples/functions/deleteContact.php) | [readme](examples/functions/deleteContact.md)
-[deleteList](examples/functions/deleteList.php) | [readme](examples/functions/deleteList.md)
-[exportContacts](examples/functions/exportContacts.php) | [readme](examples/functions/exportContacts.md)
-[loadCampaign](examples/functions/loadCampaign.php) | [readme](examples/functions/loadCampaign.md)
-[loadCampaigns](examples/functions/loadCampaigns.php) | [readme](examples/functions/loadCampaigns.md)
-[loadCampaignsStats](examples/functions/loadCampaignsStats.php) | [readme](examples/functions/loadCampaignsStats.md)
-[loadChannelsStats](examples/functions/loadChannelsStats.php) | [readme](examples/functions/loadChannelsStats.md)
-[loadList](examples/functions/loadList.php) | [readme](examples/functions/loadList.md)
-[loadStatistics](examples/functions/loadStatistics.php) | [readme](examples/functions/loadStatistics.md)
-[loadTemplate](examples/functions/loadTemplate.php) | [readme](examples/functions/loadTemplate.md)
-[sendBulkEmails](examples/functions/sendBulkEmails.php) | [readme](examples/functions/sendBulkEmails.md)
-[sendTransactionalEmails](examples/functions/sendTransactionalEmails.php) | [readme](examples/functions/sendTransactionalEmails.md)
-[updateCampaign](examples/functions/updateCampaign.php) | [readme](examples/functions/updateCampaign.md)
+```php
+$message = new Model\EmailTransactionalMessageData([
+    'recipients' => new Model\TransactionalRecipient([
+        'to' => ['john.doe@example.com'],
+    ]),
+    'content' => new Model\EmailContent([
+        'from' => 'My App <no-reply@yourdomain.com>',
+        'template_name' => 'welcome-template',
+        'merge' => ['firstname' => 'John'],
+    ]),
+]);
 
-## API Endpoints
+$emails->emailsTransactionalPost($message);
+```
 
-All URIs are relative to *https://api.elasticemail.com/v4*
+### Using a proxy
+
+Pass any Guzzle options, such as a proxy or timeouts, to the HTTP client:
+
+```php
+$client = new GuzzleHttp\Client([
+    'proxy' => 'http://myProxyUrl:80/',
+    'timeout' => 600,
+]);
+
+$emails = new EmailsApi($client, $config);
+```
+
+## More examples
+
+More complete, runnable samples are in the **[Elastic Email examples repository](https://github.com/ElasticEmail/elasticemail-examples)**. It covers transactional email, SMTP, webhooks, inbound email, contacts and serverless platforms across 20+ languages and frameworks.
+
+- 🐘 [PHP examples](https://github.com/ElasticEmail/elasticemail-examples/tree/main/php-elasticemail-examples)
+- 📂 [All examples](https://github.com/ElasticEmail/elasticemail-examples)
+
+This repository also includes short snippets for common tasks in [`examples/functions`](examples/functions):
+
+<details>
+<summary><strong>Show snippets</strong></summary>
+
+| Snippet | Description |
+| --- | --- |
+| [addBulkContacts](examples/functions/addBulkContacts.php) | [readme](examples/functions/addBulkContacts.md) |
+| [addCampaign](examples/functions/addCampaign.php) | [readme](examples/functions/addCampaign.md) |
+| [addList](examples/functions/addList.php) | [readme](examples/functions/addList.md) |
+| [addSingleContact](examples/functions/addSingleContact.php) | [readme](examples/functions/addSingleContact.md) |
+| [addTemplate](examples/functions/addTemplate.php) | [readme](examples/functions/addTemplate.md) |
+| [deleteCampaign](examples/functions/deleteCampaign.php) | [readme](examples/functions/deleteCampaign.md) |
+| [deleteContact](examples/functions/deleteContact.php) | [readme](examples/functions/deleteContact.md) |
+| [deleteList](examples/functions/deleteList.php) | [readme](examples/functions/deleteList.md) |
+| [exportContacts](examples/functions/exportContacts.php) | [readme](examples/functions/exportContacts.md) |
+| [loadCampaign](examples/functions/loadCampaign.php) | [readme](examples/functions/loadCampaign.md) |
+| [loadCampaigns](examples/functions/loadCampaigns.php) | [readme](examples/functions/loadCampaigns.md) |
+| [loadCampaignsStats](examples/functions/loadCampaignsStats.php) | [readme](examples/functions/loadCampaignsStats.md) |
+| [loadChannelsStats](examples/functions/loadChannelsStats.php) | [readme](examples/functions/loadChannelsStats.md) |
+| [loadList](examples/functions/loadList.php) | [readme](examples/functions/loadList.md) |
+| [loadStatistics](examples/functions/loadStatistics.php) | [readme](examples/functions/loadStatistics.md) |
+| [loadTemplate](examples/functions/loadTemplate.php) | [readme](examples/functions/loadTemplate.md) |
+| [sendBulkEmails](examples/functions/sendBulkEmails.php) | [readme](examples/functions/sendBulkEmails.md) |
+| [sendTransactionalEmails](examples/functions/sendTransactionalEmails.php) | [readme](examples/functions/sendTransactionalEmails.md) |
+| [updateCampaign](examples/functions/updateCampaign.php) | [readme](examples/functions/updateCampaign.md) |
+
+</details>
+
+## Authentication
+
+| Scheme | Header | Used for |
+| --- | --- | --- |
+| `apikey` | `X-ElasticEmail-ApiKey` | All standard API calls |
+| `ApiKeyAuthCustomBranding` | `X-Auth-Token` | Custom-branding (white-label) accounts |
+
+## API limits
+
+- Up to **20 concurrent connections** per account
+- A hard timeout of **600 seconds** per request
+
+## API reference
+
+All URIs are relative to `https://api.elasticemail.com/v4`. The SDK covers **114 endpoints** across 16 API classes: `CampaignsApi`, `ContactsApi`, `DomainsApi`, `EmailsApi`, `EventsApi`, `FilesApi`, `InboundRouteApi`, `ListsApi`, `SecurityApi`, `SegmentsApi`, `StatisticsApi`, `SubAccountsApi`, `SuppressionsApi`, `TemplatesApi`, `VerificationsApi` and `WebhookApi`.
+
+<details>
+<summary><strong>Show all endpoints</strong></summary>
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -226,7 +332,12 @@ Class | Method | HTTP request | Description
 *WebhookApi* | [**webhookGet**](docs/Api/WebhookApi.md#webhookget) | **GET** /webhook | Load Webhooks
 *WebhookApi* | [**webhookPost**](docs/Api/WebhookApi.md#webhookpost) | **POST** /webhook | Add Webhook
 
+</details>
+
 ## Models
+
+<details>
+<summary><strong>Show all 98 models</strong></summary>
 
 - [AccessLevel](docs/Model/AccessLevel.md)
 - [AccountStatusEnum](docs/Model/AccountStatusEnum.md)
@@ -327,41 +438,49 @@ Class | Method | HTTP request | Description
 - [WebhookCreatePayload](docs/Model/WebhookCreatePayload.md)
 - [WebhookUpdatePayload](docs/Model/WebhookUpdatePayload.md)
 
-## Authorization
-
-Authentication schemes defined for the API:
-### apikey
-
-- **Type**: API key
-- **API key parameter name**: X-ElasticEmail-ApiKey
-- **Location**: HTTP header
-
-
-### ApiKeyAuthCustomBranding
-
-- **Type**: API key
-- **API key parameter name**: X-Auth-Token
-- **Location**: HTTP header
-
+</details>
 
 ## Tests
-
-To run the tests, use:
 
 ```bash
 composer install
 vendor/bin/phpunit
 ```
 
-## Author
+## Versioning
 
-support@elasticemail.com
+The SDK follows the Elastic Email API v4. Package versions and release notes are listed on [Packagist](https://packagist.org/packages/elasticemail/elasticemail-php) and in [GitHub Releases](https://github.com/ElasticEmail/elasticemail-php/releases).
 
-## About this package
+<details>
+<summary>Build details</summary>
 
-This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
-
-- API version: `4.0.0`
-    - Package version: `4.2.0`
-    - Generator version: `7.11.0`
+- API version: 4.0.0
+- SDK version: 4.2.0
+- Generator version: 7.11.0
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
+
+</details>
+
+## Contributing
+
+Contributions are welcome! Most of this SDK is generated from the Elastic Email OpenAPI specification by [OpenAPI Generator](https://openapi-generator.tech), so please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+- 🐛 [Report a bug](https://github.com/ElasticEmail/elasticemail-php/issues/new?template=bug_report.md)
+- 💡 [Request a feature](https://github.com/ElasticEmail/elasticemail-php/issues/new?template=feature_request.md)
+- 🔒 [Report a security issue](SECURITY.md)
+
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Support
+
+> [!IMPORTANT]
+> The fastest way to get help is the **chat widget on [elasticemail.com](https://elasticemail.com)**. Our support team can help with your account, sending, deliverability and API questions.
+
+- 💬 [Chat with support on elasticemail.com](https://elasticemail.com) (preferred)
+- 📚 [API documentation](https://elasticemail.com/developers/api-documentation/rest-api)
+- 🧪 [Examples repository](https://github.com/ElasticEmail/elasticemail-examples)
+- 🐛 [GitHub issues](https://github.com/ElasticEmail/elasticemail-php/issues), for bugs in this SDK only
+
+## License
+
+Released under the [MIT License](LICENSE). Copyright © 2021–2026 Elastic Email.

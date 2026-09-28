@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Elastic Email support (chat)
+    url: https://elasticemail.com
+    about: The preferred way to get help. Use the chat widget on elasticemail.com for account, sending, deliverability, billing or API questions.
+  - name: Examples
+    url: https://github.com/ElasticEmail/elasticemail-examples/tree/main/php-elasticemail-examples
+    about: Runnable PHP examples for the Elastic Email API
+  - name: API documentation
+    url: https://elasticemail.com/developers/api-documentation/rest-api
+    about: Reference for the Elastic Email REST API v4

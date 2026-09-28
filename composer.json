@@ -12,7 +12,7 @@
         "api"
     ],
     "homepage": "https://elasticemail.com",
-    "license": "unlicense",
+    "license": "MIT",
     "authors": [
         {
             "name": "Elastic Email",
