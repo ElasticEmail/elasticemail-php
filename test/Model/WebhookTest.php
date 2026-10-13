@@ -196,4 +196,31 @@ class WebhookTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "signing_enabled"
+     */
+    public function testPropertySigningEnabled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "delivery_method"
+     */
+    public function testPropertyDeliveryMethod()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "signing_secret"
+     */
+    public function testPropertySigningSecret()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

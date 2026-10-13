@@ -160,4 +160,22 @@ class WebhookCreatePayloadTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "enable_signing"
+     */
+    public function testPropertyEnableSigning()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "delivery_method"
+     */
+    public function testPropertyDeliveryMethod()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

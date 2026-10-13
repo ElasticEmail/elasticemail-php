@@ -109,6 +109,18 @@ class WebhookApiTest extends TestCase
     }
 
     /**
+     * Test case for webhookByPublicidSecretRotatePost
+     *
+     * Rotate Webhook Secret.
+     *
+     */
+    public function testWebhookByPublicidSecretRotatePost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for webhookGet
      *
      * Load Webhooks.

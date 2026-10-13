@@ -17,5 +17,8 @@ Name | Type | Description | Notes
 **notification_for_abuse_report** | **bool** |  | [optional]
 **notification_for_error** | **bool** |  | [optional]
 **is_enabled** | **bool** |  | [optional]
+**signing_enabled** | **bool** | Requests carry an HMAC-SHA256 signature. Chosen when the webhook is created and can&#39;t be changed. | [optional]
+**delivery_method** | [**\ElasticEmail\Model\WebhookDeliveryMethod**](WebhookDeliveryMethod.md) |  | [optional]
+**signing_secret** | **string** | Signing secret - returned only once, when a webhook is created with signing or its secret is rotated. Store it safely. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

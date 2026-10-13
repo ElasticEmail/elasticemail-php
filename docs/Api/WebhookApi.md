@@ -7,6 +7,7 @@ All URIs are relative to https://api.elasticemail.com/v4, except if the operatio
 | [**webhookByPublicidDelete()**](WebhookApi.md#webhookByPublicidDelete) | **DELETE** /webhook/{publicid} | Delete Webhook |
 | [**webhookByPublicidGet()**](WebhookApi.md#webhookByPublicidGet) | **GET** /webhook/{publicid} | Load Webhook |
 | [**webhookByPublicidPut()**](WebhookApi.md#webhookByPublicidPut) | **PUT** /webhook/{publicid} | Update Webhook |
+| [**webhookByPublicidSecretRotatePost()**](WebhookApi.md#webhookByPublicidSecretRotatePost) | **POST** /webhook/{publicid}/secret/rotate | Rotate Webhook Secret |
 | [**webhookGet()**](WebhookApi.md#webhookGet) | **GET** /webhook | Load Webhooks |
 | [**webhookPost()**](WebhookApi.md#webhookPost) | **POST** /webhook | Add Webhook |
 
@@ -192,6 +193,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `webhookByPublicidSecretRotatePost()`
+
+```php
+webhookByPublicidSecretRotatePost($publicid): \ElasticEmail\Model\Webhook
+```
+
+Rotate Webhook Secret
+
+Replace the signing secret of a webhook created with signing. The old secret stops being used at once - there is no grace period.             The new secret is returned only in this response. Notifications your endpoint rejects while it still has the old secret are retried and signed with the new one. Required Access Level: ModifyWebNotifications
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
+
+
+$apiInstance = new ElasticEmail\Api\WebhookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$publicid = 'publicid_example'; // string
+
+try {
+    $result = $apiInstance->webhookByPublicidSecretRotatePost($publicid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookApi->webhookByPublicidSecretRotatePost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **publicid** | **string**|  | |
+
+### Return type
+
+[**\ElasticEmail\Model\Webhook**](../Model/Webhook.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -71,7 +71,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => 'bool',
         'notification_for_abuse_report' => 'bool',
         'notification_for_error' => 'bool',
-        'is_enabled' => 'bool'
+        'is_enabled' => 'bool',
+        'signing_enabled' => 'bool',
+        'delivery_method' => '\ElasticEmail\Model\WebhookDeliveryMethod',
+        'signing_secret' => 'string'
     ];
 
     /**
@@ -94,7 +97,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => 'boolean',
         'notification_for_abuse_report' => 'boolean',
         'notification_for_error' => 'boolean',
-        'is_enabled' => 'boolean'
+        'is_enabled' => 'boolean',
+        'signing_enabled' => 'boolean',
+        'delivery_method' => null,
+        'signing_secret' => 'string'
     ];
 
     /**
@@ -115,7 +121,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => false,
         'notification_for_abuse_report' => false,
         'notification_for_error' => false,
-        'is_enabled' => false
+        'is_enabled' => false,
+        'signing_enabled' => false,
+        'delivery_method' => false,
+        'signing_secret' => false
     ];
 
     /**
@@ -216,7 +225,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => 'NotificationForUnsubscribed',
         'notification_for_abuse_report' => 'NotificationForAbuseReport',
         'notification_for_error' => 'NotificationForError',
-        'is_enabled' => 'IsEnabled'
+        'is_enabled' => 'IsEnabled',
+        'signing_enabled' => 'SigningEnabled',
+        'delivery_method' => 'DeliveryMethod',
+        'signing_secret' => 'SigningSecret'
     ];
 
     /**
@@ -237,7 +249,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => 'setNotificationForUnsubscribed',
         'notification_for_abuse_report' => 'setNotificationForAbuseReport',
         'notification_for_error' => 'setNotificationForError',
-        'is_enabled' => 'setIsEnabled'
+        'is_enabled' => 'setIsEnabled',
+        'signing_enabled' => 'setSigningEnabled',
+        'delivery_method' => 'setDeliveryMethod',
+        'signing_secret' => 'setSigningSecret'
     ];
 
     /**
@@ -258,7 +273,10 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_for_unsubscribed' => 'getNotificationForUnsubscribed',
         'notification_for_abuse_report' => 'getNotificationForAbuseReport',
         'notification_for_error' => 'getNotificationForError',
-        'is_enabled' => 'getIsEnabled'
+        'is_enabled' => 'getIsEnabled',
+        'signing_enabled' => 'getSigningEnabled',
+        'delivery_method' => 'getDeliveryMethod',
+        'signing_secret' => 'getSigningSecret'
     ];
 
     /**
@@ -331,6 +349,9 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('notification_for_abuse_report', $data ?? [], null);
         $this->setIfExists('notification_for_error', $data ?? [], null);
         $this->setIfExists('is_enabled', $data ?? [], null);
+        $this->setIfExists('signing_enabled', $data ?? [], null);
+        $this->setIfExists('delivery_method', $data ?? [], null);
+        $this->setIfExists('signing_secret', $data ?? [], null);
     }
 
     /**
@@ -736,6 +757,87 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_enabled cannot be null');
         }
         $this->container['is_enabled'] = $is_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets signing_enabled
+     *
+     * @return bool|null
+     */
+    public function getSigningEnabled()
+    {
+        return $this->container['signing_enabled'];
+    }
+
+    /**
+     * Sets signing_enabled
+     *
+     * @param bool|null $signing_enabled Requests carry an HMAC-SHA256 signature. Chosen when the webhook is created and can't be changed.
+     *
+     * @return self
+     */
+    public function setSigningEnabled($signing_enabled)
+    {
+        if (is_null($signing_enabled)) {
+            throw new \InvalidArgumentException('non-nullable signing_enabled cannot be null');
+        }
+        $this->container['signing_enabled'] = $signing_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_method
+     *
+     * @return \ElasticEmail\Model\WebhookDeliveryMethod|null
+     */
+    public function getDeliveryMethod()
+    {
+        return $this->container['delivery_method'];
+    }
+
+    /**
+     * Sets delivery_method
+     *
+     * @param \ElasticEmail\Model\WebhookDeliveryMethod|null $delivery_method delivery_method
+     *
+     * @return self
+     */
+    public function setDeliveryMethod($delivery_method)
+    {
+        if (is_null($delivery_method)) {
+            throw new \InvalidArgumentException('non-nullable delivery_method cannot be null');
+        }
+        $this->container['delivery_method'] = $delivery_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets signing_secret
+     *
+     * @return string|null
+     */
+    public function getSigningSecret()
+    {
+        return $this->container['signing_secret'];
+    }
+
+    /**
+     * Sets signing_secret
+     *
+     * @param string|null $signing_secret Signing secret - returned only once, when a webhook is created with signing or its secret is rotated. Store it safely.
+     *
+     * @return self
+     */
+    public function setSigningSecret($signing_secret)
+    {
+        if (is_null($signing_secret)) {
+            throw new \InvalidArgumentException('non-nullable signing_secret cannot be null');
+        }
+        $this->container['signing_secret'] = $signing_secret;
 
         return $this;
     }

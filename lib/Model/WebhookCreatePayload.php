@@ -67,7 +67,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => 'bool',
         'notification_for_unsubscribed' => 'bool',
         'notification_for_abuse_report' => 'bool',
-        'notification_for_error' => 'bool'
+        'notification_for_error' => 'bool',
+        'enable_signing' => 'bool',
+        'delivery_method' => '\ElasticEmail\Model\WebhookDeliveryMethod'
     ];
 
     /**
@@ -86,7 +88,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => 'boolean',
         'notification_for_unsubscribed' => 'boolean',
         'notification_for_abuse_report' => 'boolean',
-        'notification_for_error' => 'boolean'
+        'notification_for_error' => 'boolean',
+        'enable_signing' => 'boolean',
+        'delivery_method' => null
     ];
 
     /**
@@ -103,7 +107,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => false,
         'notification_for_unsubscribed' => false,
         'notification_for_abuse_report' => false,
-        'notification_for_error' => false
+        'notification_for_error' => false,
+        'enable_signing' => true,
+        'delivery_method' => false
     ];
 
     /**
@@ -200,7 +206,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => 'NotificationForClicked',
         'notification_for_unsubscribed' => 'NotificationForUnsubscribed',
         'notification_for_abuse_report' => 'NotificationForAbuseReport',
-        'notification_for_error' => 'NotificationForError'
+        'notification_for_error' => 'NotificationForError',
+        'enable_signing' => 'EnableSigning',
+        'delivery_method' => 'DeliveryMethod'
     ];
 
     /**
@@ -217,7 +225,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => 'setNotificationForClicked',
         'notification_for_unsubscribed' => 'setNotificationForUnsubscribed',
         'notification_for_abuse_report' => 'setNotificationForAbuseReport',
-        'notification_for_error' => 'setNotificationForError'
+        'notification_for_error' => 'setNotificationForError',
+        'enable_signing' => 'setEnableSigning',
+        'delivery_method' => 'setDeliveryMethod'
     ];
 
     /**
@@ -234,7 +244,9 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         'notification_for_clicked' => 'getNotificationForClicked',
         'notification_for_unsubscribed' => 'getNotificationForUnsubscribed',
         'notification_for_abuse_report' => 'getNotificationForAbuseReport',
-        'notification_for_error' => 'getNotificationForError'
+        'notification_for_error' => 'getNotificationForError',
+        'enable_signing' => 'getEnableSigning',
+        'delivery_method' => 'getDeliveryMethod'
     ];
 
     /**
@@ -303,6 +315,8 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('notification_for_unsubscribed', $data ?? [], null);
         $this->setIfExists('notification_for_abuse_report', $data ?? [], null);
         $this->setIfExists('notification_for_error', $data ?? [], null);
+        $this->setIfExists('enable_signing', $data ?? [], null);
+        $this->setIfExists('delivery_method', $data ?? [], null);
     }
 
     /**
@@ -592,6 +606,67 @@ class WebhookCreatePayload implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable notification_for_error cannot be null');
         }
         $this->container['notification_for_error'] = $notification_for_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_signing
+     *
+     * @return bool|null
+     */
+    public function getEnableSigning()
+    {
+        return $this->container['enable_signing'];
+    }
+
+    /**
+     * Sets enable_signing
+     *
+     * @param bool|null $enable_signing Sign every request with HMAC-SHA256. Can be set only when the webhook is created. Default: false.
+     *
+     * @return self
+     */
+    public function setEnableSigning($enable_signing)
+    {
+        if (is_null($enable_signing)) {
+            array_push($this->openAPINullablesSetToNull, 'enable_signing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enable_signing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['enable_signing'] = $enable_signing;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_method
+     *
+     * @return \ElasticEmail\Model\WebhookDeliveryMethod|null
+     */
+    public function getDeliveryMethod()
+    {
+        return $this->container['delivery_method'];
+    }
+
+    /**
+     * Sets delivery_method
+     *
+     * @param \ElasticEmail\Model\WebhookDeliveryMethod|null $delivery_method delivery_method
+     *
+     * @return self
+     */
+    public function setDeliveryMethod($delivery_method)
+    {
+        if (is_null($delivery_method)) {
+            throw new \InvalidArgumentException('non-nullable delivery_method cannot be null');
+        }
+        $this->container['delivery_method'] = $delivery_method;
 
         return $this;
     }

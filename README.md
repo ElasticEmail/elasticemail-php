@@ -64,7 +64,7 @@ Or add it to your `composer.json`:
 ```json
 {
   "require": {
-    "elasticemail/elasticemail-php": "^4.2"
+    "elasticemail/elasticemail-php": "^4.3"
   }
 }
 ```
@@ -213,7 +213,7 @@ This repository also includes short snippets for common tasks in [`examples/func
 
 ## API reference
 
-All URIs are relative to `https://api.elasticemail.com/v4`. The SDK covers **114 endpoints** across 16 API classes: `CampaignsApi`, `ContactsApi`, `DomainsApi`, `EmailsApi`, `EventsApi`, `FilesApi`, `InboundRouteApi`, `ListsApi`, `SecurityApi`, `SegmentsApi`, `StatisticsApi`, `SubAccountsApi`, `SuppressionsApi`, `TemplatesApi`, `VerificationsApi` and `WebhookApi`.
+All URIs are relative to `https://api.elasticemail.com/v4`. The SDK covers **115 endpoints** across 16 API classes: `CampaignsApi`, `ContactsApi`, `DomainsApi`, `EmailsApi`, `EventsApi`, `FilesApi`, `InboundRouteApi`, `ListsApi`, `SecurityApi`, `SegmentsApi`, `StatisticsApi`, `SubAccountsApi`, `SuppressionsApi`, `TemplatesApi`, `VerificationsApi` and `WebhookApi`.
 
 <details>
 <summary><strong>Show all endpoints</strong></summary>
@@ -332,6 +332,7 @@ Class | Method | HTTP request | Description
 *WebhookApi* | [**webhookByPublicidDelete**](docs/Api/WebhookApi.md#webhookbypubliciddelete) | **DELETE** /webhook/{publicid} | Delete Webhook
 *WebhookApi* | [**webhookByPublicidGet**](docs/Api/WebhookApi.md#webhookbypublicidget) | **GET** /webhook/{publicid} | Load Webhook
 *WebhookApi* | [**webhookByPublicidPut**](docs/Api/WebhookApi.md#webhookbypublicidput) | **PUT** /webhook/{publicid} | Update Webhook
+*WebhookApi* | [**webhookByPublicidSecretRotatePost**](docs/Api/WebhookApi.md#webhookbypublicidsecretrotatepost) | **POST** /webhook/{publicid}/secret/rotate | Rotate Webhook Secret
 *WebhookApi* | [**webhookGet**](docs/Api/WebhookApi.md#webhookget) | **GET** /webhook | Load Webhooks
 *WebhookApi* | [**webhookPost**](docs/Api/WebhookApi.md#webhookpost) | **POST** /webhook | Add Webhook
 
@@ -439,6 +440,7 @@ Class | Method | HTTP request | Description
 - [VerificationStatus](docs/Model/VerificationStatus.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookCreatePayload](docs/Model/WebhookCreatePayload.md)
+- [WebhookDeliveryMethod](docs/Model/WebhookDeliveryMethod.md)
 - [WebhookUpdatePayload](docs/Model/WebhookUpdatePayload.md)
 
 </details>
@@ -458,7 +460,7 @@ The SDK follows the Elastic Email API v4. Package versions and release notes are
 <summary>Build details</summary>
 
 - API version: 4.0.0
-- SDK version: 4.2.0
+- SDK version: 4.3.0
 - Generator version: 7.11.0
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
 
