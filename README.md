@@ -36,7 +36,7 @@ The official PHP client library for the [Elastic Email](https://elasticemail.com
 - **Campaigns and automations.** Create, update, pause and trigger automations for a contact.
 - **Templates, files and attachments.** Manage templates and uploaded files.
 - **Domains.** Verify sending domains and check SPF, DKIM, tracking and certificate status.
-- **Webhooks and inbound routes.** Receive delivery events and route incoming mail.
+- **Webhooks and inbound routes.** Receive delivery events, optionally signed with HMAC-SHA256 and sent as JSON, and route incoming mail.
 - **Statistics, events and suppressions.** Track delivery, bounces, complaints and unsubscribes.
 - **Subaccounts and security.** Manage subaccounts and API keys.
 - **Sync and async.** Every endpoint has a blocking method and an `…Async` method that returns a Guzzle promise.
@@ -162,6 +162,33 @@ $client = new GuzzleHttp\Client([
 
 $emails = new EmailsApi($client, $config);
 ```
+
+### Create a signed webhook
+
+Webhooks can sign every request with HMAC-SHA256 and send events as a `POST` with a JSON body. Both options are set when you create the webhook and can't be changed later. Webhooks created without them keep working as unsigned `GET` requests.
+
+```php
+use ElasticEmail\Api\WebhookApi;
+use ElasticEmail\Model\WebhookCreatePayload;
+use ElasticEmail\Model\WebhookDeliveryMethod;
+
+$webhookApi = new WebhookApi(new GuzzleHttp\Client(), $config);
+
+$webhook = $webhookApi->webhookPost(new WebhookCreatePayload([
+    'name' => 'my-webhook',
+    'url' => 'https://your-app.example.com/webhook',
+    'notification_for_sent' => true,
+    'notification_for_opened' => true,
+    'notification_for_clicked' => true,
+    'enable_signing' => true,
+    'delivery_method' => WebhookDeliveryMethod::POST_JSON,
+]));
+
+// Returned only now: store it, e.g. as ELASTICEMAIL_WEBHOOK_SECRET.
+echo $webhook->getSigningSecret();
+```
+
+`SigningSecret` is returned only when the webhook is created and when you rotate it with `webhookByPublicidSecretRotatePost`, so store it right away. Each signed request carries `X-ElasticEmail-Timestamp` and `X-ElasticEmail-Signature: v1=<hex>`, where the signature is `hex(HMAC-SHA256(secret, "{timestamp}\n{METHOD}\n{path and query}\n{raw body}"))`. Verify it against the raw body before you parse the JSON, reject timestamps more than 5 minutes old, and compare in constant time. The [webhooks guide](https://github.com/ElasticEmail/elasticemail-examples/blob/main/docs/webhooks.md) and the [examples repository](https://github.com/ElasticEmail/elasticemail-examples) have ready-made handlers.
 
 ## More examples
 
