@@ -917,15 +917,16 @@ class EmailsApi
      * Send Bulk Emails CSV
      *
      * @param  \ElasticEmail\Model\MergeEmailPayload $merge_email_payload Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsMergefilePost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \ElasticEmail\Model\EmailSend
      */
-    public function emailsMergefilePost($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
+    public function emailsMergefilePost($merge_email_payload, $idempotency_key = null, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
-        list($response) = $this->emailsMergefilePostWithHttpInfo($merge_email_payload, $contentType);
+        list($response) = $this->emailsMergefilePostWithHttpInfo($merge_email_payload, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -935,15 +936,16 @@ class EmailsApi
      * Send Bulk Emails CSV
      *
      * @param  \ElasticEmail\Model\MergeEmailPayload $merge_email_payload Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsMergefilePost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \ElasticEmail\Model\EmailSend, HTTP status code, HTTP response headers (array of strings)
      */
-    public function emailsMergefilePostWithHttpInfo($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
+    public function emailsMergefilePostWithHttpInfo($merge_email_payload, $idempotency_key = null, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
-        $request = $this->emailsMergefilePostRequest($merge_email_payload, $contentType);
+        $request = $this->emailsMergefilePostRequest($merge_email_payload, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1060,14 +1062,15 @@ class EmailsApi
      * Send Bulk Emails CSV
      *
      * @param  \ElasticEmail\Model\MergeEmailPayload $merge_email_payload Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsMergefilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsMergefilePostAsync($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
+    public function emailsMergefilePostAsync($merge_email_payload, $idempotency_key = null, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
-        return $this->emailsMergefilePostAsyncWithHttpInfo($merge_email_payload, $contentType)
+        return $this->emailsMergefilePostAsyncWithHttpInfo($merge_email_payload, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1081,15 +1084,16 @@ class EmailsApi
      * Send Bulk Emails CSV
      *
      * @param  \ElasticEmail\Model\MergeEmailPayload $merge_email_payload Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsMergefilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsMergefilePostAsyncWithHttpInfo($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
+    public function emailsMergefilePostAsyncWithHttpInfo($merge_email_payload, $idempotency_key = null, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
         $returnType = '\ElasticEmail\Model\EmailSend';
-        $request = $this->emailsMergefilePostRequest($merge_email_payload, $contentType);
+        $request = $this->emailsMergefilePostRequest($merge_email_payload, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1131,12 +1135,13 @@ class EmailsApi
      * Create request for operation 'emailsMergefilePost'
      *
      * @param  \ElasticEmail\Model\MergeEmailPayload $merge_email_payload Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsMergefilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function emailsMergefilePostRequest($merge_email_payload, string $contentType = self::contentTypes['emailsMergefilePost'][0])
+    public function emailsMergefilePostRequest($merge_email_payload, $idempotency_key = null, string $contentType = self::contentTypes['emailsMergefilePost'][0])
     {
 
         // verify the required parameter 'merge_email_payload' is set
@@ -1146,6 +1151,16 @@ class EmailsApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsMergefilePost, must be smaller than or equal to 255.');
+        }
+        if ($idempotency_key !== null && strlen($idempotency_key) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsMergefilePost, must be bigger than or equal to 1.');
+        }
+        if ($idempotency_key !== null && !preg_match("/^[\\x20-\\x7E]+$/", $idempotency_key)) {
+            throw new \InvalidArgumentException("invalid value for \"idempotency_key\" when calling EmailsApi.emailsMergefilePost, must conform to the pattern /^[\\x20-\\x7E]+$/.");
+        }
+        
 
         $resourcePath = '/emails/mergefile';
         $formParams = [];
@@ -1155,6 +1170,10 @@ class EmailsApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 
@@ -1229,15 +1248,16 @@ class EmailsApi
      * Send Bulk Emails
      *
      * @param  \ElasticEmail\Model\EmailMessageData $email_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsPost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \ElasticEmail\Model\EmailSend
      */
-    public function emailsPost($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
+    public function emailsPost($email_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsPost'][0])
     {
-        list($response) = $this->emailsPostWithHttpInfo($email_message_data, $contentType);
+        list($response) = $this->emailsPostWithHttpInfo($email_message_data, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -1247,15 +1267,16 @@ class EmailsApi
      * Send Bulk Emails
      *
      * @param  \ElasticEmail\Model\EmailMessageData $email_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsPost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \ElasticEmail\Model\EmailSend, HTTP status code, HTTP response headers (array of strings)
      */
-    public function emailsPostWithHttpInfo($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
+    public function emailsPostWithHttpInfo($email_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsPost'][0])
     {
-        $request = $this->emailsPostRequest($email_message_data, $contentType);
+        $request = $this->emailsPostRequest($email_message_data, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1372,14 +1393,15 @@ class EmailsApi
      * Send Bulk Emails
      *
      * @param  \ElasticEmail\Model\EmailMessageData $email_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsPostAsync($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
+    public function emailsPostAsync($email_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsPost'][0])
     {
-        return $this->emailsPostAsyncWithHttpInfo($email_message_data, $contentType)
+        return $this->emailsPostAsyncWithHttpInfo($email_message_data, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1393,15 +1415,16 @@ class EmailsApi
      * Send Bulk Emails
      *
      * @param  \ElasticEmail\Model\EmailMessageData $email_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsPostAsyncWithHttpInfo($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
+    public function emailsPostAsyncWithHttpInfo($email_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsPost'][0])
     {
         $returnType = '\ElasticEmail\Model\EmailSend';
-        $request = $this->emailsPostRequest($email_message_data, $contentType);
+        $request = $this->emailsPostRequest($email_message_data, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1443,12 +1466,13 @@ class EmailsApi
      * Create request for operation 'emailsPost'
      *
      * @param  \ElasticEmail\Model\EmailMessageData $email_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function emailsPostRequest($email_message_data, string $contentType = self::contentTypes['emailsPost'][0])
+    public function emailsPostRequest($email_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsPost'][0])
     {
 
         // verify the required parameter 'email_message_data' is set
@@ -1458,6 +1482,16 @@ class EmailsApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsPost, must be smaller than or equal to 255.');
+        }
+        if ($idempotency_key !== null && strlen($idempotency_key) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsPost, must be bigger than or equal to 1.');
+        }
+        if ($idempotency_key !== null && !preg_match("/^[\\x20-\\x7E]+$/", $idempotency_key)) {
+            throw new \InvalidArgumentException("invalid value for \"idempotency_key\" when calling EmailsApi.emailsPost, must conform to the pattern /^[\\x20-\\x7E]+$/.");
+        }
+        
 
         $resourcePath = '/emails';
         $formParams = [];
@@ -1467,6 +1501,10 @@ class EmailsApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 
@@ -1541,15 +1579,16 @@ class EmailsApi
      * Send Transactional Email
      *
      * @param  \ElasticEmail\Model\EmailTransactionalMessageData $email_transactional_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsTransactionalPost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \ElasticEmail\Model\EmailSend
      */
-    public function emailsTransactionalPost($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
+    public function emailsTransactionalPost($email_transactional_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
-        list($response) = $this->emailsTransactionalPostWithHttpInfo($email_transactional_message_data, $contentType);
+        list($response) = $this->emailsTransactionalPostWithHttpInfo($email_transactional_message_data, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -1559,15 +1598,16 @@ class EmailsApi
      * Send Transactional Email
      *
      * @param  \ElasticEmail\Model\EmailTransactionalMessageData $email_transactional_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsTransactionalPost'] to see the possible values for this operation
      *
      * @throws \ElasticEmail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \ElasticEmail\Model\EmailSend, HTTP status code, HTTP response headers (array of strings)
      */
-    public function emailsTransactionalPostWithHttpInfo($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
+    public function emailsTransactionalPostWithHttpInfo($email_transactional_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
-        $request = $this->emailsTransactionalPostRequest($email_transactional_message_data, $contentType);
+        $request = $this->emailsTransactionalPostRequest($email_transactional_message_data, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1684,14 +1724,15 @@ class EmailsApi
      * Send Transactional Email
      *
      * @param  \ElasticEmail\Model\EmailTransactionalMessageData $email_transactional_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsTransactionalPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsTransactionalPostAsync($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
+    public function emailsTransactionalPostAsync($email_transactional_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
-        return $this->emailsTransactionalPostAsyncWithHttpInfo($email_transactional_message_data, $contentType)
+        return $this->emailsTransactionalPostAsyncWithHttpInfo($email_transactional_message_data, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1705,15 +1746,16 @@ class EmailsApi
      * Send Transactional Email
      *
      * @param  \ElasticEmail\Model\EmailTransactionalMessageData $email_transactional_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsTransactionalPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function emailsTransactionalPostAsyncWithHttpInfo($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
+    public function emailsTransactionalPostAsyncWithHttpInfo($email_transactional_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
         $returnType = '\ElasticEmail\Model\EmailSend';
-        $request = $this->emailsTransactionalPostRequest($email_transactional_message_data, $contentType);
+        $request = $this->emailsTransactionalPostRequest($email_transactional_message_data, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1755,12 +1797,13 @@ class EmailsApi
      * Create request for operation 'emailsTransactionalPost'
      *
      * @param  \ElasticEmail\Model\EmailTransactionalMessageData $email_transactional_message_data Email data (required)
+     * @param  string|null $idempotency_key Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emailsTransactionalPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function emailsTransactionalPostRequest($email_transactional_message_data, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
+    public function emailsTransactionalPostRequest($email_transactional_message_data, $idempotency_key = null, string $contentType = self::contentTypes['emailsTransactionalPost'][0])
     {
 
         // verify the required parameter 'email_transactional_message_data' is set
@@ -1770,6 +1813,16 @@ class EmailsApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsTransactionalPost, must be smaller than or equal to 255.');
+        }
+        if ($idempotency_key !== null && strlen($idempotency_key) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling EmailsApi.emailsTransactionalPost, must be bigger than or equal to 1.');
+        }
+        if ($idempotency_key !== null && !preg_match("/^[\\x20-\\x7E]+$/", $idempotency_key)) {
+            throw new \InvalidArgumentException("invalid value for \"idempotency_key\" when calling EmailsApi.emailsTransactionalPost, must conform to the pattern /^[\\x20-\\x7E]+$/.");
+        }
+        
 
         $resourcePath = '/emails/transactional';
         $formParams = [];
@@ -1779,6 +1832,10 @@ class EmailsApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 

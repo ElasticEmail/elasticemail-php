@@ -158,7 +158,7 @@ try {
 ## `emailsMergefilePost()`
 
 ```php
-emailsMergefilePost($merge_email_payload): \ElasticEmail\Model\EmailSend
+emailsMergefilePost($merge_email_payload, $idempotency_key): \ElasticEmail\Model\EmailSend
 ```
 
 Send Bulk Emails CSV
@@ -185,9 +185,10 @@ $apiInstance = new ElasticEmail\Api\EmailsApi(
     $config
 );
 $merge_email_payload = new \ElasticEmail\Model\MergeEmailPayload(); // \ElasticEmail\Model\MergeEmailPayload | Email data
+$idempotency_key = 6f1c2a7e-3b4d-4e8f-9a1b-2c3d4e5f6a7b; // string | Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request.
 
 try {
-    $result = $apiInstance->emailsMergefilePost($merge_email_payload);
+    $result = $apiInstance->emailsMergefilePost($merge_email_payload, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsMergefilePost: ', $e->getMessage(), PHP_EOL;
@@ -199,6 +200,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **merge_email_payload** | [**\ElasticEmail\Model\MergeEmailPayload**](../Model/MergeEmailPayload.md)| Email data | |
+| **idempotency_key** | **string**| Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. | [optional] |
 
 ### Return type
 
@@ -220,7 +222,7 @@ try {
 ## `emailsPost()`
 
 ```php
-emailsPost($email_message_data): \ElasticEmail\Model\EmailSend
+emailsPost($email_message_data, $idempotency_key): \ElasticEmail\Model\EmailSend
 ```
 
 Send Bulk Emails
@@ -247,9 +249,10 @@ $apiInstance = new ElasticEmail\Api\EmailsApi(
     $config
 );
 $email_message_data = new \ElasticEmail\Model\EmailMessageData(); // \ElasticEmail\Model\EmailMessageData | Email data
+$idempotency_key = 6f1c2a7e-3b4d-4e8f-9a1b-2c3d4e5f6a7b; // string | Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request.
 
 try {
-    $result = $apiInstance->emailsPost($email_message_data);
+    $result = $apiInstance->emailsPost($email_message_data, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsPost: ', $e->getMessage(), PHP_EOL;
@@ -261,6 +264,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **email_message_data** | [**\ElasticEmail\Model\EmailMessageData**](../Model/EmailMessageData.md)| Email data | |
+| **idempotency_key** | **string**| Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. | [optional] |
 
 ### Return type
 
@@ -282,7 +286,7 @@ try {
 ## `emailsTransactionalPost()`
 
 ```php
-emailsTransactionalPost($email_transactional_message_data): \ElasticEmail\Model\EmailSend
+emailsTransactionalPost($email_transactional_message_data, $idempotency_key): \ElasticEmail\Model\EmailSend
 ```
 
 Send Transactional Email
@@ -309,9 +313,10 @@ $apiInstance = new ElasticEmail\Api\EmailsApi(
     $config
 );
 $email_transactional_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData(); // \ElasticEmail\Model\EmailTransactionalMessageData | Email data
+$idempotency_key = 6f1c2a7e-3b4d-4e8f-9a1b-2c3d4e5f6a7b; // string | Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request.
 
 try {
-    $result = $apiInstance->emailsTransactionalPost($email_transactional_message_data);
+    $result = $apiInstance->emailsTransactionalPost($email_transactional_message_data, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsTransactionalPost: ', $e->getMessage(), PHP_EOL;
@@ -323,6 +328,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **email_transactional_message_data** | [**\ElasticEmail\Model\EmailTransactionalMessageData**](../Model/EmailTransactionalMessageData.md)| Email data | |
+| **idempotency_key** | **string**| Makes a retry of this request safe. A repeated request with the same key and the same body gets the stored response of the first one and is not executed again. Generate a new key, e.g. a UUID v4, for each request and reuse it only to retry that request. Keys are scoped to the account and kept for 24 hours after the first request. | [optional] |
 
 ### Return type
 

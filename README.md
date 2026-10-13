@@ -32,6 +32,7 @@ The official PHP client library for the [Elastic Email](https://elasticemail.com
 ## Features
 
 - **Transactional and bulk email.** Send single messages, bulk campaigns or CSV merge-file sends.
+- **Safe retries.** Pass an `Idempotency-Key` to the send methods so a retried send is delivered and charged only once.
 - **Contacts, lists and segments.** Add, update, import, export and bulk-delete contacts.
 - **Campaigns and automations.** Create, update, pause and trigger automations for a contact.
 - **Templates, files and attachments.** Manage templates and uploaded files.
@@ -64,7 +65,7 @@ Or add it to your `composer.json`:
 ```json
 {
   "require": {
-    "elasticemail/elasticemail-php": "^4.3"
+    "elasticemail/elasticemail-php": "^4.4"
   }
 }
 ```
@@ -132,6 +133,34 @@ try {
 ```
 
 The `from` address must use a domain you've [verified in your Elastic Email account](https://help.elasticemail.com/en/articles/4934400-how-to-verify-your-domain).
+
+### Retry a send safely (Idempotency-Key)
+
+Pass an `Idempotency-Key` to `emailsPost`, `emailsTransactionalPost` or `emailsMergefilePost` so a retry after a timeout or a dropped connection can't send the same email twice. If Elastic Email already processed the key, it returns the stored response (same `TransactionID` and `MessageID`, with an `Idempotency-Replayed: true` header) and sends nothing again.
+
+```php
+// One key per logical send (a UUID v4); reuse it only to retry that same send.
+$bytes = random_bytes(16);
+$bytes[6] = chr(ord($bytes[6]) & 0x0f | 0x40);
+$bytes[8] = chr(ord($bytes[8]) & 0x3f | 0x80);
+$idempotencyKey = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
+
+for ($attempt = 1; ; $attempt++) {
+    try {
+        $result = $emails->emailsTransactionalPost($message, $idempotencyKey);
+        break;
+    } catch (ApiException $e) {
+        // Retry network errors (code 0), 409 and 5xx with the same key and the same $message.
+        $retryable = $e->getCode() === 0 || $e->getCode() === 409 || $e->getCode() >= 500;
+        if (!$retryable || $attempt === 3) {
+            throw $e;
+        }
+        sleep((int) ($e->getResponseHeaders()['Retry-After'][0] ?? 2));
+    }
+}
+```
+
+Keys are kept for 24 hours per account, and a retry must send the same body: reusing a key with a different request returns `422`. A `409` means the first request with that key is still running, and a `503` means the key couldn't be checked, so wait for `Retry-After` and retry with the same key. The header is optional, and sends without it work as before.
 
 ### Send from a template with merge fields
 
@@ -487,7 +516,7 @@ The SDK follows the Elastic Email API v4. Package versions and release notes are
 <summary>Build details</summary>
 
 - API version: 4.0.0
-- SDK version: 4.3.0
+- SDK version: 4.4.0
 - Generator version: 7.11.0
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
 
