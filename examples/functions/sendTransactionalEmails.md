@@ -17,11 +17,14 @@ Load library using below line:
 require_once(__DIR__ . '/vendor/autoload.php');
 ```
 
-Generate and use your API key (remember to check a required access level): 
+Read your API key from the `ELASTICEMAIL_API_KEY` environment variable (remember to check a required access level). Set it with `export ELASTICEMAIL_API_KEY=your-api-key` before you run the script; the script stops with an error if it is not set:
 
 ```php
-define('MY_APIKEY', 'YOUR_API_KEY');
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 ```
 
 Create an instance of EmailsApi that will be used to send a bulk email.
@@ -56,8 +59,13 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
         "bcc" => ["email6@domain.com"]
     ]),
     "content" => new \ElasticEmail\Model\EmailContent([
-        "body" => [new \ElasticEmail\Model\BodyPart([
+        "body" => [
+            new \ElasticEmail\Model\BodyPart([
                 "content_type" => "HTML",
+                "content" => "<strong>My test email content</strong>"
+            ]),
+            new \ElasticEmail\Model\BodyPart([
+                "content_type" => "PlainText",
                 "content" => "My test email content"
             ])
         ],
@@ -69,8 +77,18 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
         "channel_name" => "My Channel"
     ])
 ]);
+```
 
-$response = $apiInstance->emailsTransactionalPost($email_message_data);
+Create an idempotency key and pass it with the send, so the send can be retried after a timeout without delivering the email twice: a retry with the same key and the same message gets the stored response instead of sending again. The response carries the `TransactionID`:
+
+```php
+// One new key per send (a UUID v4); reuse it only to retry this same send with the same message.
+$bytes = random_bytes(16);
+$bytes[6] = chr(ord($bytes[6]) & 0x0f | 0x40);
+$bytes[8] = chr(ord($bytes[8]) & 0x3f | 0x80);
+$idempotencyKey = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
+
+$response = $apiInstance->emailsTransactionalPost($email_message_data, $idempotencyKey);
 ```
 
 ## The whole code to copy and paste:
@@ -78,9 +96,12 @@ $response = $apiInstance->emailsTransactionalPost($email_message_data);
 ```php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 
 $apiInstance = new ElasticEmail\Api\EmailsApi(
     new GuzzleHttp\Client(),
@@ -94,8 +115,13 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
         "bcc" => ["email6@domain.com"]
     ]),
     "content" => new \ElasticEmail\Model\EmailContent([
-        "body" => [new \ElasticEmail\Model\BodyPart([
+        "body" => [
+            new \ElasticEmail\Model\BodyPart([
                 "content_type" => "HTML",
+                "content" => "<strong>My test email content</strong>"
+            ]),
+            new \ElasticEmail\Model\BodyPart([
+                "content_type" => "PlainText",
                 "content" => "My test email content"
             ])
         ],
@@ -108,8 +134,15 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
     ])
 ]);
 
+// One new key per send (a UUID v4); reuse it only to retry this same send with the same message.
+$bytes = random_bytes(16);
+$bytes[6] = chr(ord($bytes[6]) & 0x0f | 0x40);
+$bytes[8] = chr(ord($bytes[8]) & 0x3f | 0x80);
+$idempotencyKey = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
+
 try {
-    $response = $apiInstance->emailsTransactionalPost($email_message_data);
+    $response = $apiInstance->emailsTransactionalPost($email_message_data, $idempotencyKey);
+    echo 'TransactionID: ', $response->getTransactionId(), '  Idempotency-Key: ', $idempotencyKey, PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsTransactionalPost: ', $e->getMessage(), PHP_EOL;
 }

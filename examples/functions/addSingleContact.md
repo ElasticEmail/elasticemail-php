@@ -17,11 +17,14 @@ Load library using below line:
 require_once(__DIR__ . '/vendor/autoload.php');
 ```
 
-Generate and use your API key (remember to check a required access level): 
+Read your API key from the `ELASTICEMAIL_API_KEY` environment variable (remember to check a required access level). Set it with `export ELASTICEMAIL_API_KEY=your-api-key` before you run the script; the script stops with an error if it is not set:
 
 ```php
-define('MY_APIKEY', 'YOUR_API_KEY');
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 ```
 
 Get client instance:
@@ -38,7 +41,7 @@ Create an instance of ContactsApi that will be used to add contacts.
 ```php
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "work.rafkwa+test@gmail.com",
+        "email" => "johnsmith@domain.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'
@@ -54,9 +57,12 @@ response = $apiInstance->contactsPost($contact_payload, $listnames);
 ```php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 
 $apiInstance = new ElasticEmail\Api\ContactsApi(
     new GuzzleHttp\Client(),
@@ -65,7 +71,7 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "work.rafkwa+test@gmail.com",
+        "email" => "johnsmith@domain.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'

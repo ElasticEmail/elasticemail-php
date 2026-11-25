@@ -240,7 +240,9 @@ This repository also includes short snippets for common tasks in [`examples/func
 | [addTemplate](examples/functions/addTemplate.php) | [readme](examples/functions/addTemplate.md) |
 | [deleteCampaign](examples/functions/deleteCampaign.php) | [readme](examples/functions/deleteCampaign.md) |
 | [deleteContact](examples/functions/deleteContact.php) | [readme](examples/functions/deleteContact.md) |
+| [deleteContacts](examples/functions/deleteContacts.php) | [readme](examples/functions/deleteContacts.md) |
 | [deleteList](examples/functions/deleteList.php) | [readme](examples/functions/deleteList.md) |
+| [deleteTemplate](examples/functions/deleteTemplate.php) | [readme](examples/functions/deleteTemplate.md) |
 | [exportContacts](examples/functions/exportContacts.php) | [readme](examples/functions/exportContacts.md) |
 | [loadCampaign](examples/functions/loadCampaign.php) | [readme](examples/functions/loadCampaign.md) |
 | [loadCampaigns](examples/functions/loadCampaigns.php) | [readme](examples/functions/loadCampaigns.md) |
@@ -252,6 +254,7 @@ This repository also includes short snippets for common tasks in [`examples/func
 | [sendBulkEmails](examples/functions/sendBulkEmails.php) | [readme](examples/functions/sendBulkEmails.md) |
 | [sendTransactionalEmails](examples/functions/sendTransactionalEmails.php) | [readme](examples/functions/sendTransactionalEmails.md) |
 | [updateCampaign](examples/functions/updateCampaign.php) | [readme](examples/functions/updateCampaign.md) |
+| [uploadContacts](examples/functions/uploadContacts.php) | [readme](examples/functions/uploadContacts.md) |
 
 </details>
 

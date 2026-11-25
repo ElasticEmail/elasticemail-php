@@ -9,9 +9,12 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apikey
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
@@ -29,8 +32,13 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
         "bcc" => ["email6@domain.com"]
     ]),
     "content" => new \ElasticEmail\Model\EmailContent([
-        "body" => [new \ElasticEmail\Model\BodyPart([
+        "body" => [
+            new \ElasticEmail\Model\BodyPart([
                 "content_type" => "HTML",
+                "content" => "<strong>My test email content</strong>"
+            ]),
+            new \ElasticEmail\Model\BodyPart([
+                "content_type" => "PlainText",
                 "content" => "My test email content"
             ])
         ],
@@ -43,9 +51,15 @@ $email_message_data = new \ElasticEmail\Model\EmailTransactionalMessageData([
     ])
 ]); // \ElasticEmail\Model\EmailMessageData | Email data
 
+// One new key per send (a UUID v4); reuse it only to retry this same send with the same message.
+$bytes = random_bytes(16);
+$bytes[6] = chr(ord($bytes[6]) & 0x0f | 0x40);
+$bytes[8] = chr(ord($bytes[8]) & 0x3f | 0x80);
+$idempotencyKey = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
+
 try {
-    $response = $apiInstance->emailsTransactionalPost($email_message_data);
-    print('<pre>' . print_r( $response, true) . '</pre>');
+    $response = $apiInstance->emailsTransactionalPost($email_message_data, $idempotencyKey);
+    echo 'TransactionID: ', $response->getTransactionId(), '  Idempotency-Key: ', $idempotencyKey, PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsTransactionalPost: ', $e->getMessage(), PHP_EOL;
 }

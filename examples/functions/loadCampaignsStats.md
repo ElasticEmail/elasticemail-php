@@ -17,11 +17,14 @@ Load library using below line:
 require_once(__DIR__ . '/vendor/autoload.php');
 ```
 
-Generate and use your API key (remember to check a required access level): 
+Read your API key from the `ELASTICEMAIL_API_KEY` environment variable (remember to check a required access level). Set it with `export ELASTICEMAIL_API_KEY=your-api-key` before you run the script; the script stops with an error if it is not set:
 
 ```php
-define('MY_APIKEY', 'YOUR_API_KEY');
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 ```
 
 Create an instance of StatisticsApi that will be used to get basic send statistics.
@@ -44,9 +47,12 @@ $response = $apiInstance->campaignsGet();
 ```php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 
 $apiInstance = new ElasticEmail\Api\CampaignsApi(
     new GuzzleHttp\Client(),

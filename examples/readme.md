@@ -47,7 +47,11 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: apikey
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
@@ -67,3 +71,39 @@ try {
 }
 
 ```
+
+## Running a snippet
+
+Every snippet reads your API key from the `ELASTICEMAIL_API_KEY` environment variable and stops with an error if it is not set. Put the snippet next to your `vendor/` folder (it loads `vendor/autoload.php` from its own directory), replace the sender, recipient and other placeholder values, then run it:
+
+```bash
+export ELASTICEMAIL_API_KEY=your-api-key
+php deleteContact.php
+```
+
+## Snippets
+
+| Snippet | Description |
+| --- | --- |
+| [addBulkContacts](functions/addBulkContacts.php) | [readme](functions/addBulkContacts.md) |
+| [addCampaign](functions/addCampaign.php) | [readme](functions/addCampaign.md) |
+| [addList](functions/addList.php) | [readme](functions/addList.md) |
+| [addSingleContact](functions/addSingleContact.php) | [readme](functions/addSingleContact.md) |
+| [addTemplate](functions/addTemplate.php) | [readme](functions/addTemplate.md) |
+| [deleteCampaign](functions/deleteCampaign.php) | [readme](functions/deleteCampaign.md) |
+| [deleteContact](functions/deleteContact.php) | [readme](functions/deleteContact.md) |
+| [deleteContacts](functions/deleteContacts.php) | [readme](functions/deleteContacts.md) |
+| [deleteList](functions/deleteList.php) | [readme](functions/deleteList.md) |
+| [deleteTemplate](functions/deleteTemplate.php) | [readme](functions/deleteTemplate.md) |
+| [exportContacts](functions/exportContacts.php) | [readme](functions/exportContacts.md) |
+| [loadCampaign](functions/loadCampaign.php) | [readme](functions/loadCampaign.md) |
+| [loadCampaigns](functions/loadCampaigns.php) | [readme](functions/loadCampaigns.md) |
+| [loadCampaignsStats](functions/loadCampaignsStats.php) | [readme](functions/loadCampaignsStats.md) |
+| [loadChannelsStats](functions/loadChannelsStats.php) | [readme](functions/loadChannelsStats.md) |
+| [loadList](functions/loadList.php) | [readme](functions/loadList.md) |
+| [loadStatistics](functions/loadStatistics.php) | [readme](functions/loadStatistics.md) |
+| [loadTemplate](functions/loadTemplate.php) | [readme](functions/loadTemplate.md) |
+| [sendBulkEmails](functions/sendBulkEmails.php) | [readme](functions/sendBulkEmails.md) |
+| [sendTransactionalEmails](functions/sendTransactionalEmails.php) | [readme](functions/sendTransactionalEmails.md) |
+| [updateCampaign](functions/updateCampaign.php) | [readme](functions/updateCampaign.md) |
+| [uploadContacts](functions/uploadContacts.php) | [readme](functions/uploadContacts.md) |

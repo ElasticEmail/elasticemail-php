@@ -9,9 +9,12 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apikey
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
@@ -22,11 +25,11 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
     $config
 );
 
-$email = "mail@contact.com"; // string | Proper email address.
+$email = "johnsmith@domain.com"; // string | Proper email address.
 
 try {
-    $response = $apiInstance->contactsByEmailDelete($email);
-    print('<pre>' . print_r( $response, true) . '</pre>');
+    $apiInstance->contactsByEmailDelete($email);
+    echo 'Contact deleted', PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->contactsByEmailDelete: ', $e->getMessage(), PHP_EOL;
 }

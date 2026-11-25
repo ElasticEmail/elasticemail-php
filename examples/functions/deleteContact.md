@@ -1,6 +1,6 @@
-# Delete Contacts
+# Delete Contact
 
-This guide will walk you through steps of deleting contact(s) from your account using the PHP library.
+This guide will walk you through steps of deleting one contact from your account, by its email address, using the PHP library. To delete several contacts in one call, see [deleteContacts](deleteContacts.md).
 
 *Required Access Level: ModifyContacts*
 
@@ -17,11 +17,14 @@ Load library using below line:
 require_once(__DIR__ . '/vendor/autoload.php');
 ```
 
-Generate and use your API key (remember to check a required access level): 
+Read your API key from the `ELASTICEMAIL_API_KEY` environment variable (remember to check a required access level). Set it with `export ELASTICEMAIL_API_KEY=your-api-key` before you run the script; the script stops with an error if it is not set:
 
 ```php
-define('MY_APIKEY', 'YOUR_API_KEY');
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 ```
 
 Create an instance of ContactsApi that will be used to delete contacts.
@@ -33,15 +36,18 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 );
 ```
 
-Create an object with an array of contact to delete.
-
 > Find out more by checking our API's documentation: https://elasticemail.com/developers/api-documentation/rest-api#operation/contactsByEmailDelete
 
-Create an instance of CampaignsApi that will be used to create a campaign.
+Specify the email address of the contact to delete:
 
 ```php
-$email = ["mail@contact.com"];
-$response = $apiInstance->contactsByEmailDelete($email);
+$email = "johnsmith@domain.com"; // string | Proper email address.
+```
+
+And finally, call `contactsByEmailDelete` method from the API to delete the contact:
+
+```php
+$apiInstance->contactsByEmailDelete($email);
 ```
 
 ## The whole code to copy and paste:
@@ -49,19 +55,23 @@ $response = $apiInstance->contactsByEmailDelete($email);
 ```php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 
 $apiInstance = new ElasticEmail\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
 
-$email = ["mail@contact.com"];
+$email = "johnsmith@domain.com"; // string | Proper email address.
 
 try {
-    $response = $apiInstance->contactsByEmailDelete($email);
+    $apiInstance->contactsByEmailDelete($email);
+    echo 'Contact deleted', PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->contactsByEmailDelete: ', $e->getMessage(), PHP_EOL;
 }

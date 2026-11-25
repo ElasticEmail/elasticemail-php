@@ -9,9 +9,12 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: apikey
-define('MY_APIKEY', 'YOUR_API_KEY');
+$apiKey = getenv('ELASTICEMAIL_API_KEY');
+if (!$apiKey) {
+    throw new RuntimeException('Set the ELASTICEMAIL_API_KEY environment variable');
+}
 
-$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', MY_APIKEY);
+$config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-ElasticEmail-ApiKey', $apiKey);
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
@@ -25,7 +28,7 @@ $apiInstance = new ElasticEmail\Api\ContactsApi(
 
 $contact_payload = [new \ElasticEmail\Model\ContactPayload(
     [
-        "email" => "work.rafkwa+test@gmail.com",
+        "email" => "johnsmith@domain.com",
         "first_name" => "John",
         "last_name" => "Doe",
         "status" => 'Active'
