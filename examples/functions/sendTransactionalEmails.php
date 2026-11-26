@@ -18,6 +18,7 @@ $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKey('X-El
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = ElasticEmail\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-ElasticEmail-ApiKey', 'Bearer');
 
+// README:BEGIN quickstart
 $apiInstance = new ElasticEmail\Api\EmailsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -63,3 +64,4 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling EmailsApi->emailsTransactionalPost: ', $e->getMessage(), PHP_EOL;
 }
+// README:END quickstart

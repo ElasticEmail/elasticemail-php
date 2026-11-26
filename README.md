@@ -1,9 +1,12 @@
+<!-- BEGIN GENERATED:logo -->
 <div align="center">
 
 <img src=".github/ee-logo.png" alt="Elastic Email" width="96" />
+<!-- END GENERATED:logo -->
 
 # Elastic Email PHP SDK
 
+<!-- BEGIN GENERATED:header -->
 The official PHP client library for the [Elastic Email](https://elasticemail.com) REST API v4.
 
 [![Packagist](https://img.shields.io/packagist/v/elasticemail/elasticemail-php?logo=packagist&logoColor=white&label=Packagist&color=F28D1A)](https://packagist.org/packages/elasticemail/elasticemail-php)
@@ -28,6 +31,7 @@ The official PHP client library for the [Elastic Email](https://elasticemail.com
 </div>
 
 ---
+<!-- END GENERATED:header -->
 
 ## Features
 
@@ -62,6 +66,7 @@ composer require elasticemail/elasticemail-php
 
 Or add it to your `composer.json`:
 
+<!-- BEGIN GENERATED:install -->
 ```json
 {
   "require": {
@@ -69,6 +74,7 @@ Or add it to your `composer.json`:
   }
 }
 ```
+<!-- END GENERATED:install -->
 
 Composer installs the dependencies ([guzzlehttp/guzzle](https://packagist.org/packages/guzzlehttp/guzzle) and [guzzlehttp/psr7](https://packagist.org/packages/guzzlehttp/psr7)) for you. Then load Composer's autoloader:
 
@@ -267,12 +273,15 @@ This repository also includes short snippets for common tasks in [`examples/func
 
 ## API limits
 
+<!-- BEGIN GENERATED:api-limits -->
 - Up to **20 concurrent connections** per account. The API doesn't return `429`; a `5xx` under load means slow down and retry with backoff
 - A request with no response for about **50 seconds** fails with a gateway error (`5xx`)
 - Up to **50 recipients** per `POST /emails/transactional` and **1000 contacts or suppressions** per upload (`413` above that). For more recipients, send one bulk `POST /emails`
+<!-- END GENERATED:api-limits -->
 
 ## API reference
 
+<!-- BEGIN GENERATED:api-reference -->
 All URIs are relative to `https://api.elasticemail.com/v4`. The SDK covers **115 endpoints** across 16 API classes: `CampaignsApi`, `ContactsApi`, `DomainsApi`, `EmailsApi`, `EventsApi`, `FilesApi`, `InboundRouteApi`, `ListsApi`, `SecurityApi`, `SegmentsApi`, `StatisticsApi`, `SubAccountsApi`, `SuppressionsApi`, `TemplatesApi`, `VerificationsApi` and `WebhookApi`.
 
 <details>
@@ -397,11 +406,13 @@ Class | Method | HTTP request | Description
 *WebhookApi* | [**webhookPost**](docs/Api/WebhookApi.md#webhookpost) | **POST** /webhook | Add Webhook
 
 </details>
+<!-- END GENERATED:api-reference -->
 
 ## Models
 
+<!-- BEGIN GENERATED:models -->
 <details>
-<summary><strong>Show all 98 models</strong></summary>
+<summary><strong>Show all 99 models</strong></summary>
 
 - [AccessLevel](docs/Model/AccessLevel.md)
 - [AccountStatusEnum](docs/Model/AccountStatusEnum.md)
@@ -504,6 +515,7 @@ Class | Method | HTTP request | Description
 - [WebhookUpdatePayload](docs/Model/WebhookUpdatePayload.md)
 
 </details>
+<!-- END GENERATED:models -->
 
 ## Tests
 
@@ -514,6 +526,7 @@ vendor/bin/phpunit
 
 ## Versioning
 
+<!-- BEGIN GENERATED:versioning -->
 The SDK follows the Elastic Email API v4. Package versions and release notes are listed on [Packagist](https://packagist.org/packages/elasticemail/elasticemail-php) and in [GitHub Releases](https://github.com/ElasticEmail/elasticemail-php/releases).
 
 <details>
@@ -525,19 +538,23 @@ The SDK follows the Elastic Email API v4. Package versions and release notes are
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
 
 </details>
+<!-- END GENERATED:versioning -->
 
 ## Contributing
 
-Contributions are welcome! Most of this SDK is generated from the Elastic Email OpenAPI specification by [OpenAPI Generator](https://openapi-generator.tech), so please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+<!-- BEGIN GENERATED:contributing -->
+Contributions are welcome! Most of this SDK is generated from the Elastic Email OpenAPI specification, so please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
 - 🐛 [Report a bug](https://github.com/ElasticEmail/elasticemail-php/issues/new?template=bug_report.md)
 - 💡 [Request a feature](https://github.com/ElasticEmail/elasticemail-php/issues/new?template=feature_request.md)
 - 🔒 [Report a security issue](SECURITY.md)
 
 This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+<!-- END GENERATED:contributing -->
 
 ## Support
 
+<!-- BEGIN GENERATED:support -->
 > [!IMPORTANT]
 > The fastest way to get help is the **chat widget on [elasticemail.com](https://elasticemail.com)**. Our support team can help with your account, sending, deliverability and API questions.
 
@@ -545,7 +562,10 @@ This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.
 - 📚 [API documentation](https://elasticemail.com/developers/api-documentation/rest-api)
 - 🧪 [Examples repository](https://github.com/ElasticEmail/elasticemail-examples)
 - 🐛 [GitHub issues](https://github.com/ElasticEmail/elasticemail-php/issues), for bugs in this SDK only
+<!-- END GENERATED:support -->
 
 ## License
 
+<!-- BEGIN GENERATED:license -->
 Released under the [MIT License](LICENSE). Copyright © 2021–2026 Elastic Email.
+<!-- END GENERATED:license -->
